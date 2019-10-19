@@ -1,0 +1,41 @@
+#modalAddButton{
+    text-align: right;
+}
+.modalButton{
+    text-align: right;
+}
+
+.card-body h3{
+    text-align: center;
+    padding: 25px;
+
+}
+.card a{
+    color: #fff;
+}
+.card a:hover{
+    color: #962731;
+}
+
+.regFrm-buttons{
+    position: relative;
+    left: 415px;
+}
+
+.PerInfo-btnNext{
+    position: relative;
+    left: 500px;
+}
+
+.addResetButtons_center{
+    text-align: center;
+}
+.addResetButtons_right{
+    text-align: right;
+}
+.navbar_icon{
+    color: #ffffff;
+}
+
+
+
