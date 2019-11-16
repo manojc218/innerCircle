@@ -30,7 +30,6 @@ class ProductCategory
         }
     }
 
-    /*Add Package*/
 
 
 

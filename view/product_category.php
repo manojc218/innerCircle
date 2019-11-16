@@ -28,6 +28,7 @@ include_once('header.php');/*link to header*/
 
                     <div style="text-align: right">
                         <input type="button" value="Add Category" class="btn btn-primary" data-toggle="modal" data-target="#modalAddType">
+                        <input type="button" value="Add Points" class="btn btn-primary" data-toggle="modal" data-target="#modalAddPoints">
                     </div>
                     <div class="clearfix"></div><!--separator-->
                 </div>
@@ -103,6 +104,54 @@ include_once('header.php');/*link to header*/
                             <input type="text" id="category_name" name="category_name" class="form-control col-md-7 col-xs-12" required>
 
 
+                            <input type="submit" class="btn btn-primary" value="Add" id="modalAddButton">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--End add category modal-->
+
+<!--start add points modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="modalAddPoints">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--close button-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!--modal title-->
+                <h5 class="modal-title">Add Points</h5>
+
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal form_label-left" action="product_category.php" method="POST">
+                    <!--Category Name-->
+                    <di3..v class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Product_category">Category Name<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="form-control col-md-7 col-xs-12">
+                                <option>Category</option>
+                            </select>
+                        </div>
+                    </di3..v>
+                    <!--Points-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="point_value">Point Value<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="point_value" name="point_value" class="form-control col-md-7 col-xs-12" required>
+                        </div>
+                        <!--add button-->
+                    </div>
+                    <div class="form-group"  style="position: relative;left:450px;">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="submit" class="btn btn-primary" value="Add" id="modalAddButton">
                         </div>
                     </div>

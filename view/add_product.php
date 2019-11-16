@@ -1,15 +1,12 @@
-<?php
 
+<?php
     include_once('../backend/ProductCategory.php');
     include_once ('../backend/Package.php');
     include_once ('../backend/Product.php');
-
     $productCategory=new ProductCategory();
     $allCategory =   $productCategory->get_all_categories();
-
     $package=new Package();
     $allPackage= $package->get_all_packages();
-
     $product= new Product();
     if (isset($_POST['serialNumber'])){
         $newProduct= new Product();
@@ -19,10 +16,7 @@
         $newProduct->productDescription=$_POST['productDescription']='Head Office';
         $addProduct=$newProduct->add_product2();
     }
-
-
 include_once('header.php');
-
 ?>
     <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
@@ -39,7 +33,6 @@ include_once('header.php');
                             <select class="form-control col-md-7 col-xs-12" name="productCategory">
                                 <?php
                                     foreach ($allCategory as $item){
-
                                         echo "<option value='$item->product_c_id'>$item->categoryName</option>";
                                     }
                                 ?>

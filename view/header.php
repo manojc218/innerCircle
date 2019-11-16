@@ -1,16 +1,11 @@
 <?php
     session_start();
-
     if(!isset($_SESSION['userId'])){
         header('location:../index.php');
     }
-
     $uid=$_SESSION["userId"];
     $userName=$_SESSION["userName"];
-
-
     include_once ('../backend/User.php');
-
     $user=new User();
     $getUserId=$user->get_user_by_id($uid);
 ?>
@@ -61,7 +56,7 @@
 
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="overview.php" class="site_title"><img src="../docs/images/inner%20circle%20logo%20transparent_white_icon.png" style="width: 135px; height:100px;"> </a>
+                    <a href="dashboard.php" class="site_title"><img src="../docs/images/inner%20circle%20logo%20transparent_white_icon.png" style="width: 135px; height:100px;"> </a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -92,7 +87,7 @@
                         <div class="separator" style=""></div>
                         <ul class="nav side-menu">
                             <!--Overview-->
-                            <li><a href="overview.php"><i class="fa fa-desktop"></i> Overview <span class="fa fa-chevron-right"></span></a>
+                            <li><a href=dashboard.php><i class="fa fa-desktop"></i> Dashboard <span class="fa fa-chevron-right"></span></a>
 
                             </li>
                             <!--Administrator-->
@@ -109,7 +104,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="product_category.php">Product Categories<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
-                                    <li><a href="products.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="add_product.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="view_products.php">View Products<span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </li>
@@ -190,12 +185,10 @@
                                 <span class=" fa fa-sign-out navbar_icon" style="font-size: 20px;"></span>
                             </a>
                             <!--<ul class="dropdown-menu dropdown-usermenu pull-right">
-
                                 <li><a href="javascript:;"> Profile</a></li>
                                 <li><a href="javascript:;"><span class="badge bg-red pull-right">50%</span><span>Settings</span></a></li>
                                 <li><a href="javascript:;">Help</a></li>
                                 <li><a href="../index.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-
                             </ul>-->
                         </li>
 
@@ -216,7 +209,6 @@
                                         <span class="message">Film festivals used to be do-or-die moments for movie makers. They were where...</span>
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
                         <!--Messeages-->

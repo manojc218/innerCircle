@@ -11,7 +11,7 @@ session_start();
 
 else if(isset($_SESSION['user_id']))
     {
-        header("location:view/overview.php");
+        header("location:view/dashboard.php");
     }
 
 if(isset($_POST['username']))
@@ -21,7 +21,7 @@ if(isset($_POST['username']))
     $loginResult = $userLogin->user_login($_POST['username'], $_POST['password']);
 
     if ($loginResult) {
-        header("location:view/overview.php");
+        header("location:view/dashboard.php");
     } else {
         $msg = "Sorry, username and password are not match. Please check and retry.";
     }

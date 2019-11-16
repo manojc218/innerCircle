@@ -12,7 +12,7 @@ $getAllStock=$getStock->get_stock();
 <div class="col-md-12 col-ms-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Default Elxampe <small>Users</small></h2>
+            <h2>Stocks <small>Users</small></h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -38,7 +38,7 @@ $getAllStock=$getStock->get_stock();
                         <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                 <thead>
                                     <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 182px;">Branch</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 182px;">Manager Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 299px;">SIM Cards</th>
                                         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 137px;">4G Routers</th>
                                         <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 73px;">DTv</th>
@@ -48,7 +48,7 @@ $getAllStock=$getStock->get_stock();
                                     <?php
                                         foreach ($getAllStock as $item){
                                             echo"<tr role=\"row\" class=\"even\">
-                                            <td class=\"sorting_1\">$item->branchName</td>
+                                            <td class=\"sorting_1\">$item->managerName</td>
                                             <td>$item->SIMS</td>
                                             <td>$item->ROUTER</td>
                                             <td>$item->DTV</td>";

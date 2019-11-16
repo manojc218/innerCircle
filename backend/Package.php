@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ASUS
- * Date: 8/21/2019
- * Time: 11:19 AM
- */
 
 class Package
 {
@@ -12,11 +6,12 @@ class Package
     public $packageId;
     public $packageDescription;
     public $addedDate;
+    public $packageCategory;
 
 
     public function add_package(){
         $conn=(new Connection())->get_db();
-        $sql="INSERT INTO package (package_name,description) VALUES ('$this->packageName','$this->packageDescription')";
+        $sql="INSERT INTO package (package_name,description,product_c_id) VALUES ('$this->packageName','$this->packageDescription','$this->packageCategory')";
 
         $addPackage=$conn->query($sql);
 
