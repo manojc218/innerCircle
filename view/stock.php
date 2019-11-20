@@ -48,7 +48,7 @@ $getAllStock=$getStock->get_stock();
                                     <?php
                                         foreach ($getAllStock as $item){
                                             echo"<tr role=\"row\" class=\"even\">
-                                            <td class=\"sorting_1\">$item->managerName</td>
+                                            <td class=\"sorting_1\">$item->managerName</td>                                            
                                             <td>$item->SIMS</td>
                                             <td>$item->ROUTER</td>
                                             <td>$item->DTV</td>";

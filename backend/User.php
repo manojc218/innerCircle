@@ -19,14 +19,15 @@ class User
     public $landNumber;
     public $email;
     public $branchName;
-    public $jobTitle;
+    public $roleId;
+    public $roleName;
     public $manager;
     public $guyCode;
     public $userName;
     public $regDate;
     public $workingId;
 
-
+    /*generate password randomly*/
     public function get_password($char)
     {
         $pwdRange = ('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123654789@#$&');
@@ -34,25 +35,20 @@ class User
         $pwd=substr(str_shuffle($pwdRange), 0, $char);
 
         return $pwd;
-
-
     }
 
+    /*start add new user to the system*/
     public function add_new_user()
     {
-
-
         $conn = (new Connection())->get_db();
-
         $pass=$this->get_password(8);
-
+        
         /*hashing password*/
         $password = md5($pass);
 
         /*send data to the relevant table*/
         $sql = "INSERT INTO user_profile (first_name,last_name,nic,gender,dateOfBirth,addressLine1,addressLine2,city,postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,guyCode,user_name,password)
-            values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob','$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber','$this->landNumber','$this->email','$this->branchName','$this->jobTitle','$this->manager','$this->workingId','$this->guyCode','$this->userName','$password')";
-
+            values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob','$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber','$this->landNumber','$this->email','$this->branchName','$this->roleName','$this->manager','$this->workingId','$this->guyCode','$this->userName','$password')";
 
         $addUser = $conn->query($sql);
 
@@ -64,16 +60,16 @@ class User
             $imgLocation="../docs/images/userImg";
             move_uploaded_file($imgTemp,$imgLocation,$imgName);
         }
-
         $link="http://localhost/PMSIC";//system link
 
         /*email body*/
         $mailBody="Dear".$this->firstName." ".$this->lastName."<br>".
-                "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
-                "Now you can log into the system through ".$link."<br>".
-                "Your Username : YOUR FIRST NAME"."<br>".
-                "Your Password :".$pass;
+            "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
+            "Now you can log into the system through ".$link."<br>".
+            "Your Username : YOUR FIRST NAME"."<br>".
+            "Your Password :".$pass;
 
+        /*sending mail*/
         $mail= new Mail();
         $sendMail=$mail->send_mail($this->email,"Welcome",$mailBody);
 
@@ -83,7 +79,7 @@ class User
             return false;
         }
     }
-    /*end add new user function*/
+    /*end add new user to the system */
 
 
     /*Start login function*/
@@ -94,7 +90,8 @@ class User
         $sql = "SELECT * FROM user_profile WHERE user_name='$userName' and password='$password'";
         $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
+        if ($result->num_rows > 0)
+        {
             session_start();
             $row = $result->fetch_array();/*get details of entire row*/
 
@@ -104,7 +101,9 @@ class User
             $_SESSION["userRole"] = $row["user_role"];
 
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
 
@@ -116,11 +115,15 @@ class User
     }
 
 
-    /*Start get all user function*/
+    /*get all user details*/
     public function get_all_users()
     {
         $conn = (new Connection())->get_db();
-        $sql = "SELECT user_profile.*, branch.branch_name FROM user_profile LEFT JOIN branch ON user_profile.branch_id= branch.branch_id";
+
+        $sql = "SELECT user_profile.*, branch.branch_name,role.role_name 
+                FROM user_profile 
+                LEFT JOIN branch ON user_profile.branch_id= branch.branch_id 
+                LEFT JOIN role ON user_profile.role_id=role.role_id";
 
         $result = $conn->query($sql);
 
@@ -139,8 +142,9 @@ class User
             $u_detail->mobileNumber = $row["mobile_number"];
             $u_detail->landNumber = $row["land_number"];
             $u_detail->email = $row["email"];
+            $u_detail->roleId = $row["role_id"];
+            $u_detail->roleName = $row["role_name"];
             $u_detail->branchName = $row["branch_name"];
-            $u_detail->jobTitle = $row["role_id"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
             $u_detail->guyCode = $row["guyCode"];
@@ -155,10 +159,11 @@ class User
     }
     /*End get all user function*/
 
-    /*Start get manager by branch function*/
+    /*Start get manager name for relative branch*/
     public function get_manager_by_branch($id)
     {
         $conn = (new Connection())->get_db();
+
         $sql = "SELECT * FROM user_profile where branch_id=$id";
 
         $result = $conn->query($sql);
@@ -179,7 +184,7 @@ class User
             $u_detail->landNumber = $row["land_number"];
             $u_detail->email = $row["email"];
             $u_detail->branchName = $row["branch_id"];
-            $u_detail->jobTitle = $row["role_id"];
+            $u_detail->roleId = $row["role_id"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
             $u_detail->guyCode = $row["guyCode"];
@@ -192,12 +197,14 @@ class User
 
         return $detailArray;
     }
-    /*End get manager by branch function*/
+    /*End get manager name for relative branch*/
 
-    /*Start get user by id function*/
+
+    /*start get user by id*/
     public function get_user_by_id($uid)
     {
         $conn = (new Connection())->get_db();
+
         $sql = "SELECT * FROM user_profile where user_id=$uid";
 
         $result = $conn->query($sql);
@@ -218,7 +225,7 @@ class User
             $u_detail->landNumber = $row["land_number"];
             $u_detail->email = $row["email"];
             $u_detail->branchName = $row["branch_id"];
-            $u_detail->jobTitle = $row["role_id"];
+            $u_detail->roleId = $row["role_id"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
             $u_detail->guyCode = $row["guyCode"];
@@ -231,5 +238,5 @@ class User
 
         return $detailArray;
     }
-    /*End get user by id function*/
+    /*End get user by id*/
 }

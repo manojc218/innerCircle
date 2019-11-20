@@ -10,11 +10,16 @@ class Product
     public $productDescription;
     public $addedDate;
     public $packageName;
+    public $userId;
+    public $userName;
+    public $firstName;
+    public $lastName;
+
     /*Add products*/
     public function add_product2()
     {
         $conn = (new Connection())->get_db();
-        $sql = "INSERT INTO product(serial_number,package_id,product_c_id,description) VALUES ('$this->serialNumber','$this->productPackage','$this->productCategory','$this->productDescription')";
+        $sql = "INSERT INTO product(serial_number,package_id,product_c_id,user_id) VALUES ('$this->serialNumber','$this->productPackage','$this->productCategory','131')";
         $addProduct = $conn->query($sql);
         if ($addProduct) {
             return true;
@@ -46,7 +51,7 @@ class Product
     public function get_sim()
     {
         $conn = (new Connection())->get_db();
-        $sql = "SELECT product.*, package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id WHERE product_c_id='2'";
+        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name,package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id  LEFT JOIN user_profile ON product.user_id = user_profile.user_id WHERE product_c_id='2'";
         $simList = $conn->query($sql);
         while ($row = $simList->fetch_array()) {
             $newSimList1 = new Product();
@@ -54,9 +59,11 @@ class Product
             $newSimList1->serialNumber = $row['serial_number'];
             $newSimList1->productCategory = $row['product_c_id'];
             $newSimList1->packageName = $row['package_name'];
-            $newSimList1->productDescription = $row['description'];
             $newSimList1->addedDate = $row['added_date'];
-            
+            $newSimList1->userId=$row['user_id'];
+            $newSimList1->userName=$row['first_name']." ".$row['last_name'];
+
+
             $simArray[] = $newSimList1;
         }
         return $simArray;
@@ -65,7 +72,7 @@ class Product
     public function get_router()
     {
         $conn = (new Connection())->get_db();
-        $sql = "SELECT product.*, package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id WHERE product_c_id='3'";
+        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name,package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id LEFT JOIN user_profile ON product.user_id = user_profile.user_id WHERE product_c_id='3'";
         $routerList = $conn->query($sql);
         while ($row = $routerList->fetch_array()) {
             $newRouterList = new Product();
@@ -73,8 +80,11 @@ class Product
             $newRouterList->serialNumber = $row['serial_number'];
             $newRouterList->productCategory = $row['product_c_id'];
             $newRouterList->packageName = $row['package_name'];
-            $newRouterList->productDescription = $row['description'];
             $newRouterList->addedDate = $row['added_date'];
+            $newRouterList->userId=$row['user_id'];
+            $newRouterList->userName=$row['first_name']." ".$row['last_name'];
+
+
             $routerArray[] = $newRouterList;
         }
         return $routerArray;
@@ -83,7 +93,7 @@ class Product
     public function get_dtv()
     {
         $conn = (new Connection())->get_db();
-        $sql = "SELECT product.*, package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id WHERE product_c_id='4'";
+        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name,package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id LEFT JOIN user_profile ON product.user_id = user_profile.user_id WHERE product_c_id='4'";
         $dtvList = $conn->query($sql);
         while ($row = $dtvList->fetch_array()) {
             $newDtvList = new Product();
@@ -91,13 +101,17 @@ class Product
             $newDtvList->serialNumber = $row['serial_number'];
             $newDtvList->productCategory = $row['product_c_id'];
             $newDtvList->packageName = $row['package_name'];
-            $newDtvList->productDescription = $row['description'];
             $newDtvList->addedDate = $row['added_date'];
+            $newDtvList->userId=$row['user_id'];
+            $newDtvList->userName=$row['first_name']." ".$row['last_name'];
+
+
             $dtvArray[] = $newDtvList;
         }
         return $dtvArray;
     }
-    /*get category name for .relative serial number*/
+
+    /*get category name for related serial number*/
     public static function get_product_by_id($cId)
     {
         $conn = (new Connection())->get_db();
@@ -111,6 +125,9 @@ class Product
         $prdId->packageName = $row['package_id'];
         $prdId->productDescription = $row['description'];
         $prdId->addedDate = $row['added_date'];
+
         return $prdId;
     }
+
+
 }

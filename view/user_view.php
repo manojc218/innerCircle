@@ -103,7 +103,7 @@
 
                                                     echo"<tr role=\"row\" class=\"odd\">
                                                     <td class=\"sorting_1\">$item->firstName $item->lastName</td>
-                                                    <td>$item->lastName</td>
+                                                    <td>$item->roleName</td>
                                                     <td>$item->branchName</td>
                                                     
                                                 </tr>";

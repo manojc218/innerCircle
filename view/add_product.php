@@ -13,7 +13,6 @@
         $newProduct->serialNumber=$_POST['serialNumber'];
         $newProduct->productCategory=$_POST['productCategory'];
         $newProduct->productPackage=$_POST['productPackage'];
-        $newProduct->productDescription=$_POST['productDescription']='Head Office';
         $addProduct=$newProduct->add_product2();
     }
 include_once('header.php');

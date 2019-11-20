@@ -33,7 +33,7 @@ if (isset($_POST['fname']))
     $newUser->landNumber=$_POST['land'];
     $newUser->email=$_POST['email'];
     $newUser->branchName=$_POST['branchName'];
-    $newUser->jobTitle=$_POST['jobTitle'];
+    $newUser->roleName=$_POST['roleName'];
     $newUser->manager=$_POST['manager'];
     $newUser->guyCode=$_POST['guyCode'];
     $newUser->userName=$_POST['username'];
@@ -213,11 +213,12 @@ include_once('header.php');
                                         </select>
                                     </div>
                                 </div>
-                                <!--job title-->
+
+                                <!--Role Name-->
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="job title">Job Title<span class="required">*</span></label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role name">Role Name<span class="required">*</span></label>
                                     <div class="col-md-6 col-ms-6 col-xs-6">
-                                        <select class="form-control col-md-7 col-ms-7 col-xs-12" name="jobTitle">
+                                        <select class="form-control col-md-7 col-ms-7 col-xs-12" name="roleName">
                                             <?php
                                                 foreach($allRoles as $item){
                                                     echo"<option value='$item->roleId'>$item->roleName</option>";

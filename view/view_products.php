@@ -19,6 +19,10 @@
         $dtvList=new Product();
         $newDtvList=$dtvList->get_dtv();
 
+        /*get username*/
+        /*$nameList=new Product();
+        $userId=$nameList->get_username_by_id($uId);*/
+
 include_once ('header.php');
 ?>
 
@@ -98,13 +102,13 @@ include_once ('header.php');
                         <div class="" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                 <!--SimCard Tab-->
-                                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Sim Cards</a>
+                                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><strong>Sim Cards</strong></a>
                                 </li>
                                 <!--4gRouter Tab-->
-                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">4G Routers</a>
+                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><strong>4G Routers</strong></a>
                                 </li>
                                 <!--Dtv Tab-->
-                                <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Dtv</a>
+                                <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><strong>Dtv</strong></a>
                                 </li>
                             </ul>
 
@@ -135,7 +139,7 @@ include_once ('header.php');
                                                     {
                                                          echo"<tr role=\"row\" class=\"odd\">
                                                                 <td class=\"sorting_1\">$item->serialNumber</td> 
-                                                                <td>$item->productDescription</td>
+                                                                <td>$item->userName</td>
                                                                 <td>$item->packageName</td> 
                                                                 <td>$item->addedDate</td>
                                                                 <td>
@@ -174,7 +178,7 @@ include_once ('header.php');
                                         {
                                             echo"<tr role=\"row\" class=\"odd\">
                                                             <td class=\"sorting_1\">$item->serialNumber</td>
-                                                            <td>$item->productDescription</td>
+                                                            <td>$item->userName</td>
                                                             <td> $item->packageName</td>
                                                             <td> $item->addedDate</td>
                                                             <td>
@@ -208,18 +212,18 @@ include_once ('header.php');
                                         <?php
 
                                         foreach ($newDtvList as $item)
-                                        {
-                                            echo"<tr role=\"row\" class=\"odd\">
-                                                            <td class=\"sorting_1\">$item->serialNumber</td>
-                                                            <td>$item->productDescription</td>
-                                                            <td>$item->packageName</td>
-                                                            <td>$item->addedDate</td>
-                                                            <td>
-                                                                <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
-                                                                <a href=\"#\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o\"></i> Delete </a>
-                                                            </td>
-                                                        </tr>";
-                                        }
+                                            {
+                                                echo"<tr role=\"row\" class=\"odd\">
+                                                                <td class=\"sorting_1\">$item->serialNumber</td>
+                                                                <td>$item->userName</td>
+                                                                <td>$item->packageName</td>
+                                                                <td>$item->addedDate</td>
+                                                                <td>
+                                                                    <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
+                                                                    <a href=\"#\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o\"></i> Delete </a>
+                                                                </td>
+                                                            </tr>";
+                                            }
                                         ?>
                                         </tbody>
                                     </table>

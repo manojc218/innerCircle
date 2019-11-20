@@ -87,11 +87,13 @@
                         <div class="separator" style=""></div>
                         <ul class="nav side-menu">
                             <!--Overview-->
-                            <li><a href=dashboard.php><i class="fa fa-desktop"></i> Dashboard <span class="fa fa-chevron-right"></span></a>
+                            <li>
+                                <a href=dashboard.php><i class="fa fa-desktop"></i> Dashboard <span class="fa fa-chevron-right"></span></a>
 
                             </li>
                             <!--Administrator-->
-                            <li><a><i class="fa fa-user"></i> Administrative <span class="fa fa-chevron-down"></span></a>
+                            <li>
+                                <a><i class="fa fa-user"></i> Administrative <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="">
                                     <li><a href="add_new_user.php">Add User<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="user_view.php">View User <span class="fa fa-chevron-right"></span></a>
@@ -100,7 +102,8 @@
                                 </ul>
                             </li>
                             <!--products-->
-                            <li><a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
+                            <li>
+                                <a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="product_category.php">Product Categories<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
@@ -108,27 +111,34 @@
                                     <li><a href="view_products.php">View Products<span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </li>
-
-
+                            <!--purchase management-->
+                            <li>
+                                <a><i class="fa fa-th-large"></i>Purchase Management<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="#">Orders<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="#">GRN<span class="fa fa-chevron-right"></span> </a></li>
+                                </ul>
                             </li>
+
                             <!--Sales-->
-                            <li><a><i class="fa fa-bar-chart-o"></i>Sales<span class="fa fa-chevron-down"></span></a>
+                            <li>
+                                <a><i class="fa fa-bar-chart-o"></i>Sales<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="add_sales.php">Add Sales<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="#">View Sales<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
                             </li>
                             <!--Stock-->
-                            <li><a><i class="fa fa-pie-chart"></i>Stock<span class="fa fa-chevron-down"></span></a>
+                            <li>
+                                <a><i class="fa fa-pie-chart"></i>Stock<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="stock.php">Stocks<span class="fa fa-chevron-right"></span> </a></li>
-                                    <li><a href="distribute.php
-">Distribute<span class="fa fa-chevron-right"></span> </a></li>
-                                    <li><a href="#">View Sales<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="distribute.php">Distribute<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
                             </li>
                             <!--Branches-->
-                            <li><a><i class="fa fa-sitemap"></i>Branches<span class="fa fa-chevron-down"></span></a>
+                            <li>
+                                <a><i class="fa fa-sitemap"></i>Branches<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="add_branch.php">Add Branch<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="view_branch.php">View Branch<span class="fa fa-chevron-right"></span> </a></li>
@@ -136,12 +146,12 @@
                             </li>
 
                             <!--Events-->
-                            <li><a href="event.php"><i class="fa fa-flag"></i>Events<span class="fa fa-chevron-right"></span></a>
-
+                            <li>
+                                <a href="event.php"><i class="fa fa-flag"></i>Events<span class="fa fa-chevron-right"></span></a>
                             </li>
 
-                            <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-right"></span></a>
-
+                            <li>
+                                <a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-right"></span></a>
                             </li>
 
                         </ul>
