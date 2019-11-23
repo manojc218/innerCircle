@@ -23,7 +23,10 @@ if(isset($_POST['username']))
     if ($loginResult) {
         header("location:view/dashboard.php");
     } else {
-        $msg = "Sorry, username and password are not match. Please check and retry.";
+        $msg ="<div style=\"background-color: #962731;height: 50px;\">
+                            <h5 style=\"position: relative;top: 10px;\">Sorry, username and password are not match. Please check and retry</h5>
+                        </div>";
+
     }
 }
 ?>

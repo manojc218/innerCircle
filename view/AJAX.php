@@ -11,18 +11,17 @@ if (isset($_GET['bid'])){
     echo json_encode($manager);
 }
 
-/*get category name for selected items in distribute*/
+/*distribute ->display item which are input in form*/
 if (isset($_GET['serialNumber'])) {
 
     $prdC = new ProductCategory();
     $category = $prdC->get_category_by_id($_GET['serialNumber']);
     $a['cat']=$category;
 
-   /* $prdId = new Product();
-    $product= $prdId->get_product_by_id($_GET['serialNumber']);
-    $a['prd']=$product;*/
-
     echo json_encode($a);
 }
+
+/*order -> display item which are input in form*/
+if(isset($_GET['categoryName']))
 
 ?>

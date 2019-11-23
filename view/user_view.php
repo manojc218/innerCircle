@@ -86,8 +86,8 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 200px;">Name</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Position</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Branch: activate to sort column ascending" style="width: 100px;">Branch</th>
-                                                    <!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 73px;">Age</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 135px;">Start date</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 73px;">Manager</th>
+                                                    <!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 135px;">Start date</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106px;">Salary</th>-->
                                                 </tr>
                                                 </thead>
@@ -105,6 +105,7 @@
                                                     <td class=\"sorting_1\">$item->firstName $item->lastName</td>
                                                     <td>$item->roleName</td>
                                                     <td>$item->branchName</td>
+                                                    <td>$item->manager</td>
                                                     
                                                 </tr>";
 

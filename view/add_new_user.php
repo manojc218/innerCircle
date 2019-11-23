@@ -272,8 +272,8 @@ include_once('header.php');
                                 <!--Start submit Buttons-->
                                 <div class="form-group addResetButtons_right">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <input type="reset" value="Reset" class="btn btn-success">
-                                        <input type="submit" class="btn btn-primary">
+                                        <input type="reset" value="Reset" class="btn btn-success btn-lg">
+                                        <input type="submit" class="btn btn-primary btn-lg" value="Add User">
                                     </div>
                                 </div>
                             </div><!--end official-info-->
@@ -331,7 +331,7 @@ include_once('header.php');
             result=JSON.parse(data);
             $("#manager").html("");
             for(item in result){
-                text="<option>"+result[item].firstName+"</option>";
+                text="<option value='"+result[item].userId+"'>"+result[item].firstName+"</option>";
                 $("#manager").append(text);
             }
         });

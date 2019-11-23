@@ -33,39 +33,39 @@
                     <input type="button" class="btn btn-primary" value="Add" onclick="addTo()">
                     <input type="reset" class="btn btn-success" value="Reset">
                 </div>
-
+            </form>
             <!--end add sales form-->
             <hr class="separator">
+
+
             <div class="table-responsive">
+                <!--data input table-->
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                    <tr class="headings">
+                        <!--<th class="column-title">Product Id</th>-->
+                        <th class="column-title">Serial Number</th>
+                        <th class="column-title">Category </th>
 
-            </form>
-            <!--data input table-->
-            <table class="table table-striped jambo_table bulk_action">
-                <thead>
-                <tr class="headings">
-                    <!--<th class="column-title">Product Id</th>-->
-                    <th class="column-title">Serial Number</th>
-                    <th class="column-title">Category </th>
+                        <th class="column-title no-link last"><span class="nobr">Action</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                    </tr>
+                    </thead>
 
-                    <th class="column-title no-link last"><span class="nobr">Action</span>
-                    </th>
-                    <th class="bulk-actions" colspan="7">
-                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                    </th>
-                </tr>
-                </thead>
+                    <tbody id="tbId">
 
-                <tbody id="tbId">
+                    </tbody>
+                </table>
 
-                </tbody>
-            </table>
+                <hr class="separator">
 
-            <hr class="separator">
-
-            <!--submit button-->
-            <div  style="text-align: right">
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
+                <!--submit button-->
+                <div  style="text-align: right">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </div>
             </div>
             <!--End Sim card view table-->
 
@@ -89,7 +89,8 @@
                 $('#tbId').append("<tr>" +
                     "<td><input type='text' name='sNum[]' value='"+sn+"'></td>" +
                     "<td>"+cn+"</td>" +
-                    "<td><a href=\"#\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
+                    "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +
+                    "<i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
                 c_id=$("#category_name").val();
 
                 $('#sNumber').val("");

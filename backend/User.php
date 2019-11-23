@@ -37,7 +37,7 @@ class User
         return $pwd;
     }
 
-    /*start add new user to the system*/
+    /*adding new user to the system*/
     public function add_new_user()
     {
         $conn = (new Connection())->get_db();
@@ -79,10 +79,10 @@ class User
             return false;
         }
     }
-    /*end add new user to the system */
+    /*adding new user to the system */
 
 
-    /*Start login function*/
+    /*login function*/
     public function user_login($userName, $password)
     {
         $conn = (new Connection())->get_db();
@@ -107,7 +107,7 @@ class User
             return false;
         }
 
-    }/*End login function*/
+    }/*login function*/
 
     public function user_logout()
     {
@@ -200,7 +200,7 @@ class User
     /*End get manager name for relative branch*/
 
 
-    /*start get user by id*/
+    /*getting username by id*/
     public function get_user_by_id($uid)
     {
         $conn = (new Connection())->get_db();
@@ -238,5 +238,5 @@ class User
 
         return $detailArray;
     }
-    /*End get user by id*/
+    /*getting username by id*/
 }
