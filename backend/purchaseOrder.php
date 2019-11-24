@@ -24,12 +24,11 @@ class purchaseOrder
         foreach ($_POST['cNameArr'] as $item)
         {
             /*send data to purchase_order_details table*/
-            $sql2="INSERT INTO purchase_order_details(order_qty, description,p_order_id,product_c_id) VALUES ('$this->orderQty.$count','$this->orderDescription.$count','$this->orderId','$this->orderCategory')";
+            $sql2="INSERT INTO purchase_order_details(order_qty, description,p_order_id,product_c_id) VALUES ('$this->orderQty.[$count]','$this->orderDescription.[$count]','$this->orderId','$this->orderCategory')";
             $count++;
 
             $result1=$conn->query($sql2);
-            echo $sql2;
-            exit();
+
 
             if($result1){
                 return true;

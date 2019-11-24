@@ -12,8 +12,8 @@
 
         $newOrder=new purchaseOrder();
         $newOrder->orderRef=$_POST['orderRefNo'];
-        $newOrder->orderQty=$_POST['qty'];
-        $newOrder->orderDescription=$_POST['description'];
+        $newOrder->orderQty=$_POST['qtyArr'];
+        $newOrder->orderDescription=$_POST['desArr'];
         $newOrder->orderCategory=$_POST['catName'];
         $newOrder->orderDate=$_POST['orderDate'];
 
@@ -28,7 +28,7 @@
         </div>
         <div class="x_content">
             <!--start form-->
-            <form   action="" method="POST" class="form-horizontal form-label-left">
+            <form   action="#" method="POST" class="form-horizontal form-label-left">
 
                 <div class="row">
                     <!--left col-->
@@ -154,7 +154,7 @@
         $('#tblOrder').append("<tr>" +
             "<td><input type='text' class='form-control' name='cNameArr[]' value='"+cName+"' readonly></td>" +
             "<td><input type='text' class='form-control' name='qtyArr[]' value='"+qty+"' readonly></td>" +
-            "<td><input type='text' class='form-control' name='description[]' value='"+des+"' readonly></td>" +
+            "<td><input type='text' class='form-control' name='desArr[]' value='"+des+"' readonly></td>" +
             "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +
             "<i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
 

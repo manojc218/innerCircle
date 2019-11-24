@@ -49,8 +49,6 @@ if (isset($_POST['fname']))
 include_once('header.php');
 
 ?>
-
-    <div>
             <div class="col-md-12 col-sm-12 col-xs-12" id="reg_form">
                 <div class="x_panel">
                     <div class="x_title">
@@ -282,8 +280,6 @@ include_once('header.php');
                     </div>
                 </div>
             </div>
-    </div>
-    <!--page content end-->
 
 
 <?php
