@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3 col-ms-3 col-xs-3" for="managerName">Manager Code</label>
                     <div class="col-md-6 col-ms-6 col-xs-12">
-                        <input type="text" class="form-control col-md-7 col-xs-12" name="managerCode" required>
+                        <input type="text" class="form-control col-md-7 col-xs-12" name="managerCode" id="managerCode" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,6 +45,7 @@
                     <tr class="headings">
                         <!--<th class="column-title">Product Id</th>-->
                         <th class="column-title">Serial Number</th>
+                        <th class="column-title">Manager</th>
                         <th class="column-title">Category </th>
 
                         <th class="column-title no-link last"><span class="nobr">Action</span>
@@ -78,6 +79,7 @@
 <script>
     function addTo() {
         sn=$('#sNumber').val();
+        mName=$('#managerCode').val();
         $.get("AJAX.php?type=addTo",{serialNumber:sn},function (data) {
 
             result=JSON.parse(data);
@@ -87,8 +89,9 @@
                 alert("Please enter valid serial number!")
             }else {
                 $('#tbId').append("<tr>" +
-                    "<td><input type='text' name='sNum[]' value='"+sn+"'></td>" +
-                    "<td>"+cn+"</td>" +
+                    "<td><input  class='form-control' type='text' name='sNum[]' value='"+sn+"' readonly></td>" +
+                    "<td><input  class='form-control' type='text' name='mName[]' value='"+mName+"' readonly></td>" +
+                    "<td><input  class='form-control' type='text' name='categoryName' value='"+cn+"' readonly></td>" +
                     "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +
                     "<i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
                 c_id=$("#category_name").val();

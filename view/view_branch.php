@@ -17,7 +17,7 @@
                     {
                         /*start branch details card*/
                         echo "  <div class=\"col-md-4 col-sm-4 col-xs-12 profile_details\">
-                                    <div class=\"well profile_view\" style='background-color: #0D3349;'>
+                                    <div class=\"well profile_view\" style='background-color: #00214a;'>
                                         <div class=\"col-sm-12\">
                                              <div class=\"left col-xs-12\">
                                                 <h2>$item->branchName</h2>

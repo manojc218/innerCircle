@@ -115,7 +115,8 @@
                             <li>
                                 <a><i class="fa fa-th-large"></i>Purchase Management<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="order.php">Orders<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="order.php">Place Orders<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="view_order.php">View Orders<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="grn.php">GRN<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
                             </li>

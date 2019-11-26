@@ -17,6 +17,7 @@
         $newOrder->orderCategory=$_POST['catName'];
         $newOrder->orderDate=$_POST['orderDate'];
 
+
         $addOrder=$newOrder->add_purchase_order();
     }
 
