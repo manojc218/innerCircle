@@ -1,5 +1,6 @@
 <?php
     include_once ('header.php');
+
 ?>
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -28,28 +29,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr role="row" class="even">
-                                            <td class="sorting_1">6658</td>
-                                            <td>12/06/2015</td>
-                                            <td>10/06/2015</td>
-                                            <td>4000</td>
-                                            <td>
-                                                <button class="btn btn-primary" id="view"><span class="fa fa-eye"></span></button>
-                                                <button class="btn btn-dark" id="print"><span class="fa fa-print"></span></button>
-                                                <button class="btn btn-danger" id="delete"><span class="fa fa-remove"></span></button>
-                                            </td>
-                                </tr>
-                                <tr role="row" class="even">
-                                            <td class="sorting_1">2458</td>
+
+
+                                        <tr role=\"row\" class=\"even\">
+                                            <td class=\"sorting_1\">2564</td>
                                             <td>03/01/2019</td>
                                             <td>01/01/2019</td>
                                             <td>6000</td>
                                             <td>
-                                                <button class="btn btn-primary" id="view"><span class="fa fa-eye"></span></button>
-                                                <button class="btn btn-dark" id="print"><span class="fa fa-print"></span></button>
-                                                <button class="btn btn-danger" id="delete"><span class="fa fa-remove"></span></button>
+                                                <button class=\"btn btn-primary\" id=\"view\"><span class=\"fa fa-eye\"></span></button>
+                                                <button class=\"btn btn-dark\" id=\"print\"><span class=\"fa fa-print\"></span></button>
+                                                <button class=\"btn btn-danger\" id=\"delete\"><span class=\"fa fa-remove\"></span></button>
                                             </td>
                                 </tr>
+
+
 
 
                                 </tbody>

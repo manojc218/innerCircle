@@ -2,7 +2,7 @@
     include_once ('../backend/Connection.php');
     include_once ('header.php');
     include_once ('../backend/ProductCategory.php');
-    include_once ('../backend/purchaseOrder.php');
+    include_once('../backend/PurchaseOrder.php');
 
         /*get category name*/
     $productCategory=new ProductCategory();
@@ -14,7 +14,7 @@
         $newOrder->orderRef=$_POST['orderRefNo'];
         $newOrder->orderQty=$_POST['qtyArr'];
         $newOrder->orderDescription=$_POST['desArr'];
-        $newOrder->orderCategory=$_POST['catName'];
+        $newOrder->orderCategory=$_POST['cNameIdArr'];
         $newOrder->orderDate=$_POST['orderDate'];
 
 
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Category</label>
                             <div class="col-sm-8 col-sm-8 col-xs-12">
-                                <select class="form-control" name="catName" id="catName">
+                                <select class="form-control" name="catName" id="catName" required>
                                     <?php
                                         foreach ($allCategory as $item){
                                             echo "<option value='$item->product_c_id'>$item->categoryName</option>";
@@ -82,13 +82,13 @@
                     <!--qty-->
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Qty</label>
-                        <div class="col-md-4 col-sm-4">
-                            <input type="text" name="qty" id="qty" class="form-control">
+                        <div class="col-md-4 col-sm-4" >
+                            <input type="text" name="qty" id="qty" class="form-control" >
                         </div>
                     </div>
                     <!--submit button-->
                     <div class="form-group" style="text-align: right">
-                        <input type="button" value="Add" class="btn btn-primary btn-lg" onclick="addTo()">
+                        <input type="button" value="Add" class="btn btn-primary btn-lg" onclick="addTo()" required>
                     </div>
                 </div>
                 </div>
@@ -108,6 +108,7 @@
                         <thead>
                         <tr class="headings">
 
+                            <th hidden class="column-title">CategoryId</th>
                             <th class="column-title">Category</th>
                             <th class="column-title">Qty </th>
                             <th class="column-title">Description </th>
@@ -148,12 +149,14 @@
 
 <script>
     function addTo(){
-        cName=$('#catName option:selected').text();
+        cName=$('#catName option:selected').val();
+        c_Name=$('#catName option:selected').text();
         qty=$('#qty').val();
         des=$('#desc').val()
 
         $('#tblOrder').append("<tr>" +
-            "<td><input type='text' class='form-control' name='cNameArr[]' value='"+cName+"' readonly></td>" +
+            "<td><input type='hidden' class='form-control' name='cNameIdArr[]' value='"+cName+"' readonly></td>" +
+            "<td><input type='text' class='form-control' name='cNameArr[]' value='"+c_Name+"' readonly></td>" +
             "<td><input type='text' class='form-control' name='qtyArr[]' value='"+qty+"' readonly></td>" +
             "<td><input type='text' class='form-control' name='desArr[]' value='"+des+"' readonly></td>" +
             "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +

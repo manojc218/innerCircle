@@ -1685,6 +1685,7 @@ product_c_id</ColNames>
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="380" parent="261" name="order_date">

@@ -20,7 +20,6 @@ class ProductCategory
 
 
         $result2=$conn->query($sql);
-        echo $sql;exit;
 
         if($result2){
             return true;

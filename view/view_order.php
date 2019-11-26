@@ -1,5 +1,10 @@
 <?php
 include_once ('header.php');
+include_once ('../backend/PurchaseOrder.php');
+
+$orderInfo = new purchaseOrder();
+$order=$orderInfo->get_order();
+
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
@@ -22,37 +27,32 @@ include_once ('header.php');
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 75px;">Reference No</th>
                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Order Date</th>
-                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Total (Rs.)</th>
-                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 85px;">Status</th>
+<!--                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Total (Rs.)</th>
+-->                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 85px;">Status</th>
                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 185px;">Action</th>
-                            </tr>
+                           </tr>
                             </thead>
                             <tbody>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">6658</td>
-                                <td>10/06/2015</td>
-                                <td>4000</td>
-                                <td>Completed</td>
-                                <td>
-                                    <button class="btn btn-primary"><span class="fa fa-eye"></span></button>
-                                    <button class="btn btn-success"><span class="fa fa-edit"></span></button>
-                                    <button class="btn btn-dark"><span class="fa fa-print"></span></button>
-                                    <button class="btn btn-danger"><span class="fa fa-remove"></span></button>
-                                </td>
-                            </tr>
-                            <tr role="row" class="even">
-                                <td class="sorting_1">2458</td>
-                                <td>01/01/2019</td>
-                                <td>6000</td>
-                                <td>Pending</td>
-                                <td>
-                                    <button class="btn btn-primary" id="view"><span class="fa fa-eye"></span></button>
-                                    <button class="btn btn-success" id="edit"><span class="fa fa-edit"></span></button>
-                                    <button class="btn btn-dark" id="print"><span class="fa fa-print"></span></button>
-                                    <button class="btn btn-danger" id="delete"><span class="fa fa-remove"></span></button>
-                                </td>
-                            </tr>
+                            <?php
 
+                            foreach ($order as $item){
+                                echo "<tr role=\"row\" class=\"even\">
+                                <td class=\"sorting_1\">$item->orderRef</td>
+                                <td>$item->orderDate</td>
+                                <td>$item->orderStatus</td>
+<!--
+                                <td>Completed</td>
+-->
+                                <td>
+                                    <button class=\"btn btn-primary\"><span class=\"fa fa-eye\"></span></button>
+                                    <button class=\"btn btn-success\"><span class=\"fa fa-edit\"></span></button>
+                                    <button class=\"btn btn-dark\"><span class=\"fa fa-print\"></span></button>
+                                    <button class=\"btn btn-danger\"><span class=\"fa fa-remove\"></span></button>
+                                </td>
+                            </tr>";
+                            }
+
+                            ?>
 
                             </tbody>
                         </table>
