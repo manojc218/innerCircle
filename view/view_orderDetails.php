@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-xs-12 invoice-header">
                         <h1>
-                            <i class="fa fa-globe"></i> Order Details
+                            <i class="fa fa-globe"></i> Order Invoice
                             <small class="pull-right">Order Date : <?php echo $orderDetails[0]->orderDate ?></small>
                         </h1>
                         <hr class='separator'>
@@ -37,8 +37,8 @@
                 <!-- info row -->
                 <div class="row invoice-info">
                     <div class="col-sm-4 invoice-col">
-                        From
-                        <address>
+                        <u>From</u><br><br>
+                        <address style="font-size: 14px;">
                             <strong>Inner Circle (PVT) Ltd.</strong>
                             <br>Main Street
                             <br>Kandy
@@ -48,8 +48,8 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 invoice-col">
-                        To
-                        <address>
+                        <u>To</u><br><br>
+                        <address style="font-size: 14px">
                             <strong>Manager</strong>
                             <br>Dialog Axiata
                             <br>Kandy
@@ -57,20 +57,20 @@
                             <br>Email: jon@ironadmin.com
                         </address>
                     </div>
-                    <!-- /.col -->
+                    <!-- /.col --><br><br>
                     <div class="col-sm-4 invoice-col">
-                        <b>Reference No : <?php echo $orderDetails[0]->orderRef?></b>
-                        <!--<br>
-                        <br>-->
-                        <!--<b>Order ID:</b> 4F3S8J
+                        <b>Reference No :</b> <p style="color: #000000;font-size: 15px;"><?php echo $orderDetails[0]->orderRef?></p>
+
                         <br>
+                        <b>Order Status:</b><p style="font-size: 15px;color: #0000e4;"><?php echo " ".$orderDetails[0]->orderStatus?></p>
+                        <!--<br>
                         <b>Payment Due:</b> 2/22/2014
                         <br>
                         <b>Account:</b> 968-34567-->
                     </div>
                     <!-- /.col -->
                 </div>
-                <!-- /.row -->
+                <!-- /.row --><hr class="separator">
 
                 <!-- Table row -->
                 <div class="row">
