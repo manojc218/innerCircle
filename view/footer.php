@@ -2,15 +2,15 @@
 
 <!-- /page content -->
 
-<!-- footer content -->
-<footer class="">
-    <div class="pull-right">
-        Inner Circle (PVT) Ltd
+    <!-- footer content -->
+    <footer class="">
+        <div class="pull-right">
+            Inner Circle (PVT) Ltd
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
     </div>
-    <div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
-</div>
 </div>
 
 <!-- jQuery -->

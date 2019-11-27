@@ -2,7 +2,7 @@
 include_once ('header.php');
 include_once ('../backend/PurchaseOrder.php');
 
-$orderInfo = new purchaseOrder();
+$orderInfo = new PurchaseOrder();
 $order=$orderInfo->get_order();
 
 ?>
@@ -44,7 +44,7 @@ $order=$orderInfo->get_order();
                                 <td>Completed</td>
 -->
                                 <td>
-                                    <button class=\"btn btn-primary\"><span class=\"fa fa-eye\"></span></button>
+                                <a href='view_orderDetails.php?rn=$item->orderRef'><button class=\"btn btn-primary\"'><span class=\"fa fa-eye\"></span></button></a>
                                     <button class=\"btn btn-success\"><span class=\"fa fa-edit\"></span></button>
                                     <button class=\"btn btn-dark\"><span class=\"fa fa-print\"></span></button>
                                     <button class=\"btn btn-danger\"><span class=\"fa fa-remove\"></span></button>
