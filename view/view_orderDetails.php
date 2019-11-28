@@ -88,7 +88,7 @@
                             <?php
                             foreach ($orderDetails as $item){
                                 echo "<tr>
-                                <td>$item->orderCategory </td>
+                                <td>$item->orderCategoryName </td>
                                 <td>$item->orderQty</td>
                                 <td>$item->orderDescription</td>
                                 <td>$64.50</td>

@@ -10,6 +10,7 @@ class PurchaseOrder
     public $orderDescription;
     public $orderStatus;
     public $orderCategory;
+    public $orderCategoryName;
     public $orderDate;
     //public $count;
 
@@ -108,6 +109,7 @@ class PurchaseOrder
             $getCatName->orderQty=$row["order_qty"];
             $getCatName->orderDate=$row["order_date"];
             $getCatName->orderCategory=$row["product_c_id"];
+            $getCatName->orderCategoryName=$row['category_name'];
 
             $getCNameArr[]=$getCatName;
         }
