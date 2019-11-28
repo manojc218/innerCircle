@@ -93,7 +93,10 @@ class Product
     public function get_dtv()
     {
         $conn = (new Connection())->get_db();
-        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name,package.package_name FROM product LEFT JOIN package ON product.package_id = package.package_id LEFT JOIN user_profile ON product.user_id = user_profile.user_id WHERE product_c_id='4'";
+        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name,package.package_name 
+                FROM product LEFT JOIN package ON product.package_id = package.package_id 
+                LEFT JOIN user_profile ON product.user_id = user_profile.user_id 
+                WHERE product_c_id='4'";
         $dtvList = $conn->query($sql);
         while ($row = $dtvList->fetch_array()) {
             $newDtvList = new Product();
@@ -128,6 +131,5 @@ class Product
 
         return $prdId;
     }
-
 
 }
