@@ -9,6 +9,7 @@ class PurchaseOrder
     public $orderDescription;
     public $orderStatus;
     public $orderCategory;
+    public $orderCategoryName;
     public $orderDate;
     //public $count;
     /*add purchase order details to database*/
@@ -52,35 +53,20 @@ class PurchaseOrder
         }
         return $orderArray;
     }
-    /*get details of purchase orders*/
-    public function get_order_details($rn){
-        $conn=(new Connection())->get_db();
-        $sql="SELECT purchase_order.reference_no,purchase_order.status,purchase_order.order_date,purchase_order_details.* FROM purchase_order_details RIGHT JOIN purchase_order on purchase_order_details.p_order_id = purchase_order.p_order_id WHERE reference_no=$rn";
-        $getDetails=$conn->query($sql);
-        while($row=$getDetails->fetch_array()){
-            $orderDetails=new PurchaseOrder();
-            $orderDetails->orderDescription=$row["description"];
-            $orderDetails->orderRef=$row["reference_no"];
-            $orderDetails->orderStatus=$row["status"];
-            $orderDetails->orderQty=$row["order_qty"];
-            $orderDetails->orderDate=$row["order_date"];
-            $orderDetails->orderCategory=$row["product_c_id"];
-            $orderDetailArray[]=$orderDetails;
-        }
-        return $orderDetailArray;
-    }
+
     /*get category details which relevant to the ref no by id*/
     public function get_category_details($rn){
         $conn=(new Connection())->get_db();
 
-        $sql1="SELECT * FROM purchase_order_details pd 
-              JOIN purchase_order po on po.p_order_id = pd.p_order_id WHERE reference_no='$rn'";
-
-        echo $sql1;
+        $sql1="SELECT  pd.*,po.*,product_category.category_name FROM purchase_order_details pd 
+                LEFT JOIN product_category on pd.product_c_id = product_category.product_c_id 
+                 JOIN purchase_order po on po.p_order_id = pd.p_order_id 
+                 WHERE reference_no='$rn'";
 
         $getCName=$conn->query($sql1);
 
         while($row=$getCName->fetch_array()){
+
             $getCatName=new PurchaseOrder();
             $getCatName->orderDescription=$row["description"];
             $getCatName->orderRef=$row["reference_no"];
@@ -88,6 +74,7 @@ class PurchaseOrder
             $getCatName->orderQty=$row["order_qty"];
             $getCatName->orderDate=$row["order_date"];
             $getCatName->orderCategory=$row["product_c_id"];
+            $getCatName->orderCategoryName=$row["category_name"];
             $getCNameArr[]=$getCatName;
         }
         return $getCNameArr;
