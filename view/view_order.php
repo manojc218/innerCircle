@@ -2,8 +2,15 @@
 include_once ('header.php');
 include_once ('../backend/PurchaseOrder.php');
 
+/*$rn=$_GET['rn'];*/
+
 $orderInfo = new PurchaseOrder();
 $order=$orderInfo->get_order();
+
+/*$deleteInfo=new PurchaseOrder();
+$deleteDetail=$deleteInfo->delete_order_details($rn);*/
+
+
 
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -11,7 +18,7 @@ $order=$orderInfo->get_order();
         <div class="x_titile">
             <h4>Purchased Orders</h4>
             <div style="text-align: right">
-                <button class="btn btn-primary btn-dark"><a href="order.php" style="color: #fff;">Place Order</a></button>
+                <a href="order.php" style="color: #fff;"><button class="btn btn-primary btn-dark">Place Order</button></a>
             </div>
             <hr class="separator">
         </div>
@@ -47,11 +54,10 @@ $order=$orderInfo->get_order();
                                 <a href='view_orderDetails.php?rn=$item->orderRef'><button class=\"btn btn-primary\"'><span class=\"fa fa-eye\"></span></button></a>
                                     <button class=\"btn btn-success\"><span class=\"fa fa-edit\"></span></button>
                                     <button class=\"btn btn-dark\"><span class=\"fa fa-print\"></span></button>
-                                    <button class=\"btn btn-danger\"><span class=\"fa fa-remove\"></span></button>
+                                   <button class=\"btn btn-danger\" id='btnDelete'><span class=\"fa fa-remove\"></span></button>
                                 </td>
                             </tr>";
                             }
-
                             ?>
 
                             </tbody>
@@ -97,6 +103,14 @@ $order=$orderInfo->get_order();
 <?php
 include_once ('footer.php');
 ?>
+<script>
+    $.('#btnDelete').on("click",deletebutton);
+    
+    function deletebutton() {
+            $(this).parent("tr").remove();
+    }
+</script>
+
 
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>

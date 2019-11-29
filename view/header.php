@@ -250,4 +250,10 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class= "right_col" role="">
+        <div class= "right_col" role="main">
+            <div class="">
+
+
+                <div class="clearfix"></div>
+
+                <div class="row">

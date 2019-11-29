@@ -1,15 +1,16 @@
-</div>
-
-<!-- /page content -->
-
-    <!-- footer content -->
-    <footer class="">
-        <div class="pull-right">
-            Inner Circle (PVT) Ltd
+                </div>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
+
+
+        <!-- footer content -->
+        <footer class="">
+            <div class="pull-left">
+                Inner Circle (PVT) Ltd
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
     </div>
 </div>
 

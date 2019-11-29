@@ -1,4 +1,7 @@
 <?php
+
+    /* defining basic parameters of database*/
+
     define("dbhost", "localhost"); //Server Name
     define("dbname", "db_innercircle"); //Database Name
     define("dbuser", "root"); //Username
