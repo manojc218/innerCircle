@@ -18,7 +18,8 @@ class PurchaseOrder
         $count=0;
 
         /*send data to purchase_order table*/
-        $sql="INSERT INTO purchase_order(reference_no, order_date, status) VALUES ('$this->orderRef','$this->orderDate','Pending')";
+        $sql="INSERT INTO purchase_order(reference_no, order_date, status) 
+              VALUES ('$this->orderRef','$this->orderDate','Pending')";
         $result2=$conn->query($sql);
 
         /*send purchase order id*/
@@ -27,7 +28,8 @@ class PurchaseOrder
         foreach ($_POST['cNameArr'] as $item)
         {
             /*send data to purchase_order_details table*/
-            $sql2="INSERT INTO purchase_order_details(order_qty, description,p_order_id,product_c_id) VALUES ('".$this->orderQty[$count]."','".$this->orderDescription[$count]."','".$lastId."','".$this->orderCategory[$count]."')";
+            $sql2="INSERT INTO purchase_order_details(order_qty, description,p_order_id,product_c_id) 
+                   VALUES ('".$this->orderQty[$count]."','".$this->orderDescription[$count]."','".$lastId."','".$this->orderCategory[$count]."')";
             $count++;
             $result1=$conn->query($sql2);
 

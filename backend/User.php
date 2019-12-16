@@ -47,8 +47,13 @@ class User
         $password = md5($pass);
 
         /*send data to the relevant table*/
-        $sql = "INSERT INTO user_profile (first_name,last_name,nic,gender,dateOfBirth,addressLine1,addressLine2,city,postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,guyCode,user_name,password)
-            values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob','$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber','$this->landNumber','$this->email','$this->branchName','$this->roleName','$this->manager','$this->workingId','$this->guyCode','$this->userName','$password')";
+        $sql = "INSERT INTO user_profile (first_name,last_name,nic,gender,dateOfBirth,addressLine1,addressLine2,city,
+                postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,guyCode,user_name,
+                password)
+                values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob',
+                '$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber',
+                '$this->landNumber','$this->email','$this->branchName','$this->roleName','$this->manager',
+                '$this->workingId','$this->guyCode','$this->userName','$password')";
 
         $addUser = $conn->query($sql);
 

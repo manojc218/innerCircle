@@ -66,6 +66,7 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="fname" name="fname" class="form-control col-md-7 col-xs-12" required>
+
                                     </div>
 
                                 </div>
@@ -75,6 +76,7 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="lname" name="lname" class="form-control col-md-7 col-xs-12" required>
+
                                     </div>
                                 </div>
 
@@ -102,6 +104,7 @@ include_once('header.php');
                                                 <input type="radio" value="Female" id="radioFemale" name="genderRadio"> Female
                                             </label>
                                         </div>
+
                                     </div>
                                 </div>
 
@@ -159,9 +162,11 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-13" for="ContactNumber">Contact Number <span class="required">*</span></label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         <input type="text" placeholder="Mobile" class="form-control" name="mobile" required>
+
                                     </div>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         <input type="text" placeholder="Land Line" class="form-control" name="land" required>
+
                                     </div>
                                 </div>
 
@@ -170,6 +175,7 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">E-mail <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" required>
+
                                     </div>
                                 </div>
 

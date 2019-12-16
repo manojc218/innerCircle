@@ -86,7 +86,7 @@
             cn=result['cat'].categoryName;
 
             if(cn ==null){
-                alert("Please enter valid serial number!")
+                alert("User, Succesfully Registerd")
             }else {
                 $('#tbId').append("<tr>" +
                     "<td><input  class='form-control' type='text' name='sNum[]' value='"+sn+"' readonly></td>" +

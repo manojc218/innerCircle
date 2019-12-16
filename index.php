@@ -1,34 +1,34 @@
 <?php
 
-$msg="";
-session_start();
-//print_r($_SESSION);
-//exit;
-    if(isset($_GET["logout"]))
-    {
-        session_destroy();//session destroy when logout
-    }
+    $msg="";//variable for error message
 
-else if(isset($_SESSION['user_id']))
-    {
-        header("location:view/dashboard.php");
-    }
+    session_start();
 
-if(isset($_POST['username']))
-{
-    include_once ('backend/User.php');
-    $userLogin = new user();
-    $loginResult = $userLogin->user_login($_POST['username'], $_POST['password']);
+        if(isset($_GET["logout"]))
+        {
+            session_destroy();//session destroy when logout
+        }
 
-    if ($loginResult) {
-        header("location:view/dashboard.php");
-    } else {
-        $msg ="<div style=\"background-color: #962731;height: 50px;\">
+        else if(isset($_SESSION['user_id']))
+        {
+            header("location:view/dashboard.php");
+        }
+
+        if(isset($_POST['username']))
+        {
+            include_once ('backend/User.php');
+            $userLogin = new user();
+            $loginResult = $userLogin->user_login($_POST['username'], $_POST['password']);
+
+            if ($loginResult) {
+                header("location:view/dashboard.php");
+            } else {
+                $msg ="<div style=\"background-color: #962731;height: 50px;\">
                             <h5 style=\"position: relative;top: 10px;\">Sorry, username and password are not match. Please check and retry</h5>
-                        </div>";
+                       </div>";
 
-    }
-}
+            }
+        }
 ?>
 
 <!DOCTYPE html>

@@ -17,6 +17,7 @@ $deleteDetail=$deleteInfo->delete_order_details($rn);*/
     <div class="x_panel">
         <div class="x_titile">
             <h4>Purchased Orders</h4>
+            <!--back button-->
             <div style="text-align: right">
                 <a href="order.php" style="color: #fff;"><button class="btn btn-primary btn-dark">Place Order</button></a>
             </div>
@@ -103,6 +104,7 @@ $deleteDetail=$deleteInfo->delete_order_details($rn);*/
 <?php
 include_once ('footer.php');
 ?>
+
 <script>
     $.('#btnDelete').on("click",deletebutton);
     
