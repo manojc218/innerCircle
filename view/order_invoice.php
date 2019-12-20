@@ -62,7 +62,7 @@
                         <b>Reference No :</b> <p style="color: #000000;font-size: 15px;"><?php echo $orderDetails[0]->orderRef?></p>
 
                         <br>
-                        <b>Order Status:</b><p style="font-size: 15px;color: #0000e4;"><?php echo " ".$orderDetails[0]->orderStatus?></p>
+                        <!--<b>Order Status:</b><p style="font-size: 15px;color: #0000e4;"><?php /*echo " ".$orderDetails[0]->orderStatus*/?></p>-->
                         <!--<br>
                         <b>Payment Due:</b> 2/22/2014
                         <br>
@@ -77,23 +77,21 @@
                     <div class="col-xs-12 table">
                         <table class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Qty</th>
-                                <th>Description</th>
-                                <th>Subtotal</th>
-                            </tr>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Qty</th>
+                                    <th>Description</th>
+                                </tr>
                             </thead>
                             <tbody>
                             <?php
-                            foreach ($orderDetails as $item){
-                                echo "<tr>
-                                <td>$item->orderCategoryName </td>
-                                <td>$item->orderQty</td>
-                                <td>$item->orderDescription</td>
-                                <td>$64.50</td>
-                            </tr>";
-                            }
+                                foreach ($orderDetails as $item){
+                                    echo "<tr>
+                                    <td>$item->orderCategoryName </td>
+                                    <td>$item->orderQty</td>
+                                    <td>$item->orderDescription</td>                              
+                                </tr>";
+                                }
                             ?>
                             </tbody>
                         </table>

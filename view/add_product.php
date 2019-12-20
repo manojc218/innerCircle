@@ -3,11 +3,13 @@
     include_once('../backend/ProductCategory.php');
     include_once ('../backend/Package.php');
     include_once ('../backend/Product.php');
+
     $productCategory=new ProductCategory();
     $allCategory =   $productCategory->get_all_categories();
 
     $package=new Package();
     $allPackage= $package->get_all_packages();
+
     $product= new Product();
     if (isset($_POST['serialNumber'])){
         $newProduct= new Product();

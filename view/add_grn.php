@@ -36,7 +36,7 @@
                                             <td>$item->orderDate</td>
                                             <td>$item->orderStatus</td>
                                             <td>
-                                                <a href='view_orderDetails.php?rn=$item->orderRef'><button class=\"btn btn-info\"'><span class=\"fa fa-plus\"></span></button></a>
+                                                <a href='set_grn.php?rn=$item->orderRef'><button class=\"btn btn-info\"'><span class=\"fa fa-plus\"></span></button></a>
                                             </td>
                                         </tr>";
                                 }

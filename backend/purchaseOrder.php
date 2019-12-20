@@ -11,7 +11,7 @@ class PurchaseOrder
     public $orderCategory;
     public $orderCategoryName;
     public $orderDate;
-    //public $count;
+
     /*add purchase order details to database*/
     public function add_purchase_order(){
         $conn=(new Connection())->get_db();
