@@ -69,6 +69,20 @@
     });
 
 </script>
+<script>
+    $(document).ready(function(){
+        $('#table_id').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
+
 
 
 </body>

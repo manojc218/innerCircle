@@ -1,12 +1,32 @@
 <?php
     include_once ('header.php');
     include_once ('../backend/PurchaseOrder.php');
+    include_once ('../backend/GRN.php');
 
     $rn=$_GET['rn'];
 
-
     $catName=new PurchaseOrder();
     $grnDetails=$catName->get_category_details($rn);
+
+
+    if(isset($_POST['grnCatName']))
+    {
+
+
+        $newGrn=new GRN();
+        $newGrn->totCost=$_POST['grnTotal'];
+        $newGrn->receivedQty=$_POST['receivedQty'];
+        $newGrn->unitPrice=$_POST['unitPrice'];
+        $newGrn->sellPrice=$_POST['sellPrice'];
+        $newGrn->subTotal=$_POST['subTotal'];
+        $newGrn->pOrderId=$_POST['pOrderId'];
+
+        $newGrn->add_grn();
+        /*exit();*/
+        header("location:add_grn.php");
+    }
+
+
 ?>
 <!--start content-->
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -15,7 +35,7 @@
                 <h2>Add GRN</h2>
             </div>
             <div class="x_content">
-                <form action="add_grn.php" method="POST" class="form-horizontal form-label-left">
+                <form action="#" method="POST" class="form-horizontal form-label-left">
                     <div class="row">
                         <!--left col-->
                         <div class="col-md-6">
@@ -58,13 +78,14 @@
 
                                 <thead>
                                 <tr class="headings">
-
+                                    <th hidden class="column-title">Purchase Order Id</th>
                                     <th hidden class="column-title">CategoryId</th>
                                     <th class="column-title">Category</th>
                                     <th class="column-title">Description</th>
                                     <th class="column-title">Ordered Qty </th>
                                     <th class="column-title">Received Qty </th>
                                     <th class="column-title">Unit Price (Rs) </th>
+                                    <th class="column-title">Sell Price (Rs) </th>
                                     <th class="column-title">Subtotal (Rs)</th>
                                 </tr>
                                 </thead>
@@ -73,18 +94,20 @@
                                 <?php
                                 foreach ($grnDetails as $item){
                                     echo "<tr>
-                                    <td><input type='text' value='$item->orderCategoryName' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnCatName' id='grnCatName' readonly></td>
-                                    <td><input type='text' value='$item->orderDescription' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnDescription' id='grnDescription' readonly></td>
-                                    <td><input type='text' value='$item->orderQty' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnOrderQty' id='grnOrderQty' readonly></td>
-                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \"><input type='text' name=\"receivedQty\" id=\"receivedQty\" class=\"form-control rQty \" onchange='calSubTot(this)'></td> 
-                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \"><input type=\"text\" name=\"unitPrice\" id=\"unitPrice\" class=\"form-control uPrice\" onchange='calSubTot(this)'></td> 
-                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \" readonly><input type=\"text\" value='0' name=\"subTotal\" id=\"subTotal\" class=\"form-control subTotal\" readonly ></td>
+                                    <td hidden><input type='text' value='$item->orderId' name='pOrderId' class='form-control col-md-1 col-sm-1 col-xs-12' </td>
+                                    <td><input type='text' value='$item->orderCategoryName' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnCatName[]' id='grnCatName' readonly></td>
+                                    <td><input type='text' value='$item->orderDescription' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnDescription[]' id='grnDescription' readonly></td>
+                                    <td><input type='text' value='$item->orderQty' class='col-md-1 col-sm-1 col-xs-12 form-control' name='grnOrderQty[]' id='grnOrderQty' readonly></td>
+                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \"><input type='text' name=\"receivedQty[]\" id=\"receivedQty\" class=\"form-control rQty \" onchange='calSubTot(this)' required></td> 
+                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \"><input type=\"text\" name=\"unitPrice[]\" id=\"unitPrice\" class=\"form-control uPrice\" onchange='calSubTot(this)' required></td> 
+                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \"><input type=\"text\" name=\"sellPrice[]\" id=\"sellPrice\" class=\"form-control uPrice\" onchange='calSubTot(this)' required></td> 
+                                    <td class=\"col-md-2 col-sm-2 col-xs-6 \" readonly><input type=\"text\" value='0' name=\"subTotal[]\" id=\"subTotal\" class=\"form-control subTotal\" readonly ></td>
 
                                 </tr>";
                                     }
                                 ?>
                                 <tr>
-                                    <td colspan="5" class="col-md-2 col-sm-2 col-xs-2 " style="background-color: #2A3F54;color:#fff;font-size: 25px;text-align: center;">Total</td>
+                                    <td colspan="6" class="col-md-2 col-sm-2 col-xs-2 " style="background-color: #2A3F54;color:#fff;font-size: 25px;text-align: center;">Total</td>
                                     <td class="col-md-2 col-sm-2 col-xs-2"  style="background-color: #2A3F54"><input type="text" class="form-control total" name="grnTotal" id="grnTotal" readonly></td>
                                 </tr>
 
@@ -92,8 +115,8 @@
 
                             <hr class="separator">
                             <div class="form-group" style="text-align: right">
-                                <a href="add_grn.php"><input type="button" value="Back" class="btn btn-dark btn-lg"></a>
-                                <input type="submit" value="Received" class="btn btn-success btn-lg" onclick="href='../'">
+                                <a href="add_grn.php"><input type="button" value="Back" class="btn btn-warning btn-lg"></a>
+                                <input type="submit" value="Received" class="btn btn-success btn-lg" >
                                 <input type="button" value="Reset" class="btn btn-danger btn-lg" onclick="window.location.reload()">
                             </div>
 

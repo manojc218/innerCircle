@@ -80,7 +80,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-sm-12 col-sm-12">
 
-                                            <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                                            <table id="userTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                                 <thead>
                                                 <tr role="row">
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 200px;">Name</th>
@@ -102,7 +102,7 @@
                                                 foreach($result as $item){
 
                                                     echo"<tr role=\"row\" class=\"odd\">
-                                                    <td class=\"sorting_1\">$item->firstName $item->lastName</td>
+                                                    <td class=\"sorting_1\"><a href='user_profile.php'>$item->firstName $item->lastName</a></td>
                                                     <td>$item->roleName</td>
                                                     <td>$item->branchName</td>
                                                     <td>$item->manager</td>
@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <!--<div class="row">
                                         <div class="col-sm-5">
                                             <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
                                         </div>
@@ -137,7 +137,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -153,3 +153,31 @@
 <?php
     include_once('footer.php');
 ?>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--data tables for pdf-->
+<script src="../vendors/datatables/datatables.js"></script>
+
+
+<!--data tables for pdf-->
+<script src="../vendors/datatables/datatables.js"></script>
+
+<!-- Datatables -->
+<script>
+    $(document).ready(function(){
+        $('#userTable').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
+
+

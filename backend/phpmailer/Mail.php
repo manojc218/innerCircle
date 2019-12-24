@@ -13,7 +13,7 @@ class Mail
 
 
 
-    public function send_mail($to, $sub, $msg)
+    public function send_mail($to, $sub, $mailBody)
     {
 
 
@@ -43,7 +43,7 @@ class Mail
 
         $mail->Subject = $sub;
 
-        $mail->Body = $msg;
+        $mail->Body = $mailBody;
 
 
         if (!$mail->send()) {

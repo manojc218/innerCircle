@@ -17,18 +17,23 @@
                         <input type="text" class="form-control col-md-7 col-xs-12" name="pId" required>
                     </div>
                 </div>-->
+
+                <!--manager code-->
                 <div class="form-group">
                     <label class="control-label col-md-3 col-ms-3 col-xs-3" for="managerName">Manager Code</label>
                     <div class="col-md-6 col-ms-6 col-xs-12">
                         <input type="text" class="form-control col-md-7 col-xs-12" name="managerCode" id="managerCode" required>
                     </div>
                 </div>
+
+                <!--seriel number-->
                 <div class="form-group">
                     <label class="control-label col-md-3 col-ms-3 col-xs-12" for="Serial Number" id="">Serial Number</label>
                     <div class="col-md-6 col-ms-6 col-xs-12">
                         <input type="text" name="serialNumber" id="sNumber" class="form-control col-md-7 col-xs-12" required>
                     </div>
                 </div>
+                <!--buttons-->
                 <div class="form-group addResetButtons_center">
                     <input type="button" class="btn btn-primary" value="Add" onclick="addTo()">
                     <input type="reset" class="btn btn-success" value="Reset">
@@ -86,7 +91,7 @@
             cn=result['cat'].categoryName;
 
             if(cn ==null){
-                alert("User, Succesfully Registerd")
+                alert("This item is not valid")
             }else {
                 $('#tbId').append("<tr>" +
                     "<td><input  class='form-control' type='text' name='sNum[]' value='"+sn+"' readonly></td>" +

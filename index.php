@@ -18,7 +18,7 @@
         {
             include_once ('backend/User.php');
             $userLogin = new user();
-            $loginResult = $userLogin->user_login($_POST['username'], $_POST['password']);
+            $loginResult = $userLogin->user_login($_POST['username'], md5($_POST['password']));
 
             if ($loginResult) {
                 header("location:view/dashboard.php");

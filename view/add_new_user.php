@@ -44,8 +44,6 @@ if (isset($_POST['fname']))
 
 }
 
-
-
 include_once('header.php');
 
 ?>

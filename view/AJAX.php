@@ -20,8 +20,3 @@ if (isset($_GET['serialNumber'])) {
 
     echo json_encode($a);
 }
-
-/*order -> display item which are input in form*/
-if(isset($_GET['categoryName']))
-
-?>

@@ -22,7 +22,7 @@
         </div>
         <div class="x_content">
 
-                <section class="content invoice">
+                <section class="content invoice" id="orderInvoice">
                 <!-- title row -->
                 <div class="row">
                     <div class="col-xs-12 invoice-header">
@@ -121,4 +121,24 @@
 <?php
     include_once ('footer.php');
 ?>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--data tables for pdf-->
+<script src="../vendors/datatables/datatables.js"></script>
+
+<!--<script>
+    $(document).ready(function(){
+        $('#table_id').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>-->
 

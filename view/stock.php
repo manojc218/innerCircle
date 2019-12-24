@@ -35,7 +35,7 @@ $getAllStock=$getStock->get_stock();
                 <div class="row">
                     <div class="col-sm-12">
                         <!--start stock table-->
-                        <table id="datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                        <table id="stockTable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 182px;">Manager Name</th>
@@ -76,11 +76,27 @@ include_once('footer.php');
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--data tables for pdf-->
+<script src="../vendors/datatables/datatables.js"></script>
+
 <!-- FastClick -->
 
 
 <!-- Datatables -->
-<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#stockTable').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+</script>
+<!--<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
@@ -94,6 +110,6 @@ include_once('footer.php');
 <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
 <script src="../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>-->
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>

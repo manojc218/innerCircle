@@ -33,7 +33,6 @@ class PurchaseOrder
             $count++;
             $result1=$conn->query($sql2);
 
-            echo $sql2;
         }
         if($result2){
             return true;
@@ -46,6 +45,7 @@ class PurchaseOrder
         $conn=(new Connection())->get_db();
         $sql="SELECT * FROM purchase_order";
         $getOrder=$conn->query($sql);
+
         while($row=$getOrder->fetch_array()){
             $order=new PurchaseOrder();
             $order->orderRef=$row["reference_no"];
@@ -70,6 +70,7 @@ class PurchaseOrder
         while($row=$getCName->fetch_array()){
 
             $getCatName=new PurchaseOrder();
+            $getCatName->orderId=$row["p_order_id"];
             $getCatName->orderDescription=$row["description"];
             $getCatName->orderRef=$row["reference_no"];
             $getCatName->orderStatus=$row["status"];
