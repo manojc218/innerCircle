@@ -1,13 +1,19 @@
 <?php
     include_once ('header.php');
+    include_once ('../backend/User.php');
+
+    /*get user's id*/
+    $uId=$_GET['uId'];
+
+    /*getting user details using get_all_users function*/
+    $getUserDetails=new User();
+    $userDetails=$getUserDetails->get_user_details_by_id($uId);
 ?>
 
 
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
-        <div class="x_title">
-            <h4>UserProfile</h4>
-        </div>
+
         <div class="x_content">
             <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                 <div class="profile_img">
@@ -16,23 +22,29 @@
                         <img class="img-responsive avatar-view" src="images/picture.jpg" alt="Avatar" title="Change the avatar">
                     </div>
                 </div>
-                <h3>Samuel Doe</h3>
+                <h3><?php echo $userDetails[0]->firstName." ".$userDetails[0]->lastName ?></h3>
 
                 <ul class="list-unstyled user_data">
-                    <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
+                    <li><i class="fa fa-map-marker user-profile-icon"></i> <?php echo $userDetails[0]->addLine1.", ".$userDetails[0]->addLine2.', '.$userDetails[0]->city?><br>
+
                     </li>
 
                     <li>
-                        <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+                        <i class="fa fa-briefcase user-profile-icon"></i> <?php echo $userDetails[0]->roleName?>
                     </li>
 
                     <li class="m-top-xs">
-                        <i class="fa fa-external-link user-profile-icon"></i>
-                        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+                        <i class="fa fa-birthday-cake user-profile-icon"></i><?php echo $userDetails[0]->dob?>
+
+                    </li>
+
+                    <li class="m-top-xs">
+                        <i class="fa fa-sitemap user-profile-icon"></i><?php echo $userDetails[0]->branchName?>
+
                     </li>
                 </ul>
 
-                <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                <a class="btn btn-success" id="changePass"><i class="fa fa-edit m-right-xs"></i>Change Passoword</a>
                 <br>
 
                 <!-- start skills -->
@@ -242,6 +254,8 @@
         </div>
     </div>
 </div>
+
+
 
 <?php
     include_once ('footer.php');

@@ -78,7 +78,7 @@
                     <div class="profile_info" >
                         <span>Welcome,<br></span>
                         <?php
-                            echo $userName;
+                            echo "<a href='up_visitor_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
                         ?>
                     </div>
                 </div>

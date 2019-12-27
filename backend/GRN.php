@@ -70,7 +70,7 @@ class GRN
     public function getGRN()
     {
         $conn=(new Connection())->get_db();
-        $sql="SELECT purchase_order.reference_no,purchase_order.order_date,grn.received_date,grn.tot_cost FROM grn,purchase_order WHERE status='Completed'";
+        $sql="SELECT purchase_order.reference_no,purchase_order.order_date,grn.received_date,grn.tot_cost FROM grn JOIN purchase_order on grn.p_order_id = purchase_order.p_order_id WHERE status='Completed'";
         /*echo $sql;
         exit();*/
         $getGRN=$conn->query($sql);

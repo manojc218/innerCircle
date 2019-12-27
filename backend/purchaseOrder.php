@@ -57,7 +57,7 @@ class PurchaseOrder
     }
 
     /*get category details which relevant to the ref no by id*/
-    public function get_category_details($rn){
+    public function get_order_details($rn){
         $conn=(new Connection())->get_db();
 
         $sql1="SELECT  pd.*,po.*,product_category.category_name FROM purchase_order_details pd 

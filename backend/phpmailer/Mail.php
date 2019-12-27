@@ -47,9 +47,12 @@ class Mail
 
 
         if (!$mail->send()) {
+            echo "Mail could not be send.<br>";
             echo"Mailer Error: " . $mail->ErrorInfo;
         } else {
-            echo "Message sent!";
+            $alert="User, successfully registered";
+            echo "<script type='text/javascript'>alert('$alert');</script>";
+            header("Location:../view/add_new_user.php");
         }
         exit;
     }

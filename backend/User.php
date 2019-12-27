@@ -68,11 +68,11 @@ class User
         $link="http://localhost/PMSIC";//system link
 
         /*email body*/
-        $mailBody="Dear".$this->firstName." ".$this->lastName."<br>".
+        $mailBody="Dear ".$this->firstName." ".$this->lastName."<br>".
             "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
-            "Now you can log into the system through ".$link."<br>".
-            "Your Username : YOUR FIRST NAME"."<br>".
-            "Your Password :".$pass;
+            "Now you can log into the system through ".$link.'<br/>'.
+            "Your Username : YOUR FIRST NAME".'<br/>'.
+            "Your Password : ".$pass;
 
         /*sending mail*/
         $mail= new Mail();
@@ -161,6 +161,50 @@ class User
         }
 
         return $detailArray;
+    }
+    /*End get all user function*/
+
+    /*get all user details*/
+    public function get_user_details_by_id($uId)
+    {
+        $conn = (new Connection())->get_db();
+
+        $sql = "SELECT user_profile.*, branch.branch_name,role.role_name 
+                FROM user_profile 
+                LEFT JOIN branch ON user_profile.branch_id= branch.branch_id 
+                LEFT JOIN role ON user_profile.role_id=role.role_id WHERE user_id='$uId'";
+
+        $result = $conn->query($sql);
+
+        while ($row = $result->fetch_array()) {
+            $u_details = new user();
+            $u_details->userId = $row["user_id"];
+            $u_details->firstName = $row["first_name"];
+            $u_details->lastName = $row["last_name"];
+            $u_details->nic = $row["nic"];
+            $u_details->gender = $row["gender"];
+            $u_details->dob = $row["dateOfBirth"];
+            $u_details->addLine1 = $row["addressLine1"];
+            $u_details->addLine2 = $row["addressLine2"];
+            $u_details->city = $row["city"];
+            $u_details->postalCode = $row["postalCode"];
+            $u_details->mobileNumber = $row["mobile_number"];
+            $u_details->landNumber = $row["land_number"];
+            $u_details->email = $row["email"];
+            $u_details->roleId = $row["role_id"];
+            $u_details->roleName = $row["role_name"];
+            $u_details->branchName = $row["branch_name"];
+            $u_details->manager = $row["manager"];
+            $u_details->workingId = $row["working_id"];
+            $u_details->guyCode = $row["guyCode"];
+            $u_details->userName = $row["user_name"];
+            $u_details->password = $row["password"];
+            $u_details->regDate = $row["registeredDate"];
+
+            $userDetailArray[] = $u_details;
+        }
+
+        return $userDetailArray;
     }
     /*End get all user function*/
 

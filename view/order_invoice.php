@@ -7,7 +7,7 @@
 
 
     $catName=new PurchaseOrder();
-    $orderDetails=$catName->get_category_details($rn);
+    $orderDetails=$catName->get_order_details($rn);
 
 
 ?>
