@@ -134,7 +134,7 @@
                                 <a><i class="fa fa-bar-chart-o"></i>Sales<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="add_sales.php">Add Sales<span class="fa fa-chevron-right"></span> </a></li>
-                                    <li><a href="#">View Sales<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="view_sales.php">View Sales<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
                             </li>
                             <!--Stock-->

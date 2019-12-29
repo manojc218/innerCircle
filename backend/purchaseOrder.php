@@ -25,6 +25,7 @@ class PurchaseOrder
         /*send purchase order id*/
         $lastId=$conn->insert_id;
 
+        /*send data to purchase order details table*/
         foreach ($_POST['cNameArr'] as $item)
         {
             /*send data to purchase_order_details table*/

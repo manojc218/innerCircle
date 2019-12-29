@@ -8,7 +8,7 @@ class Stock
 
     function get_stock(){
         $conn = (new Connection())->get_db();
-            $sql = "SELECT  user_profile.first_name,user_profile.last_name, 
+            $sql = "SELECT  user_profile.first_name,user_profile.last_name,
                       COUNT(
                           CASE
                               WHEN product.product_c_id='2'
@@ -31,7 +31,7 @@ class Stock
                           END
                       ) AS 'DTV'
                     FROM product RIGHT JOIN user_profile ON product.user_id= user_profile.user_id
-                    WHERE role_id=1
+                    WHERE role_id=1 AND status='available' 
                     GROUP BY product.user_id";
         $stockList = $conn->query($sql);
 

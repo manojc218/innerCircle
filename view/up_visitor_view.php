@@ -52,10 +52,62 @@
                     <br>
                     <br>
                     <!--change password button-->
-                    <a class="btn btn-dark" href="change_pass.php" id="changePass" style="position: relative;left: 20px;"><i class="fa fa-edit m-right-xs"></i> Change Passoword</a>
+                    <a class="btn btn-clipboard" id="changePass" style="position: relative;left: 20px;" data-toggle="modal" data-target="#modalChangePass"><i class="fa fa-edit m-right-xs"></i> Change Passoword</a>
                 </div>
 
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--change password model-->
+<div class="modal fade" tabindex="-1" role="dialog" id="modalChangePass">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--close button-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <!--modal title-->
+                <h3 class="modal-title">Change Password</h3>
+            </div>
+            <div class="modal-body">
+                <form  class="form-horizontal form_label-left" action="up_visitor_view.php" method="POST">
+                    <!--current password-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="currentPassword">Current Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="" name="currentPassword" class="form-control col-md-7 col-xs-12" required>
+                        </div>
+                    </div>
+
+                    <!--new password-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="newPassword">New Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="" name="newPassword" class="form-control col-md-7 col-xs-12" required>
+                        </div>
+                    </div>
+
+                    <!--retype new password-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="retypePassword">Retype New Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="" name="retypePassword" class="form-control col-md-7 col-xs-12" required>
+                        </div>
+                    </div>
+
+                    <!--buttons-->
+                    <div class="form-group modalButton">
+                        <input type="submit" value="Change" class="btn btn-primary" id="btnAddPackage">
+                        <button type="reset" class="btn btn-success">Reset</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

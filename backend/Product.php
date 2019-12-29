@@ -14,12 +14,13 @@ class Product
     public $userName;
     public $firstName;
     public $lastName;
+    public $status;
 
     /*Add products*/
     public function add_product2()
     {
         $conn = (new Connection())->get_db();
-        $sql = "INSERT INTO product(serial_number,package_id,product_c_id,user_id) VALUES ('$this->serialNumber','$this->productPackage','$this->productCategory','131')";
+        $sql = "INSERT INTO product(serial_number,package_id,product_c_id,user_id,status) VALUES ('$this->serialNumber','$this->productPackage','$this->productCategory','131','available')";
         $addProduct = $conn->query($sql);
         if ($addProduct) {
             return true;
@@ -62,6 +63,7 @@ class Product
             $newSimList1->addedDate = $row['added_date'];
             $newSimList1->userId=$row['user_id'];
             $newSimList1->userName=$row['first_name']." ".$row['last_name'];
+            $newSimList1->status=$row['status'];
 
 
             $simArray[] = $newSimList1;
@@ -88,6 +90,7 @@ class Product
             $newRouterList->addedDate = $row['added_date'];
             $newRouterList->userId=$row['user_id'];
             $newRouterList->userName=$row['first_name']." ".$row['last_name'];
+            $newRouterList->status=$row['status'];
 
 
             $routerArray[] = $newRouterList;
@@ -112,6 +115,7 @@ class Product
             $newDtvList->addedDate = $row['added_date'];
             $newDtvList->userId=$row['user_id'];
             $newDtvList->userName=$row['first_name']." ".$row['last_name'];
+            $newDtvList->status=$row['status'];
 
 
             $dtvArray[] = $newDtvList;
@@ -133,6 +137,7 @@ class Product
         $prdId->packageName = $row['package_id'];
         $prdId->productDescription = $row['description'];
         $prdId->addedDate = $row['added_date'];
+        $prdId->status=$row['status'];
 
         return $prdId;
     }

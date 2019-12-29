@@ -1,5 +1,6 @@
 <?php
     include_once ('header.php');
+    include_once ('../backend/Sale.php');
 ?>
     <div class="col-md-12 col-ms-12 col-xs-12">
         <div class="x_panel">
@@ -20,7 +21,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-ms-3 col-xs-12" for="Serial Number">Serial Number</label>
                         <div class="col-md-6 col-ms-6 col-xs-12">
-                            <input type="text" name="salesSNum" id="salesSNum" class="form-control col-md-7 col-xs-12" required>
+                            <input type="text" name="salesSNum" id="salesSNum" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <!--buttons-->
@@ -85,8 +86,8 @@
             }else{
                 $('#salesTables').append("<tr>" +
                     "<td><input  class='form-control' type='text' name='saleSNum[]' value='"+saleSNum+"' readonly></td>" +
-                    "<td><input  class='form-control' type='text' name='gName[]' value='"+guyCode+"' readonly></td>" +
-                    "<td><input  class='form-control' type='text' name='catName' value='"+cn+"' readonly></td>" +
+                    "<td><input  class='form-control' type='text' name='guyCode[]' value='"+guyCode+"' readonly></td>" +
+                    "<td><input  class='form-control' type='text' name='cName' value='"+cn+"' readonly></td>" +
                     "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +
                     "<i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
                 $c_id=$("#category_name").val();
