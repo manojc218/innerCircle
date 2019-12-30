@@ -22,7 +22,6 @@ class User
     public $roleId;
     public $roleName;
     public $manager;
-    public $guyCode;
     public $userName;
     public $regDate;
     public $workingId;
@@ -48,12 +47,12 @@ class User
 
         /*send data to the relevant table*/
         $sql = "INSERT INTO user_profile (first_name,last_name,nic,gender,dateOfBirth,addressLine1,addressLine2,city,
-                postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,guyCode,user_name,
+                postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,user_name,
                 password)
                 values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob',
                 '$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber',
                 '$this->landNumber','$this->email','$this->branchName','$this->roleName','$this->manager',
-                '$this->workingId','$this->guyCode','$this->userName','$password')";
+                '$this->workingId','$this->userName','$password')";
 
         $addUser = $conn->query($sql);
 
@@ -152,9 +151,7 @@ class User
             $u_detail->branchName = $row["branch_name"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
-            $u_detail->guyCode = $row["guyCode"];
             $u_detail->userName = $row["user_name"];
-            $u_detail->password = $row["password"];
             $u_detail->regDate = $row["registeredDate"];
 
             $detailArray[] = $u_detail;
@@ -164,8 +161,8 @@ class User
     }
     /*End get all user function*/
 
-    /*get all user details*/
-    public function get_user_details_by_id($uId)
+    /*start get all user details*/
+    /*public function get_user_details_by_id($uId)
     {
         $conn = (new Connection())->get_db();
 
@@ -198,18 +195,17 @@ class User
             $u_details->workingId = $row["working_id"];
             $u_details->guyCode = $row["guyCode"];
             $u_details->userName = $row["user_name"];
-            $u_details->password = $row["password"];
             $u_details->regDate = $row["registeredDate"];
 
             $userDetailArray[] = $u_details;
         }
 
         return $userDetailArray;
-    }
+    }*/
     /*End get all user function*/
 
     /*Start get manager name for relative branch*/
-    public function get_manager_by_branch($id)
+    /*public function get_manager_by_branch($id)
     {
         $conn = (new Connection())->get_db();
 
@@ -238,14 +234,13 @@ class User
             $u_detail->workingId = $row["working_id"];
             $u_detail->guyCode = $row["guyCode"];
             $u_detail->userName = $row["user_name"];
-            $u_detail->password = $row["password"];
             $u_detail->regDate = $row["registeredDate"];
 
             $detailArray[] = $u_detail;
         }
 
         return $detailArray;
-    }
+    }*/
     /*End get manager name for relative branch*/
 
 
@@ -277,9 +272,7 @@ class User
             $u_detail->roleId = $row["role_id"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
-            $u_detail->guyCode = $row["guyCode"];
             $u_detail->userName = $row["user_name"];
-            $u_detail->password = $row["password"];
             $u_detail->regDate = $row["registeredDate"];
 
             $detailArray[] = $u_detail;

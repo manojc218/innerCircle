@@ -1,6 +1,11 @@
 <?php
     include_once ('header.php');
     include_once ('../backend/Sale.php');
+
+    if(isset($_POST['guyCode'])){
+        $sale=new Sale();
+        $sale;
+    }
 ?>
     <div class="col-md-12 col-ms-12 col-xs-12">
         <div class="x_panel">
@@ -73,6 +78,7 @@
 
         saleSNum=$('#salesSNum').val();//get sold serial numbers
         guyCode=$('#guyCode').val();//get guy code
+
 
         //getting category name for relevant serial number
 

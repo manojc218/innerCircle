@@ -64,7 +64,6 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="fname" name="fname" class="form-control col-md-7 col-xs-12" required>
-
                                     </div>
 
                                 </div>
@@ -82,7 +81,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nic">NIC <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="nic" name="nic" class="form-control col-md-7 col-xs-12" required>
+                                        <input type="text" id="nic" name="nic" class="form-control col-md-7 col-xs-12" pattern="[0-9]{9}[V|X]" title="Enter NIC with the V or X" required>
                                     </div>
                                 </div>
 
@@ -151,7 +150,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="postalCode">Postal Code <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="postalCode" name="postalCode" class="form-control col-md-7 col-xs-12" required>
+                                        <input type="text" id="postalCode" name="postalCode" class="form-control col-md-7 col-xs-12" pattern="[0-9]{*}" required>
                                     </div>
                                 </div>
 
@@ -159,7 +158,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-13" for="ContactNumber">Contact Number <span class="required">*</span></label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <input type="text" placeholder="Mobile" class="form-control" name="mobile" required>
+                                        <input type="text" placeholder="Mobile" class="form-control" name="mobile" pattern="[0][0-9]{9}" required>
 
                                     </div>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
@@ -250,23 +249,13 @@ include_once('header.php');
                                     </div>
                                 </div>
 
-                                <!--Guy Code-->
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="guyCode">Guy Code <span class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="guyCode" name="guyCode" class="form-control col-md-7 col-xs-12" required>
-                                    </div>
-                                </div>
-
                                 <!--UserName-->
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">User Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="username" name="username" class="form-control col-md-7 col-xs-12" required>
+                                        <input type="text" id="username" name="username" class="form-control col-md-7 col-xs-12" min="5" required>
                                     </div>
                                 </div>
-
-                                <!--Password-->
 
                                 <!--Solid Line-->
                                 <div class="ln_solid"></div>
@@ -292,34 +281,12 @@ include_once('header.php');
 <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
 
 <script>
-    $('#myDatepicker').datetimepicker();
+
 
     $('#myDatepicker2').datetimepicker({
         format: 'DD.MM.YYYY'
     });
 
-    $('#myDatepicker3').datetimepicker({
-        format: 'hh:mm A'
-    });
-
-    $('#myDatepicker4').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true
-    });
-
-    $('#datetimepicker6').datetimepicker();
-
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false
-    });
-
-    $("#datetimepicker6").on("dp.change", function(e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-
-    $("#datetimepicker7").on("dp.change", function(e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
 </script>
 
 <!--get managers for relevant branch-->

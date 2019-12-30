@@ -48,13 +48,13 @@
             <div class="form-group">
                 <label class="control-label col-md-3 col-ms-3 col-xs-3" for="postalCode">Postal Code</label>
                 <div class="col-md-6 col-ms-6 col-xs-12">
-                    <input type="text" class="form-control" name="postalCode" id="postalCode" required/>
+                    <input type="text" class="form-control" name="postalCode" id="postalCode" pattern="\^[0-9]{*}" title="Please enter correct code." required/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3 col-ms-3 col-xs-3" for="contactNumber">Contact Number</label>
                 <div class="col-md-6 col-ms-6 col-xs-12">
-                    <input type="text" class="form-control" name="contactNumber" id="contactNumber" required/>
+                    <input type="text" class="form-control" name="contactNumber" id="contactNumber" pattern="[0][0-9]{9}" title="Please enter correct number.(0xx xxxxxxx)" required/>
                 </div>
             </div>
             <div class="form-group addResetButtons_right">

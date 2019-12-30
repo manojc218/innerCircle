@@ -157,7 +157,7 @@
         $('#tblOrder').append(
             "<tr>" +
                 "<td hidden><input type='text' class='form-control' name='cNameIdArr[]' value='"+cNameId+"' readonly></td>"+
-                "<td><input type='text' class='form-control' name='cNameArr[]' value='"+c_Name+"' readonly></td>" +
+                "<td><input type='text' class='for m-control' name='cNameArr[]' value='"+c_Name+"' readonly></td>" +
                 "<td><input type='text' class='form-control' name='qtyArr[]' value='"+qty+"' readonly></td>" +
                 "<td><input type='text' class='form-control' name='desArr[]' value='"+des+"' readonly></td>" +
             "</tr>");

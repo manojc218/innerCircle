@@ -1,11 +1,14 @@
 <?php
     session_start();
+
     if(!isset($_SESSION['userId'])){
         header('location:../index.php');
     }
     $uid=$_SESSION["userId"];
     $userName=$_SESSION["userName"];
+
     include_once ('../backend/User.php');
+
     $user=new User();
     $getUserId=$user->get_user_by_id($uid);
 ?>
@@ -156,7 +159,11 @@
 
                             <!--Events-->
                             <li>
-                                <a href="event.php"><i class="fa fa-flag"></i>Events<span class="fa fa-chevron-right"></span></a>
+                                <a><i class="fa fa-th-large"></i>Events<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="event.php">Create Events<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="view_events.php">View Events<span class="fa fa-chevron-right"></span> </a></li>
+                                </ul>
                             </li>
 
                             <li>
