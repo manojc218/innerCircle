@@ -74,7 +74,7 @@
                 <h3 class="modal-title">Change Password</h3>
             </div>
             <div class="modal-body">
-                <form  class="form-horizontal form_label-left" action="up_visitor_view.php" method="POST">
+                <form class="form-horizontal form_label-left" action="up_view.php" method="POST">
                     <!--current password-->
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="currentPassword">Current Password<span class="required">*</span>

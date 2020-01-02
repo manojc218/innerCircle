@@ -3,6 +3,8 @@
     include_once ('header.php');
     include_once ('../backend/ProductCategory.php');
     include_once('../backend/PurchaseOrder.php');
+    include_once ('../backend/Notification.php');
+    include_once ('../backend/User.php');
 
         /*get category name*/
     $productCategory=new ProductCategory();
@@ -17,9 +19,48 @@
         $newOrder->orderCategory=$_POST['cNameIdArr'];
         $newOrder->orderDate=$_POST['orderDate'];
 
-
+        /*call to add_purchase_order function*/
         $addOrder=$newOrder->add_purchase_order();
+
+        $user=new User();
+        $setUser=$user->get_users_by_role(4);//send to administrator
+
+        /*call to add notification function*/
+        $notification=new Notification();
+
+        foreach ($setUser as $item){
+            $notification->notificationText="New order has been placed";
+            $notification->receiver=$item->userId;
+            $sendNotification=$notification->addNotification();
+        }
+
+
+
+        $setUser=$user->get_users_by_role(9);//send to Executive secretary
+
+        $detailArray=0;
+        foreach ($setUser as $item){
+            $notification->notificationText="New order has been placed";
+            $notification->receiver=$item->userId;
+            $sendNotification=$notification->addNotification();
+        }
+
+
+        $setUser=$user->get_users_by_role(10);//send to accountant
+
+
+        foreach ($setUser as $item){
+            $notification->notificationText="New order has been placed";
+            $notification->receiver=$item->userId;
+            $sendNotification=$notification->addNotification();
+        }
+
+
+
+
     }
+
+
 
 ?>
 <div class="col-md-12 col-ms-12 col-xs-12">

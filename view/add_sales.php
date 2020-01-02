@@ -4,7 +4,13 @@
 
     if(isset($_POST['guyCode'])){
         $sale=new Sale();
-        $sale;
+
+        $sale->workingId=$_POST['guyCode'];
+        $sale->productCName=$_POST['cName'];
+        $sale->saleSNum=$_POST['saleSNum'];
+        $sale->saleDate=$_POST['saleDate'];
+
+        $addSale=$sale->add_sale();
     }
 ?>
     <div class="col-md-12 col-ms-12 col-xs-12">
@@ -17,7 +23,7 @@
                 <div class="row">
                     <!--guy code-->
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-ms-3 col-xs-3" for="guyCode">Guy Code</label>
+                        <label class="control-label col-md-3 col-ms-3 col-xs-3" for="guyCode">Working Id</label>
                         <div class="col-md-6 col-ms-6 col-xs-12">
                             <input type="text" class="form-control col-md-7 col-xs-12" name="guyCode" id="guyCode" required>
                         </div>
@@ -29,6 +35,16 @@
                             <input type="text" name="salesSNum" id="salesSNum" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
+
+                    <!--sale Date-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-ms-3 col-xs-12" for="Serial Number">Sale Date</label>
+                        <div class="col-md-6 col-ms-6 col-xs-12">
+                            <input type="date" name="saleDate" id="saleDate" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+
+
                     <!--buttons-->
                     <div class="form-group addResetButtons_center">
                         <input type="button" class="btn btn-primary" onclick="addSales()" value="Add">
@@ -44,7 +60,6 @@
                         <thead>
                         <tr class="headings">
                             <th class="column-title">Serial Number</th>
-                            <th class="column-=title">Guy Name</th>
                             <th class="column-title">Category </th>
 
                             <th class="column-title no-link last"><span class="nobr">Action</span>
@@ -92,10 +107,9 @@
             }else{
                 $('#salesTables').append("<tr>" +
                     "<td><input  class='form-control' type='text' name='saleSNum[]' value='"+saleSNum+"' readonly></td>" +
-                    "<td><input  class='form-control' type='text' name='guyCode[]' value='"+guyCode+"' readonly></td>" +
                     "<td><input  class='form-control' type='text' name='cName' value='"+cn+"' readonly></td>" +
-                    "<td><a href=\"#\" class=\"btn btn-danger btn-xs\">" +
-                    "<i class=\"fa fa-trash-o\"></i> Delete </a></td></tr>");
+                    "<td><a href=\"#\" class=\"btn btn-danger btn-xs\" onclick='remove(this)'>" +
+                    "<i class=\"fa fa-trash-o\" ></i> Delete </a></td></tr>");
                 $c_id=$("#category_name").val();
 
                 $('#salesSNum').val("");
@@ -103,7 +117,10 @@
             }
 
         });
+    }
 
-
+    /*delete data in table*/
+    function remove(btn) {
+        $(btn).parent().parent().remove();
     }
 </script>

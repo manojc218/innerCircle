@@ -162,7 +162,7 @@ class User
     /*End get all user function*/
 
     /*start get all user details*/
-    /*public function get_user_details_by_id($uId)
+    public function get_user_details_by_id($uId)
     {
         $conn = (new Connection())->get_db();
 
@@ -193,7 +193,6 @@ class User
             $u_details->branchName = $row["branch_name"];
             $u_details->manager = $row["manager"];
             $u_details->workingId = $row["working_id"];
-            $u_details->guyCode = $row["guyCode"];
             $u_details->userName = $row["user_name"];
             $u_details->regDate = $row["registeredDate"];
 
@@ -201,7 +200,7 @@ class User
         }
 
         return $userDetailArray;
-    }*/
+    }
     /*End get all user function*/
 
     /*Start get manager name for relative branch*/
@@ -280,5 +279,46 @@ class User
 
         return $detailArray;
     }
+
+    public function get_users_by_role($role){
+        $conn = (new Connection())->get_db();
+
+        $sql = "SELECT user_profile.*, branch.branch_name,role.role_name 
+                FROM user_profile 
+                LEFT JOIN branch ON user_profile.branch_id= branch.branch_id 
+                LEFT JOIN role ON user_profile.role_id=role.role_id WHERE role.role_id=$role";
+
+        $result = $conn->query($sql);
+
+        while ($row = $result->fetch_array()) {
+            $u_detail = new user();
+            $u_detail->userId = $row["user_id"];
+            $u_detail->firstName = $row["first_name"];
+            $u_detail->lastName = $row["last_name"];
+            $u_detail->nic = $row["nic"];
+            $u_detail->gender = $row["gender"];
+            $u_detail->dob = $row["dateOfBirth"];
+            $u_detail->addLine1 = $row["addressLine1"];
+            $u_detail->addLine2 = $row["addressLine2"];
+            $u_detail->city = $row["city"];
+            $u_detail->postalCode = $row["postalCode"];
+            $u_detail->mobileNumber = $row["mobile_number"];
+            $u_detail->landNumber = $row["land_number"];
+            $u_detail->email = $row["email"];
+            $u_detail->roleId = $row["role_id"];
+            $u_detail->roleName = $row["role_name"];
+            $u_detail->branchName = $row["branch_name"];
+            $u_detail->manager = $row["manager"];
+            $u_detail->workingId = $row["working_id"];
+            $u_detail->userName = $row["user_name"];
+            $u_detail->regDate = $row["registeredDate"];
+
+            $detailArray[] = $u_detail;
+        }
+
+        return $detailArray;
+    }
     /*getting username by id*/
+
+    /*public function */
 }

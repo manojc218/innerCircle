@@ -48,7 +48,7 @@
             <div class="form-group">
                 <label class="control-label col-md-3 col-ms-3 col-xs-3" for="postalCode">Postal Code</label>
                 <div class="col-md-6 col-ms-6 col-xs-12">
-                    <input type="text" class="form-control" name="postalCode" id="postalCode" pattern="\^[0-9]{*}" title="Please enter correct code." required/>
+                    <input type="text" class="form-control" data-validate-length-range="5" name="postalCode" id="postalCode" pattern="\^[0-9]{*}" title="Please enter correct code." required/>
                 </div>
             </div>
             <div class="form-group">
@@ -67,3 +67,4 @@
 <?php
     include_once ('footer.php')
 ?>
+<script src="../vendors/validator/validator.js"></script>

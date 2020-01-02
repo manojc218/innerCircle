@@ -13,10 +13,7 @@ include_once("../backend/phpmailer/Mail.php");
     $branch=new Branch();
     $allBranch=$branch->get_all_branches();
 
-
-
-
-
+/*call to add_new_user function*/
 if (isset($_POST['fname']))
 {
     $newUser = new User();
@@ -35,7 +32,6 @@ if (isset($_POST['fname']))
     $newUser->branchName=$_POST['branchName'];
     $newUser->roleName=$_POST['roleName'];
     $newUser->manager=$_POST['manager'];
-    $newUser->guyCode=$_POST['guyCode'];
     $newUser->userName=$_POST['username'];
     $newUser->workingId=$_POST['workingId'];
 
@@ -56,14 +52,15 @@ include_once('header.php');
                     <div class="">
                         <br>
                         <!--Start User Reg Form-->
-                        <form class="form-horizontal form-label-left" novalidate="" method="post" action="#" >
+                        <form class="form-horizontal form-label-left " data-validate-pattern="" novalidate="" method="post" action="#" >
                             <div class="personal-info" id="personal-info"><!--start personal-info-->
 
                                 <!--First Name-->
-                                <div class="form-group">
+                                <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="fname" name="fname" class="form-control col-md-7 col-xs-12" required>
+                                        <div class="alert">please put something here</div>
                                     </div>
 
                                 </div>
@@ -112,12 +109,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Date of Birth<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="input-group date" id="myDatepicker2">
-                                            <input type="text" class="form-control" required name="dob">
-                                            <span class="input-group-addon">
-                                   <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                                        </div>
+                                        <input type="date" id="dob" name="dob" class="form-control col-md-7 col-xs-12" required>
                                     </div>
                                 </div>
 
@@ -305,3 +297,13 @@ include_once('header.php');
 
     }
 </script>
+
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- validator -->
+<script src="../vendors/validator/validator.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>

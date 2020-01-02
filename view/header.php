@@ -62,7 +62,7 @@
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col <!--menu_fixed--> mCustomScrollBox _mCS_1 mCS-autoHide" style="overflow: visible;">
+        <div class="col-md-3 left_col menu mCustomScrollBox _mCS_1 mCS-autoHide" style="overflow: visible;">
 
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
@@ -81,7 +81,7 @@
                     <div class="profile_info" >
                         <span>Welcome,<br></span>
                         <?php
-                            echo "<a href='up_visitor_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
+                            echo "<a href='up_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
                         ?>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
 
                             <!--Events-->
                             <li>
-                                <a><i class="fa fa-th-large"></i>Events<span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-flag-checkered"></i>Events<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="event.php">Create Events<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="view_events.php">View Events<span class="fa fa-chevron-right"></span> </a></li>
@@ -178,7 +178,7 @@
                 <!-- /sidebar menu -->
 
                 <!-- /menu footer buttons -->
-                <div class="sidebar-footer hidden-small">
+                <!--<div class="sidebar-footer hidden-small">
                     <a data-toggle="tooltip" data-placement="top" title="Settings">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                     </a>
@@ -191,18 +191,18 @@
                     <a data-toggle="tooltip" data-placement="top" title="Logout" href="../index.php">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
-                </div>
+                </div>-->
                 <!-- /menu footer buttons -->
             </div>
         </div>
 
         <!-- top navigation -->
         <div class="top_nav">
-            <div class="nav_menu">
+            <div class="nav_menu" >
                 <nav>
-                   <!--<div class="nav toggle">
+                   <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>-->
+                    </div>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">

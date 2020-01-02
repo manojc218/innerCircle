@@ -42,7 +42,6 @@ include_once('header.php');/*link to header*/
                             <th>Category Name</th>
                             <th>Status</th>
                             <th>Description</th>
-                            <th>Added Date</th>
                             <th style="width: 20%"></th>
                         </tr>
                     </thead>
