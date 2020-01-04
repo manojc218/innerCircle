@@ -60,9 +60,15 @@ class User
         /*Save profile image*/
         if(isset($_FILES['file'])){
             $imgName=$_FILES['file']['name'];
-            $imgTemp=$_FILES['file']['tmpName'];
-            $imgLocation="../docs/images/userImg";
-            move_uploaded_file($imgTemp,$imgLocation,$imgName);
+            $imgTemp=$_FILES['file']['tmp_name'];
+            $imgLocation="userImg/";
+            move_uploaded_file($imgTemp,$imgLocation.$imgName);
+
+            echo $imgName;
+            echo $imgTemp;
+            echo $imgLocation;
+
+            exit();
         }
         $link="http://localhost/PMSIC";//system link
 
@@ -70,7 +76,7 @@ class User
         $mailBody="Dear ".$this->firstName." ".$this->lastName."<br>".
             "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
             "Now you can log into the system through ".$link.'<br/>'.
-            "Your Username : YOUR FIRST NAME".'<br/>'.
+            "Your Username : $this->userName".'<br/>'.
             "Your Password : ".$pass;
 
         /*sending mail*/

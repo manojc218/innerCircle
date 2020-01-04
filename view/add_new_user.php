@@ -52,7 +52,7 @@ include_once('header.php');
                     <div class="">
                         <br>
                         <!--Start User Reg Form-->
-                        <form class="form-horizontal form-label-left " data-validate-pattern="" novalidate="" method="post" action="#" >
+                        <form class="form-horizontal form-label-left " data-validate-pattern="" novalidate="" enctype="multipart/form-data" method="post" action="#" >
                             <div class="personal-info" id="personal-info"><!--start personal-info-->
 
                                 <!--First Name-->
@@ -172,7 +172,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="userImage">User Image <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" required>
+                                        <input type="file" data-role="magic-overlay" name="file" data-target="#pictureBtn" data-edit="insertImage" required>
                                     </div>
                                 </div>
 
@@ -211,7 +211,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role name">Role Name<span class="required">*</span></label>
                                     <div class="col-md-6 col-ms-6 col-xs-6">
-                                        <select class="form-control col-md-7 col-ms-7 col-xs-12" name="roleName">
+                                        <select class="form-control col-md-7 col-ms-7 col-xs-12" name="roleName" id="roleName" onchange="funManager()">
                                             <?php
                                                 foreach($allRoles as $item){
                                                     echo"<option value='$item->roleId'>$item->roleName</option>";
@@ -222,7 +222,7 @@ include_once('header.php');
                                 </div>
 
                                 <!--Manager-->
-                                <div class="form-group">
+                                <div class="form-group" id="divManager">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="manager">Manager <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -272,6 +272,13 @@ include_once('header.php');
 ?>
 <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
 
+!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- validator -->
+<script src="../vendors/validator/validator.js"></script>
+
 <script>
 
 
@@ -296,14 +303,14 @@ include_once('header.php');
         });
 
     }
+
+    function funManager() {
+        if($('#roleName').val()!=5){
+            $('#divManager').hide();
+        }else{
+            $('#divManager').show();
+        }
+    }
 </script>
 
-<!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- validator -->
-<script src="../vendors/validator/validator.js"></script>
-
-<!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+<

@@ -52,10 +52,10 @@ $deleteDetail=$deleteInfo->delete_order_details($rn);*/
                                 <td>Completed</td>
 -->
                                 <td>
-                                <a href='order_invoice.php?rn=$item->orderRef'><button class=\"btn btn-primary\"'><span class=\"fa fa-eye\"></span></button></a>
+                                    <a href='order_invoice.php?rn=$item->orderRef'><button class=\"btn btn-primary\"'><span class=\"fa fa-eye\"></span></button></a>
                                     <button class=\"btn btn-success\"><span class=\"fa fa-edit\"></span></button>
                                     <button class=\"btn btn-dark\"><span class=\"fa fa-print\"></span></button>
-                                   <button class=\"btn btn-danger\" id='btnDelete'><span class=\"fa fa-remove\"></span></button>
+                                    <a ><button class=\"btn btn-danger\" id='btnDelete' onclick='remove(this)'><span class=\"fa fa-remove\" ></span></button></a>
                                 </td>
                             </tr>";
                             }
@@ -79,11 +79,9 @@ include_once ('footer.php');
 ?>
 
 <script>
-    $.('#btnDelete').on("click",deletebutton);
-    
-    function deletebutton() {
-            $(this).parent("tr").remove();
-    }
+   function remove(btn){
+       $(btn).parent().parent().parent().remove();
+   }
 </script>
 
 

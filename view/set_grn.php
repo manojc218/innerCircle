@@ -6,7 +6,7 @@
     $rn=$_GET['rn'];
 
     $catName=new PurchaseOrder();
-    $grnDetails=$catName->get_category_details($rn);
+    $grnDetails=$catName->get_order_details($rn);
 
 
     if(isset($_POST['grnCatName']))

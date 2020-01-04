@@ -159,7 +159,7 @@ include_once ('header.php');
                                 <!--Start 4G Routers tab-->
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                                     <!--Start 4gRouters view table-->
-                                    <table class="table table-striped projects" id="productTable">
+                                    <table class="table table-striped projects" id="productRouter">
                                         <thead>
                                         <tr>
                                             <th style="width: 20%;">Serial Number</th>
@@ -196,7 +196,7 @@ include_once ('header.php');
                                 <!--View Dtv table-->
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                                     <!--Start Dtv view table-->
-                                    <table class="table table-striped projects" id="productTable">
+                                    <table class="table table-striped projects" id="productDtv">
                                         <thead>
                                         <tr>
                                             <th style="width: 20%;">Serial Number</th>
@@ -259,6 +259,30 @@ include_once ('header.php');
 <script>
     $(document).ready(function(){
         $('#productTable').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+    $(document).ready(function(){
+        $('#productRouter').DataTable({
+            dom:'Bfrtip',"pageLength":50,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+
+    $(document).ready(function(){
+        $('#productDtv').DataTable({
             dom:'Bfrtip',"pageLength":50,
             buttons:[
                 'copy',

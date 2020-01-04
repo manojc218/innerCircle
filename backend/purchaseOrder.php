@@ -1,5 +1,6 @@
 <?php
 include_once ('Connection.php');
+
 class PurchaseOrder
 {
     public $orderId;
@@ -83,10 +84,4 @@ class PurchaseOrder
         return $getCNameArr;
     }
 
-    /*add GRN*/
-
-    public function GRN(){
-        $conn=(new Connection())->get_db();
-
-    }
 }

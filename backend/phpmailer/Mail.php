@@ -23,6 +23,8 @@ class Mail
 
         $mail->isSMTP();
 
+        $mail->isHTML(true);
+
         $mail->Host = 'smtp.gmail.com';
 
         $mail->Port = 587;

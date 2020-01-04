@@ -22,21 +22,24 @@ class GRN
 
     /*get accepted purchase orders*/
 
-    public function add_accepted_order()
+    public function get_accepted_order()
         {
             $conn=(new Connection())->get_db();
             $sql="SELECT * FROM purchase_order WHERE status='Accepted'";
             $acceptOrder=$conn->query($sql);
+
             while($row=$acceptOrder->fetch_array()){
                 $acptOrder=new GRN();
                 $acptOrder->orderRef=$row["reference_no"];
                 $acptOrder->orderDate=$row["order_date"];
                 $acptOrder->orderStatus=$row["status"];
                 $acptOrder->pOrderId=$row["p_order_id"];
+
                 $acptOrderArray[]=$acptOrder;
             }
-            return $acptOrderArray;
-        }
+                return $acptOrderArray;
+            }
+
     public function add_grn()
     {
         $conn=(new Connection())->get_db();
@@ -53,7 +56,8 @@ class GRN
 
         foreach ($_POST['grnCatName'] as $item)
         {
-            $sql2="INSERT INTO grn_item(received_qty, unit_price, sell_price, sub_total, grn_id) VALUES ('".$this->receivedQty[$count]."','".$this->unitPrice[$count]."','".$this->sellPrice[$count]."','".$this->subTotal[$count]."','$lastId')";
+            $sql2="INSERT INTO grn_item(received_qty, unit_price, sell_price, sub_total, grn_id)
+                   VALUES ('".$this->receivedQty[$count]."','".$this->unitPrice[$count]."','".$this->sellPrice[$count]."','".$this->subTotal[$count]."','$lastId')";
             $sql3="UPDATE purchase_order SET status='Completed' WHERE p_order_id='$this->pOrderId'";
             $count++;
             $result2=$conn->query($sql2);
@@ -69,20 +73,23 @@ class GRN
 
     public function getGRN()
     {
-        $conn=(new Connection())->get_db();
-        $sql="SELECT purchase_order.reference_no,purchase_order.order_date,grn.received_date,grn.tot_cost FROM grn JOIN purchase_order on grn.p_order_id = purchase_order.p_order_id WHERE status='Completed'";
-        /*echo $sql;
-        exit();*/
-        $getGRN=$conn->query($sql);
+        $conn = (new Connection())->get_db();
 
-        while ($row=$getGRN->fetch_array()){
-            $grn=new grn();
-            $grn->orderRef=$row["reference_no"];
-            $grn->orderDate=$row["order_date"];
-            $grn->receivedDate=$row["received_date"];
+        $sql = "SELECT purchase_order.reference_no,purchase_order.order_date,grn.received_date,grn.tot_cost 
+                FROM grn JOIN purchase_order on grn.p_order_id = purchase_order.p_order_id 
+                WHERE status='Completed'";
+
+        $getGRN = $conn->query($sql);
+
+        while ($row = $getGRN->fetch_array()) {
+            $grn = new grn();
+            $grn->orderRef = $row["reference_no"];
+            $grn->orderDate = $row["order_date"];
+            $grn->receivedDate = $row["received_date"];
             /*$grn->orderStatus=$row["status"];*/
-            $grn->totCost=$row["tot_cost"];
-            $grnArray[]=$grn;
+            $grn->totCost = $row["tot_cost"];
+
+            $grnArray[] = $grn;
         }
         return $grnArray;
     }
