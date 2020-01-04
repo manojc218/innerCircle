@@ -1,6 +1,5 @@
 <?php
 include_once ('Connection.php');
-
 class PurchaseOrder
 {
     public $orderId;
@@ -83,5 +82,4 @@ class PurchaseOrder
         }
         return $getCNameArr;
     }
-
 }
