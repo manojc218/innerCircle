@@ -1,5 +1,6 @@
 <?php
     include_once ('header.php');
+
     /*link purchase order class*/
     include_once ('../backend/PurchaseOrder.php');
 
@@ -8,10 +9,8 @@
 
     $catName=new PurchaseOrder();
     $orderDetails=$catName->get_order_details($rn);
-
-
 ?>
-<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="col-md-12">
     <div class="x_panel">
         <div class="x_title">
             <!--<h4>Orders</h4>-->
@@ -22,7 +21,7 @@
         </div>
         <div class="x_content">
 
-                <section class="content invoice" id="orderInvoice">
+            <section class="content invoice" id="orderInvoice">
                 <!-- title row -->
                 <div class="row">
                     <div class="col-xs-12 invoice-header">
@@ -77,21 +76,21 @@
                     <div class="col-xs-12 table">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Qty</th>
-                                    <th>Description</th>
-                                </tr>
+                            <tr>
+                                <th>Category</th>
+                                <th>Qty</th>
+                                <th>Description</th>
+                            </tr>
                             </thead>
                             <tbody>
                             <?php
-                                foreach ($orderDetails as $item){
-                                    echo "<tr>
+                            foreach ($orderDetails as $item){
+                                echo "<tr>
                                     <td>$item->orderCategoryName </td>
                                     <td>$item->orderQty</td>
                                     <td>$item->orderDescription</td>                              
                                 </tr>";
-                                }
+                            }
                             ?>
                             </tbody>
                         </table>
@@ -104,7 +103,7 @@
                 <div class="row no-print">
                     <div class="col-xs-12">
                         <button class="btn btn-default" onclick="window.print();">
-                        <i class="fa fa-print"></i> Print</button>
+                            <i class="fa fa-print"></i> Print</button>
                         <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
                         <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                     </div>
@@ -115,16 +114,17 @@
 
         </div>
     </div>
-
 </div>
 
-<?php
-    include_once ('footer.php');
-?>
+
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<?php
+    include_once ('footer.php')
+?>
+
 <!--data tables for pdf-->
 <script src="../vendors/datatables/datatables.js"></script>
 
