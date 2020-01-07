@@ -61,7 +61,7 @@ class PurchaseOrder
         $conn=(new Connection())->get_db();
 
         $sql1="SELECT  pd.*,po.*,product_category.category_name FROM purchase_order_details pd 
-                LEFT JOIN product_category on pd.product_c_id = product_category.product_c_id 
+                JOIN product_category on pd.product_c_id = product_category.product_c_id 
                  JOIN purchase_order po on po.p_order_id = pd.p_order_id 
                  WHERE reference_no='$rn'";
 

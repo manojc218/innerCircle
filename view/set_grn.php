@@ -14,7 +14,9 @@
 
 
         $newGrn=new GRN();
+        $newGrn->receivedDate=$_POST['receivedDate'];
         $newGrn->totCost=$_POST['grnTotal'];
+        $newGrn->orderCategory=$_POST['grnCId'];
         $newGrn->receivedQty=$_POST['receivedQty'];
         $newGrn->unitPrice=$_POST['unitPrice'];
         $newGrn->sellPrice=$_POST['sellPrice'];
@@ -44,6 +46,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReferenceNo">Reference No</label>
                                 <div class="col-md-8 col-sm-8 col-xs-8">
                                     <input type="text" class="form-control" value="<?php echo $grnDetails[0]->orderRef ?>" name="grnRefNo" id="grnRefNo" readonly>
+
                                 </div>
                             </div>
 
@@ -55,8 +58,16 @@
                             <!--order date-->
                             <div class="form-group">
                                 <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="orderDate">Order Date </label>
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <input type="text" class="form-control" value="<?php echo $grnDetails[0]->orderDate?>" name="orderDate" id="orderDate" readonly>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control has-feedback-left" name="orderDate" value="<?php echo $grnDetails[0]->orderDate?>" readonly="">
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="receivedDate">Received Date </label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control has-feedback-left" name="receivedDate" value="<?php echo date("Y/m/d")?>" readonly>
+                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
 
@@ -95,6 +106,7 @@
                                 foreach ($grnDetails as $item){
                                     echo "<tr>
                                     <td hidden><input type='text' value='$item->orderId' name='pOrderId' class='form-control col-md-1 col-sm-1 col-xs-12' </td>
+                                    <td hidden><input type='text' value='$item->orderCategory' name='grnCId[]' class='form-control col-md-1 col-sm-1 col-xs-12' </td>
                                     <td><input type='text' value='$item->orderCategoryName' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnCatName[]' id='grnCatName' readonly></td>
                                     <td><input type='text' value='$item->orderDescription' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnDescription[]' id='grnDescription' readonly></td>
                                     <td><input type='text' value='$item->orderQty' class='col-md-1 col-sm-1 col-xs-12 form-control' name='grnOrderQty[]' id='grnOrderQty' readonly></td>

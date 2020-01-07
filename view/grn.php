@@ -40,7 +40,7 @@
                                             <td>$item->receivedDate</td>
                                             <td>$item->totCost</td>
                                             <td>
-                                                <button class=\"btn btn-primary\" id=\"view\"><span class=\"fa fa-eye\"></span></button>
+                                                <a href='grn_invoice.php?grnRf=$item->orderRef'><button class='btn btn-primary' id='view'><span class='fa fa-eye'></span></button></a>
                                                <!-- <button class=\"btn btn - dark\" id=\"print\"><span class=\"fa fa -print\"></span></button>
                                                 <button class=\"btn btn - danger\" id=\"delete\"><span class=\"fa fa - remove\"></span></button>-->
                                             </td>

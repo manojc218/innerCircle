@@ -7,8 +7,8 @@
     $rn=$_GET['rn'];
 
 
-    $catName=new PurchaseOrder();
-    $orderDetails=$catName->get_order_details($rn);
+    $order=new PurchaseOrder();
+    $orderDetails=$order->get_order_details($rn);
 ?>
 <div class="col-md-12">
     <div class="x_panel">
@@ -76,7 +76,7 @@
                     <div class="col-xs-12 table">
                         <table class="table table-striped">
                             <thead>
-                            <tr>
+                            <tr style="background-color: #2A3F54;color: #fff;font-size: 15px">
                                 <th>Category</th>
                                 <th>Qty</th>
                                 <th>Description</th>
@@ -85,7 +85,7 @@
                             <tbody>
                             <?php
                             foreach ($orderDetails as $item){
-                                echo "<tr>
+                                echo "<tr style='font-size: 15px'>
                                     <td>$item->orderCategoryName </td>
                                     <td>$item->orderQty</td>
                                     <td>$item->orderDescription</td>                              
@@ -99,15 +99,7 @@
                 </div>
                 <!-- /.row -->
 
-                <!-- this row will not appear when printing -->
-                <div class="row no-print">
-                    <div class="col-xs-12">
-                        <button class="btn btn-default" onclick="window.print();">
-                            <i class="fa fa-print"></i> Print</button>
-                        <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                        <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-                    </div>
-                </div>
+
             </section>
 
 
