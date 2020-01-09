@@ -100,8 +100,7 @@ class User
         $sql = "SELECT * FROM user_profile WHERE user_name='$userName' and password='$password'";
         $result = $conn->query($sql);
 
-        if ($result->num_rows > 0)
-        {
+        if ($result->num_rows > 0) {
             session_start();
             $row = $result->fetch_array();/*get details of entire row*/
 
@@ -111,17 +110,9 @@ class User
             $_SESSION["userRole"] = $row["user_role"];
 
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
-
-    }/*login function*/
-
-    public function user_logout()
-    {
-
     }
 
 
@@ -167,7 +158,7 @@ class User
     }
     /*End get all user function*/
 
-    /*start get all user details*/
+    /*start get all user details by id*/
     public function get_user_details_by_id($uId)
     {
         $conn = (new Connection())->get_db();
@@ -210,7 +201,7 @@ class User
     /*End get all user function*/
 
     /*Start get manager name for relative branch*/
-    /*public function get_manager_by_branch($id)
+    public function get_manager_by_branch($id)
     {
         $conn = (new Connection())->get_db();
 
@@ -245,7 +236,7 @@ class User
         }
 
         return $detailArray;
-    }*/
+    }
     /*End get manager name for relative branch*/
 
 

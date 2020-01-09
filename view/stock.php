@@ -1,5 +1,13 @@
 <?php
+/*if(isset($_SESSION['userRole']) && $_SESSION['userRole']==4){
+
+}else{
+    header('location:dashboard.php');
+}*/
 include_once('header.php');
+
+
+
 include_once ('../backend/Stock.php');
 include_once ('../backend/Product.php');
 include_once ('../backend/User.php');

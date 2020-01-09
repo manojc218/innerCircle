@@ -212,6 +212,7 @@ include_once('header.php');
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role name">Role Name<span class="required">*</span></label>
                                     <div class="col-md-6 col-ms-6 col-xs-6">
                                         <select class="form-control col-md-7 col-ms-7 col-xs-12" name="roleName" id="roleName" onchange="funManager()">
+                                            <option value=''>Choose one</option>
                                             <?php
                                                 foreach($allRoles as $item){
                                                     echo"<option value='$item->roleId'>$item->roleName</option>";

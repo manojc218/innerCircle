@@ -131,7 +131,10 @@
                 'excelHtml5',
                 'csvHtml5',
                 'pdfHtml5'
-            ]
+            ],
+            "scrollY":"400px",
+            "scrollCollapse": true,
+            "paging":         false
         });
     });
 </script>

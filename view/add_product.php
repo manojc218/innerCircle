@@ -10,12 +10,10 @@
     $package=new Package();
     $allPackage= $package->get_all_packages();
 
-    $product= new Product();
-    if (isset($_POST['serialNumber'])){
+    if (isset($_POST['sNum'])){
         $newProduct= new Product();
-        $newProduct->serialNumber=$_POST['serialNumber'];
-        $newProduct->productCategory=$_POST['productCategory'];
-        $newProduct->productPackage=$_POST['productPackage'];
+        $newProduct->serialNumber=$_POST['sNum'];
+        $newProduct->productCategory=$_POST['cName'];
         $addProduct=$newProduct->add_product2();
     }
 include_once('header.php');
@@ -27,38 +25,24 @@ include_once('header.php');
                 </div>
                 <!--start add product form-->
                 <form class="form-horizontal form_label-left" method="POST">
+
                     <!--product type-->
                    <div class="form-group">
                        <label class="control-label col-md-3 col-sm-3 com-xs-12" for="productCategory">Select Category</label>
                        <!--start product type dropdown-->
                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control col-md-7 col-xs-12" name="productCategory">
+                            <select class="form-control col-md-7 col-xs-12" name="productCategory" id="productCategory">
+                                <option value=''>Choose one</option>
                                 <?php
                                     foreach ($allCategory as $item){
                                         echo "<option value='$item->product_c_id'>$item->categoryName</option>";
                                     }
                                 ?>
-
-
                              </select>
                        </div>
                        <!--end product type dropdown-->
                    </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 com-xs-12" for="selectPackage">Select Package</label>
-                        <!--start product type dropdown-->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control col-md-7 col-xs-12" name="productPackage">
-                                <?php
-                                    foreach($allPackage as $item){
-                                        echo"<option value='$item->packageId'>$item->packageName</option>";
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                        <!--end product type dropdown-->
-                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Serial Number">Serial Number<span class="required">*</span>
@@ -69,10 +53,44 @@ include_once('header.php');
                     </div>
 
 
-                    <div class="form-group">
-                        <input type="submit" value="Add" class="btn btn-primary" id="btnAddPackage">
+                    <div class="form-group" style="text-align: center">
+                        <input type="button" value="Add" class="btn btn-primary" id="btnAddProduct" onclick="addProduct()">
                         <button type="reset" class="btn btn-success">Reset</button>
                     </div>
+                    <br>
+                    <!--start table-->
+                    <div class="row">
+                        <div class="table-responsive">
+                            <!--data input table-->
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                <tr class="headings">
+                                    <!--<th class="column-title">Product Id</th>-->
+                                    <th class="column-title">Serial Number</th>
+                                    <th class="column-title">Category </th>
+
+                                    <th class="column-title no-link last"><span class="nobr">Action</span>
+                                    </th>
+                                    <th class="bulk-actions" colspan="7">
+                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                    </th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="tbId">
+
+                                </tbody>
+                            </table>
+
+                            <hr class="separator">
+
+                            <!--submit button-->
+                            <div  style="text-align: right">
+                                <input type="submit" class="btn btn-primary" value="Add Products">
+                            </div>
+                        </div>
+                    </div>
+                    <!--end table-->
 
                 </form>
 
@@ -84,3 +102,20 @@ include_once('header.php');
 <?php
     include_once('footer.php');
 ?>
+<script>
+    function addProduct() {
+        sn=$('#serialNumber').val();
+        cn=$('#productCategory').val();
+
+        $('#tbId').append("<tr>" +
+            "<td><input  class='form-control' type='text' name='sNum[]' value='"+sn+"' readonly></td>" +
+            "<td><input  class='form-control' type='text' name='cName[]' value='"+cn+"' readonly></td>" +
+            "<td><a href='#' class='btn btn-danger btn-xs ' onclick='remove(this)'><i class='fa fa-trash-o'></i> Remove </a></td></tr>");
+
+        $('#serialNumber').val(" ");
+        /*remove an appended item*/
+        function remove(btn) {
+            $(btn).parent().parent().parent().remove();
+        }
+    }
+</script>

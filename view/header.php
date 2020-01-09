@@ -146,6 +146,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="stock.php">Stocks<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="distribute.php">Distribute<span class="fa fa-chevron-right"></span> </a></li>
+                                    <li><a href="view_distribution.php">Distribution List<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
                             </li>
                             <!--Branches-->

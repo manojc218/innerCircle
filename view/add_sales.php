@@ -28,13 +28,6 @@
                             <input type="text" class="form-control col-md-7 col-xs-12" name="guyCode" id="guyCode" required>
                         </div>
                     </div>
-                    <!--serial number-->
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-ms-3 col-xs-12" for="Serial Number">Serial Number</label>
-                        <div class="col-md-6 col-ms-6 col-xs-12">
-                            <input type="text" name="salesSNum" id="salesSNum" class="form-control col-md-7 col-xs-12">
-                        </div>
-                    </div>
 
                     <!--sale Date-->
                     <div class="form-group">
@@ -44,10 +37,17 @@
                         </div>
                     </div>
 
+                    <!--serial number-->
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-ms-3 col-xs-12" for="Serial Number">Serial Number</label>
+                        <div class="col-md-6 col-ms-6 col-xs-12">
+                            <input type="text" name="salesSNum" id="salesSNum" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
 
                     <!--buttons-->
                     <div class="form-group addResetButtons_center">
-                        <input type="button" class="btn btn-primary" onclick="addSales()" value="Add">
+                        <input type="button" class="btn btn-primary" onclick="checkSerial(this)" value="Add">
                         <input type="reset" class="btn btn-success" value="Reset">
                     </div>
                 </div>
@@ -89,15 +89,22 @@
     include_once('footer.php');
 ?>
 <script>
-    function addSales(){
-
+    function checkSerial(){
+        sNum=$('#sNumber').val();
+        $.get("AJAX.php?type=checkSerial",{serialNumber: sNum},function (data) {
+            result2=JSON.parse(data);
+            if(result2==0)
+                addTo();
+            else alert('Serial is invalid');
+        })
+        function addSales(){
         saleSNum=$('#salesSNum').val();//get sold serial numbers
         guyCode=$('#guyCode').val();//get guy code
 
 
         //getting category name for relevant serial number
 
-        $.get("AJAX.php?type=addSales",{serialNumber:saleSNum},function(data){
+        $.get("AJAX.php?type=addTo",{serialNumber:saleSNum},function(data){
             result=JSON.parse(data);
             cn=result['cat'].categoryName;
 
@@ -115,7 +122,6 @@
                 $('#salesSNum').val("");
                 $('#salesSNum').focus();
             }
-
         });
     }
 

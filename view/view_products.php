@@ -122,7 +122,6 @@ include_once ('header.php');
                                             <tr>
                                                 <th style="width: 20%;">Serial Number</th>
                                                 <th style="width: 20%;">Description</th>
-                                                <th style="width: 20%;">Package</th>
                                                 <th style="width: 20%;">Added Date</th>
                                                 <th style=""></th>
                                             </tr>
@@ -140,7 +139,6 @@ include_once ('header.php');
                                                          echo"<tr role=\"row\" class=\"odd\">
                                                                 <td class=\"sorting_1\">$item->serialNumber</td> 
                                                                 <td>$item->userName</td>
-                                                                <td>$item->packageName</td> 
                                                                 <td>$item->addedDate</td>
                                                                 <td>
                                                                     <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
@@ -164,7 +162,6 @@ include_once ('header.php');
                                         <tr>
                                             <th style="width: 20%;">Serial Number</th>
                                             <th style="width: 20%;">Description</th>
-                                            <th style="width: 20%;">Package</th>
                                             <th style="width: 20%;">Added Date</th>
                                             <th style=""></th>
                                         </tr>
@@ -179,7 +176,6 @@ include_once ('header.php');
                                             echo"<tr role=\"row\" class=\"odd\">
                                                             <td class=\"sorting_1\">$item->serialNumber</td>
                                                             <td>$item->userName</td>
-                                                            <td> $item->packageName</td>
                                                             <td> $item->addedDate</td>
                                                             <td>
                                                                 <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
@@ -201,7 +197,6 @@ include_once ('header.php');
                                         <tr>
                                             <th style="width: 20%;">Serial Number</th>
                                             <th style="width: 20%;">Description</th>
-                                            <th style="width: 20%;">Package</th>
                                             <th style="width: 20%;">Added Date</th>
                                             <th style=""></th>
                                         </tr>
@@ -216,7 +211,6 @@ include_once ('header.php');
                                                 echo"<tr role=\"row\" class=\"odd\">
                                                                 <td class=\"sorting_1\">$item->serialNumber</td>
                                                                 <td>$item->userName</td>
-                                                                <td>$item->packageName</td>
                                                                 <td>$item->addedDate</td>
                                                                 <td>
                                                                     <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
