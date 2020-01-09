@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2020 at 05:40 AM
+-- Generation Time: Jan 09, 2020 at 11:07 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -137,7 +137,9 @@ CREATE TABLE `distribute` (
 
 INSERT INTO `distribute` (`distribute_id`, `distribute_date`, `user_id`) VALUES
 (3, '2020-01-08', 158),
-(4, '2020-01-08', 158);
+(4, '2020-01-08', 158),
+(5, '2020-01-09', 162),
+(6, '2020-01-08', 158);
 
 -- --------------------------------------------------------
 
@@ -158,7 +160,12 @@ CREATE TABLE `distribute_item` (
 
 INSERT INTO `distribute_item` (`distribute_item_id`, `distribute_id`, `product_id`, `product_c_id`) VALUES
 (1, 3, 82, 2),
-(2, 4, 80, 2);
+(2, 4, 80, 2),
+(3, 5, 125, 2),
+(4, 5, 125, 2),
+(5, 5, 125, 2),
+(6, 5, 125, 2),
+(7, 6, 87, 4);
 
 -- --------------------------------------------------------
 
@@ -391,13 +398,26 @@ INSERT INTO `product` (`product_id`, `serial_number`, `added_date`, `product_c_i
 (84, '20007', '2020-01-08 02:28:25', 3, 131, 'available'),
 (85, '20008', '2020-01-08 02:28:31', 3, 131, 'available'),
 (86, '30006', '2020-01-08 02:28:37', 4, 131, 'available'),
-(87, '30007', '2020-01-08 02:28:43', 4, 131, 'available'),
+(87, '30007', '2020-01-09 06:20:39', 4, 158, 'available'),
 (88, '30008', '2020-01-08 02:28:47', 2, 131, 'available'),
-(125, '10009', '2020-01-09 00:01:59', 2, 131, 'available'),
+(125, '10009', '2020-01-09 06:18:22', 2, 162, 'available'),
 (126, '10009', '2020-01-09 00:02:37', 2, 131, 'available'),
 (130, '10009', '2020-01-09 00:08:02', 2, 131, 'available'),
 (131, '10009', '2020-01-09 00:42:12', 2, 131, 'available'),
-(132, '10009', '2020-01-09 00:42:13', 2, 131, 'available');
+(132, '10009', '2020-01-09 00:42:13', 2, 131, 'available'),
+(133, '10010', '2020-01-09 06:37:00', 2, 131, 'available'),
+(134, '10010', '2020-01-09 07:37:00', 2, 131, 'available'),
+(135, '10013', '2020-01-09 07:37:25', 2, 131, 'available'),
+(136, '20015', '2020-01-09 07:39:30', 3, 131, 'available'),
+(137, '10020', '2020-01-09 07:40:24', 2, 131, 'available'),
+(138, '10020', '2020-01-09 07:44:37', 2, 131, 'available'),
+(139, '20050', '2020-01-09 07:44:56', 3, 131, 'available'),
+(140, '20050', '2020-01-09 07:47:09', 3, 131, 'available'),
+(141, '20044', '2020-01-09 07:48:15', 3, 131, 'available'),
+(142, '20044', '2020-01-09 07:48:40', 3, 131, 'available'),
+(143, '20044', '2020-01-09 07:48:41', 3, 131, 'available'),
+(144, '20060', '2020-01-09 07:54:39', 3, 131, 'available'),
+(145, ' 30060', '2020-01-09 07:54:39', 4, 131, 'available');
 
 -- --------------------------------------------------------
 
@@ -664,7 +684,8 @@ INSERT INTO `user_profile` (`user_id`, `first_name`, `last_name`, `nic`, `gender
 (177, 'sam', 'peter', '940034140V', 'Male', '2020-01-09', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 8, 1, 0, '7447', 'samptr', 'ba3d9fdbbf23308819a9a07c083ad0f7', '2020-01-02 15:46:45'),
 (178, 'sam', 'peter', '940034140V', 'Male', '2020-01-09', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 8, 1, 0, '7447', 'samptr', '8d3fb3879b0a7664b3ee89ce913ccb6d', '2020-01-02 15:47:21'),
 (179, 'sam', 'peter', '940034140V', 'Male', '2020-01-09', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 8, 1, 0, '7447', 'samptra', 'ffb564aef0bf90945e0ed9efe35ee995', '2020-01-02 15:51:50'),
-(180, '', '', '', '', '2020-01-15', '', '', '', '', '', '', '', 8, 1, 0, '', '', '7f10f9f2b8c2368925157951b189b526', '2020-01-03 23:10:49');
+(180, '', '', '', '', '2020-01-15', '', '', '', '', '', '', '', 8, 1, 0, '', '', '7f10f9f2b8c2368925157951b189b526', '2020-01-03 23:10:49'),
+(181, '', '', '', '', '', '', '', '', '', '', '', '', 12, 5, 0, '', '', 'a9b06e510d77d1c691617dfa2a34727f', '2020-01-09 14:52:53');
 
 -- --------------------------------------------------------
 
@@ -889,13 +910,13 @@ ALTER TABLE `deposit`
 -- AUTO_INCREMENT for table `distribute`
 --
 ALTER TABLE `distribute`
-  MODIFY `distribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `distribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `distribute_item`
 --
 ALTER TABLE `distribute_item`
-  MODIFY `distribute_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `distribute_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -955,7 +976,7 @@ ALTER TABLE `package`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -1009,7 +1030,7 @@ ALTER TABLE `user_login`
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
 -- Constraints for dumped tables
