@@ -107,7 +107,7 @@ class User
             $_SESSION["userId"] = $row["user_id"];
             $_SESSION["userPassword"] = $row["password"];
             $_SESSION["userName"] = $row["user_name"];
-            $_SESSION["userRole"] = $row["user_role"];
+            $_SESSION["userRole"] = $row["role_id"];
 
             return true;
         } else {

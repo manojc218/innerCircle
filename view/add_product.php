@@ -31,7 +31,7 @@ include_once('header.php');
                        <label class="control-label col-md-3 col-sm-3 com-xs-12" for="productCategory">Select Category</label>
                        <!--start product type dropdown-->
                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control col-md-7 col-xs-12" name="productCategory" id="productCategory">
+                            <select class="form-control col-md-7 col-xs-12" name="" id="productCategory">
                                 <option value=''>Choose one</option>
                                 <?php
                                     foreach ($allCategory as $item){

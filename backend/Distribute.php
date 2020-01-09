@@ -11,12 +11,14 @@ class Distribute
     public $productCId;
     public $userId;
     public $saleSNum;
+    public $managerName;
 
+    /*function for insert data to the distribute table*/
     public function addDistribute(){
         $conn=(new Connection())->get_db();
         $count=0;
         /*getting manager details*/
-        $uIdSql="SELECT * FROM user_profile WHERE working_id=$this->workingId";
+        $uIdSql="SELECT * FROM user_profile WHERE working_id='$this->workingId'";
         $getUserDetails=$conn->query($uIdSql);
 
         $managerId=$getUserDetails->fetch_array();
@@ -50,7 +52,7 @@ class Distribute
 
             /*update description of the product table*/
             $sql3="UPDATE product SET user_id=$managerId WHERE product_id=$prId";
-
+            $count++;
             $addDistributeDetails=$conn->query($sql2);
             $updatePUserId=$conn->query($sql3);
         }
@@ -61,5 +63,45 @@ class Distribute
             return false;
         }
 
+    }
+    /*get distribution information*/
+    public function get_all_distribution_details(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT user_profile.first_name,user_profile.last_name,distribute.distribute_date,
+                COUNT(CASE
+                            WHEN distribute_item.product_c_id='2'
+                            THEN distribute_item.product_id
+                            ELSE null
+                      END 
+                ) AS 'simCard',
+                COUNT(CASE
+                             WHEN distribute_item.product_c_id='3'
+                             THEN distribute_item.product_id
+                             ELSE null
+                      END
+                ) AS '4gRouter',
+                COUNT(CASE
+                            WHEN distribute_item.product_c_id='4'
+                            THEN distribute_item.product_id
+                            ELSE null
+                      END
+                ) AS 'dtv' 
+              FROM distribute JOIN user_profile on distribute.user_id = user_profile.user_id
+              JOIN distribute_item on distribute.distribute_id = distribute_item.distribute_id
+              GROUP BY distribute.distribute_id ORDER BY distribute.distribute_id DESC";
+
+        $distributionList=$conn->query($sql);
+
+        while($row=$distributionList->fetch_array()){
+            $newDistributionList= new Distribute();
+            $newDistributionList->managerName=$row['first_name']." ".$row['last_name'];
+            $newDistributionList->distributeDate=$row['distribute_date'];
+            $newDistributionList->simCard=$row['simCard'];
+            $newDistributionList->router=$row['4gRouter'];
+            $newDistributionList->dtv=$row['dtv'];
+
+            $distributionListArr[]=$newDistributionList;
+        }
+        return $distributionListArr;
     }
 }

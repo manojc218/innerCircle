@@ -1,5 +1,13 @@
 <?php
     include_once('header.php');
+    include_once ('../backend/Branch.php');
+    include_once ('../backend/Sale.php');
+
+    $branchCount=new Branch();
+    $newBranchCount=$branchCount->count_branch();
+
+    $simCount=new Sale();
+    $soldSimCount=$simCount->get_sum_of_sold_sim();
 ?>
 <div class="col-md-12 col-ms-12 col-xs-12">
     <!--start x_panel-->
@@ -20,12 +28,12 @@
                 <!--count for total branches-->
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-clock-o"></i> Total Branches</span>
-                    <div class="count">25</div>
+                    <div class="count"><?php echo $newBranchCount ?></div>
                 </div>
                 <!--count for total sold sims-->
                 <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                     <span class="count_top"><i class="fa fa-user"></i> Total Sold Sims</span>
-                    <div class="count green">2,500</div>
+                    <div class="count "><?php echo $soldSimCount ?></div>
                     <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                 </div>
                 <!--count for total sold routers-->

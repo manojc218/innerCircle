@@ -3,7 +3,7 @@
     include_once ('../backend/Sale.php');
 
     $sale=new Sale();
-    $saleList=$sale->getSales();
+    $saleList=$sale->get_all_sales_details();
 ?>
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
@@ -35,9 +35,6 @@
                    </div>
                </form>
             <br>
-
-            </div>
-
             <!--start table-->
             <table class="table table-striped jambo_table" id="saleTable">
                 <thead>
@@ -57,8 +54,8 @@
 
                 <tbody>
                 <?php
-                    foreach ($saleList as $item){
-                        echo "<tr>
+                foreach ($saleList as $item){
+                    echo "<tr>
 
                     <td class=''>$item->guyName</td>
                     <td class=''>$item->saleDate</td>
@@ -73,6 +70,8 @@
                 </tbody>
             </table>
             <!--end table-->
+
+            </div>
         </div>
     </div>
 <?php

@@ -20,9 +20,13 @@ class Product
     {
         $conn = (new Connection())->get_db();
         $count=0;
-        $sql = "INSERT INTO product(serial_number,product_c_id,user_id,status) VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','131','available')";
-        $count++;
-        $addProduct = $conn->query($sql);
+
+        foreach ($_POST['sNum'] as $item){
+            $sql = "INSERT INTO product(serial_number,product_c_id,user_id,status) 
+                    VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','131','available')";
+            $count++;
+            $addProduct = $conn->query($sql);
+        }
         if ($addProduct) {
             return true;
         } else {

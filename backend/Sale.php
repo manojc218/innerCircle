@@ -67,7 +67,7 @@ class Sale
         }
     }
 /*functions for getting sales*/
-    public function getSales(){
+    public function get_all_sales_details(){
         $conn=(new Connection())->get_db();
 
         /*sql for counting sales according to the product category*/
@@ -94,9 +94,6 @@ class Sale
               JOIN sale_items on sale.sale_id = sale_items.sale_id
               GROUP BY sale.sale_id ORDER BY sale.sale_id DESC";
 
-
-
-
         $saleList=$conn->query($sql);
 
         while ($row=$saleList->fetch_array()){
@@ -110,6 +107,17 @@ class Sale
             $saleListArray[]=$newSaleList;
         }
         return $saleListArray;
+    }
+
+    public function get_sum_of_sold_sim(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT COUNT('product_id') AS sSim FROM sale_items WHERE product_c_id=2";
+
+        $getSoldSim=$conn->query($sql);
+
+        $row=$getSoldSim->fetch_array();
+
+        return $row['sSim'];
     }
 }
 ?>
