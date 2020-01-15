@@ -44,7 +44,11 @@ class Stock
 
             $stockArray[] = $newStockList;
         }
-        return $stockArray;
+        if(!empty($stockArray)){
+            return $stockArray;
+        }else{
+            echo "<script>alert('No data found')</script>";
+        }
     }
 
 }

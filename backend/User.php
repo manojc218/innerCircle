@@ -25,6 +25,7 @@ class User
     public $userName;
     public $regDate;
     public $workingId;
+    public $password;
 
     /*generate password randomly*/
     public function get_password($char)
@@ -55,39 +56,30 @@ class User
                 '$this->workingId','$this->userName','$password')";
 
         $addUser = $conn->query($sql);
-
+        $imgUId=$conn->insert_id;
 
         /*Save profile image*/
-        if(isset($_FILES['file'])){
-            $imgName=$_FILES['file']['name'];
-            $imgTemp=$_FILES['file']['tmp_name'];
-            $imgLocation="userImg/";
-            move_uploaded_file($imgTemp,$imgLocation.$imgName);
+        $path="../view/userImg/$imgUId.jpg";
+        move_uploaded_file($_FILES["imgFile"]["tmp_name"],$path);
 
-            echo $imgName;
-            echo $imgTemp;
-            echo $imgLocation;
+        /*end save profile image*/
 
-            exit();
-        }
+
         $link="http://localhost/PMSIC";//system link
 
         /*email body*/
         $mailBody="Dear ".$this->firstName." ".$this->lastName."<br>".
-            "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
-            "Now you can log into the system through ".$link.'<br/>'.
-            "Your Username : $this->userName".'<br/>'.
-            "Your Password : ".$pass;
+                  "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
+                  "Now you can log into the system through ".$link.'<br/>'.
+                  "Your Username : $this->userName".'<br/>'.
+                  "Your Password : ".$pass;
 
         /*sending mail*/
         $mail= new Mail();
         $sendMail=$mail->send_mail($this->email,"Welcome",$mailBody);
 
-        if ($addUser) {
-            return true;
-        } else {
-            return false;
-        }
+
+
     }
     /*adding new user to the system */
 
@@ -191,6 +183,7 @@ class User
             $u_details->manager = $row["manager"];
             $u_details->workingId = $row["working_id"];
             $u_details->userName = $row["user_name"];
+            $u_details->password=$row["password"];
             $u_details->regDate = $row["registeredDate"];
 
             $userDetailArray[] = $u_details;
@@ -228,7 +221,7 @@ class User
             $u_detail->roleId = $row["role_id"];
             $u_detail->manager = $row["manager"];
             $u_detail->workingId = $row["working_id"];
-            $u_detail->guyCode = $row["guyCode"];
+/*            $u_detail->guyCode = $row["guyCode"];*/
             $u_detail->userName = $row["user_name"];
             $u_detail->regDate = $row["registeredDate"];
 
@@ -317,5 +310,65 @@ class User
     }
     /*getting username by id*/
 
-    /*public function */
+    public function count_users(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT COUNT(user_id) AS ui FROM user_profile";
+
+        $getUserCount=$conn->query($sql);
+        $row=$getUserCount->fetch_array();
+
+        return $row['ui'];
+    }
+    /*get password using userId*/
+    public function get_password_by_id($uId){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT * from user_profile WHERE user_id=$uId";
+        $getUserId=$conn->query($sql);
+
+        $row=$getUserId->fetch_array();
+
+
+    }
+    /*change user password*/
+    public function change_password(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT * from user_profile WHERE user_id";
+
+        $getUserId=$conn->query($sql);
+
+        $row=$getUserId->fetch_array();
+
+        return $row;
+    }
+/*function for count user role wise*/
+    public function filter_user_by_regdate($sDate,$eDate){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT 
+                COUNT(CASE WHEN role_id='4' THEN user_id ELSE null END) AS 'admin',
+                COUNT(CASE WHEN role_id='1' THEN user_id ELSE null END) AS 'manager',
+                COUNT(CASE WHEN role_id='10' THEN user_id ELSE null END) AS 'accountant',
+                COUNT(CASE WHEN role_id='5' THEN user_id ELSE null END) AS 'freeLancer' 
+              FROM user_profile 
+              WHERE registeredDate BETWEEN '$sDate' AND '$eDate';";
+
+        /*echo $sql;*/
+        $filter_date=$conn->query($sql);
+
+        WHILE($row=$filter_date->fetch_array()){
+            $rDate=new User();
+
+            $rDate->man=$row['manager'];
+            $rDate->admin=$row['admin'];
+            $rDate->acc=$row['accountant'];
+            $rDate->fl=$row['freeLancer'];
+
+            $rDateArr[]=$rDate;
+        }
+        if(!empty($rDateArr)){
+            return $rDateArr;
+        }else{
+            echo "<script>alert('No data found')</script>";
+        }
+   }
+
 }

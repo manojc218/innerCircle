@@ -8,7 +8,6 @@ class Product
     public $productId;
     public $productDescription;
     public $addedDate;
-    public $packageName;
     public $userId;
     public $userName;
     public $firstName;
@@ -23,7 +22,7 @@ class Product
 
         foreach ($_POST['sNum'] as $item){
             $sql = "INSERT INTO product(serial_number,product_c_id,user_id,status) 
-                    VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','131','available')";
+                    VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','210','available')";
             $count++;
             $addProduct = $conn->query($sql);
         }
@@ -36,7 +35,6 @@ class Product
     /*get all products*/
     public function get_all_product()
     {
-        include_once('../backend/Package.php');
         $conn = (new Connection())->get_db();
         $sql = "SELECT * FROM product";
         $productList = $conn->query($sql);
@@ -54,7 +52,7 @@ class Product
         return $productArray;
     }
 
-    /*function for getting status of the product*/
+    /*function for getting status of the product on add sale*/
     public function get_status_by_id($sId){
 
         $conn=(new Connection())->get_db();
@@ -63,6 +61,19 @@ class Product
         $selectStatus=$conn->query($sql);
         if($selectStatus->num_rows>0)
         return 1;
+        else return 0;
+    }
+
+
+    /*function for check same serial number*/
+    public function check_serial_by_id($sId){
+
+        $conn=(new Connection())->get_db();
+        $sql="SELECT * FROM product WHERE serial_number=$sId";
+
+        $selectStatus=$conn->query($sql);
+        if($selectStatus->num_rows>0)
+            return 1;
         else return 0;
     }
 

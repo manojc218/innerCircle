@@ -25,7 +25,7 @@ class GRN
     public function get_accepted_order()
         {
             $conn=(new Connection())->get_db();
-            $sql="SELECT * FROM purchase_order WHERE status='Accepted'";
+            $sql="SELECT * FROM purchase_order WHERE status='Approved'";
             $acceptOrder=$conn->query($sql);
 
             while($row=$acceptOrder->fetch_array()){
@@ -37,7 +37,8 @@ class GRN
 
                 $acptOrderArray[]=$acptOrder;
             }
-                return $acptOrderArray;
+                if(!empty($acptOrderArray))
+                    return $acptOrderArray;
             }
 
     public function add_grn()

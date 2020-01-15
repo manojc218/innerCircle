@@ -1,17 +1,18 @@
 <?php
+
 include_once ("../backend/User.php");
 include_once ("../backend/Role.php");
 include_once ("../backend/Branch.php");
 include_once("../backend/phpmailer/Mail.php");
 
-    $role=new Role();
-    $allRoles=$role->get_all_roles();
+$role=new Role();
+$allRoles=$role->get_all_roles();
 
-    $selectedRole=new Role();
-    $allSelectedRole=$selectedRole->get_selected_role();
+$selectedRole=new Role();
+$allSelectedRole=$selectedRole->get_selected_role();
 
-    $branch=new Branch();
-    $allBranch=$branch->get_all_branches();
+$branch=new Branch();
+$allBranch=$branch->get_all_branches();
 
 /*call to add_new_user function*/
 if (isset($_POST['fname']))
@@ -36,23 +37,36 @@ if (isset($_POST['fname']))
     $newUser->workingId=$_POST['workingId'];
 
 
+
     $result = $newUser->add_new_user();
 
 }
 
-include_once('header.php');
+include_once('header3.php');
 
 ?>
-            <div class="col-md-12 col-sm-12 col-xs-12" id="reg_form">
+
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Add New Member</h2>
-                        <div class="clearfix"></div>
+                        <h4>User Registration Form</h4>
                     </div>
-                    <div class="">
-                        <br>
+
+                    <div class="x_content">
+
                         <!--Start User Reg Form-->
-                        <form class="form-horizontal form-label-left " data-validate-pattern="" novalidate="" enctype="multipart/form-data" method="post" action="#" >
+                        <form class="form-horizontal form-label-left " method="post" action="#" >
                             <div class="personal-info" id="personal-info"><!--start personal-info-->
 
                                 <!--First Name-->
@@ -84,13 +98,13 @@ include_once('header.php');
 
                                 <!--Gender-->
 
-                                <div class="form-group">
+                                <div class="form-group" aria-required="true">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender<span class="required">*</span></label>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12" aria-required="true">
                                         <div class="radio radio-inline">
                                             <label>
-                                                <input type="radio" value="Male" id="radioMale" name="genderRadio"> Male
+                                                <input type="radio" value="Male" id="radioMale" name="genderRadio" checked> Male
                                             </label>
                                         </div>
                                         <div class="radio radio-inline">
@@ -101,9 +115,6 @@ include_once('header.php');
 
                                     </div>
                                 </div>
-
-
-
 
                                 <!--Date of birth-->
                                 <div class="form-group">
@@ -172,7 +183,7 @@ include_once('header.php');
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="userImage">User Image <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="file" data-role="magic-overlay" name="file" data-target="#pictureBtn" data-edit="insertImage" required>
+                                        <input type="file" data-role="magic-overlay" name="imgFile" accept="image/*" data-target="#pictureBtn" data-edit="insertImage" required>
                                     </div>
                                 </div>
 
@@ -201,7 +212,7 @@ include_once('header.php');
                                             <?php
                                             foreach ($allBranch as $item) {
                                                 echo"<option value='$item->branchId'>$item->branchName</option>";
-                                                }
+                                            }
                                             ?>
                                         </select>
                                     </div>
@@ -214,9 +225,9 @@ include_once('header.php');
                                         <select class="form-control col-md-7 col-ms-7 col-xs-12" name="roleName" id="roleName" onchange="funManager()">
                                             <option value=''>Choose one</option>
                                             <?php
-                                                foreach($allRoles as $item){
-                                                    echo"<option value='$item->roleId'>$item->roleName</option>";
-                                                }
+                                            foreach($allRoles as $item){
+                                                echo"<option value='$item->roleId'>$item->roleName</option>";
+                                            }
                                             ?>
                                         </select>
                                     </div>
@@ -266,30 +277,10 @@ include_once('header.php');
                     </div>
                 </div>
             </div>
-
-
-<?php
-    include_once('footer.php');
-?>
-<script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
-
-!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- validator -->
-<script src="../vendors/validator/validator.js"></script>
-
-<script>
-
-
-    $('#myDatepicker2').datetimepicker({
-        format: 'DD.MM.YYYY'
-    });
-
-</script>
-
-<!--get managers for relevant branch-->
+        </div>
+    </div>
+</div>
+<!-- /page content -->
 <script>
     function getManager(){
         id=$("#branchName").val();
@@ -314,4 +305,32 @@ include_once('header.php');
     }
 </script>
 
-<
+<!-- footer content -->
+<?php
+include_once ('footer.php');
+?>
+
+
+<script>
+    function getManager(){
+        id=$("#branchName").val();
+        $.get("AJAX.php?type=getManager",{bid:id},function(data){
+
+            result=JSON.parse(data);
+            $("#manager").html("");
+            for(item in result){
+                text="<option value='"+result[item].userId+"'>"+result[item].firstName+"</option>";
+                $("#manager").append(text);
+            }
+        });
+
+    }
+
+    function funManager() {
+        if($('#roleName').val()!=5){
+            $('#divManager').hide();
+        }else{
+            $('#divManager').show();
+        }
+    }
+</script>

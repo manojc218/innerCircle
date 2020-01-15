@@ -13,7 +13,6 @@ if ($_GET['type']=="getManager"){
 
 /*distribute ->display item which are input in form*/
 if ($_GET['type']=="addTo") {
-
     $prdC = new ProductCategory();
     $category = $prdC->get_category_by_id($_GET['serialNumber']);
     $a['cat']=$category;
@@ -26,4 +25,11 @@ if($_GET['type']=="checkSerial"){
     $getStatus=$checkStatus->get_status_by_id($_GET['serialNumber']);
 
     echo ($getStatus);
+}
+
+if($_GET['type']=='checkSameSerial'){
+    $checkSerial=new Product();
+    $getSerial=$checkSerial->check_serial_by_id($_GET['serialNumber']);
+
+    echo($getSerial);
 }

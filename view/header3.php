@@ -3,16 +3,16 @@
 if(!isset($_SESSION)){
     session_start();
 }
-    if(!isset($_SESSION['userId'])){
-        header('location:../index.php');
-    }
-    $uid=$_SESSION["userId"];
-    $userName=$_SESSION["userName"];
+if(!isset($_SESSION['userId'])){
+    header('location:../index.php');
+}
+$uid=$_SESSION["userId"];
+$userName=$_SESSION["userName"];
 
-    include_once ('../backend/User.php');
+include_once ('../backend/User.php');
 
-    $user=new User();
-    $getUserId=$user->get_user_by_id($uid);
+$user=new User();
+$getUserId=$user->get_user_by_id($uid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,17 +23,12 @@ if(!isset($_SESSION)){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>InnerCircle</title>
+    <title>Inner Circle (PVT) Ltd.</title>
 
-
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!--data tablesor pdf-->
-    <link href="../vendors/datatables/datatables.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../vendors/datatables/datatables.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -49,22 +44,16 @@ if(!isset($_SESSION)){
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
 
-    <!--page content start-->
-
-
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.css" rel="stylesheet">
+    <link href="../build/css/custom.min.css" rel="stylesheet">
     <!--custom my css-->
     <link href="../build/customCss/mycss.css" rel="stylesheet">
-
-
 </head>
 
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        <div class="col-md-3 left_col menu mCustomScrollBox _mCS_1 mCS-autoHide" style="overflow: visible;">
-
+        <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
                     <a href="dashboard.php" class="site_title"><img src="../docs/images/inner%20circle%20logo%20transparent_white_icon.png" style="width: 135px; height:100px;"> </a>
@@ -82,17 +71,16 @@ if(!isset($_SESSION)){
                     <div class="profile_info"  style="text-align: center">
                         <span>Welcome,<br></span>
                         <?php
-                            echo "<a href='up_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
+                        echo "<a href='up_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
                         ?>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
 
-
-                <br/>
+                <br />
 
                 <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu fixed">
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                         <!--<h3>General</h3>-->
                         <div class="separator" style=""></div>
@@ -124,11 +112,11 @@ if(!isset($_SESSION)){
                             </li>
                             <!--products-->
                             <li>
-                            <a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
+                                <a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
                                     <li><a href="product_category.php">Product Categories<span class="fa fa-chevron-right"></span></a></li>
-<!--                                    <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
--->                                    <li><a href="add_product.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
+                                    <!--                                    <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
+                                    -->                                    <li><a href="add_product.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="view_products.php">View Products<span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </li>
@@ -170,17 +158,23 @@ if(!isset($_SESSION)){
                             </li>
                         </ul>
                     </div>
+
                 </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+
+                <!-- /menu footer buttons -->
             </div>
         </div>
 
         <!-- top navigation -->
         <div class="top_nav">
-            <div class="nav_menu" >
+            <div class="nav_menu">
                 <nav>
-                   <div class="nav toggle">
+                    <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                   </div>
+                    </div>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
@@ -228,23 +222,9 @@ if(!isset($_SESSION)){
                         </span>
                                     </a>
                                 </li>-->
-                            </ul>
-                        </li>
+
                     </ul>
                 </nav>
             </div>
         </div>
         <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class= "right_col" role="main">
-
-            <div class="">
-                <div class="page-title">
-
-                </div>
-              <div class="row">
-                  <div>
-
-                      <div class="row">
-

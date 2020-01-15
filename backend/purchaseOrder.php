@@ -43,7 +43,7 @@ class PurchaseOrder
     /*get main information of purchase orders*/
     public function get_order(){
         $conn=(new Connection())->get_db();
-        $sql="SELECT * FROM purchase_order";
+        $sql="SELECT * FROM purchase_order WHERE status='pending'";
         $getOrder=$conn->query($sql);
 
         while($row=$getOrder->fetch_array()){
@@ -53,7 +53,10 @@ class PurchaseOrder
             $order->orderStatus=$row["status"];
             $orderArray[]=$order;
         }
-        return $orderArray;
+        if(!empty($orderArray)){
+            return $orderArray;
+        }
+
     }
 
     /*get category details which relevant to the ref no by id*/
@@ -82,4 +85,20 @@ class PurchaseOrder
         }
         return $getCNameArr;
     }
+    /*cancel purchase order*/
+    public function deleteOrder($rn){
+        $conn=(new Connection())->get_db();
+        $sql="UPDATE purchase_order SET status='Canceled' WHERE reference_no=$rn";
+
+        $cancel=$conn->query($sql);
+
+    }
+    /*approve purchase order*/
+    public function update_approve(){
+        $conn=(new Connection())->get_db();
+        $sql="UPDATE purchase_order SET status='Approved' WHERE reference_no=$this->orderRef";
+
+        $approve=$conn->query($sql);
+    }
+
 }

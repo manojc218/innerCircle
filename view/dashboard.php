@@ -1,128 +1,146 @@
 <?php
-    include_once('header.php');
+    include_once('headerLoader.php');
     include_once ('../backend/Branch.php');
     include_once ('../backend/Sale.php');
+    include_once ('../backend/User.php');
 
     $branchCount=new Branch();
     $newBranchCount=$branchCount->count_branch();
 
-    $simCount=new Sale();
-    $soldSimCount=$simCount->get_sum_of_sold_sim();
-?>
-<div class="col-md-12 col-ms-12 col-xs-12">
-    <!--start x_panel-->
-    <div class="x_panel">
-        <div class="x_title">
-            <h4>Dashboard</h4>
-        </div>
-        <!--start page content-->
-        <div class="x_content">
-            <!--start row titles-->
-            <div class="row tile_count">
-                <!--count for total employees-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Employees</span>
-                    <div class="count">2500</div>
-                    <span class="count_bottom"><i class="green">4% </i> From last Week</span>
-                </div>
-                <!--count for total branches-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-clock-o"></i> Total Branches</span>
-                    <div class="count"><?php echo $newBranchCount ?></div>
-                </div>
-                <!--count for total sold sims-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Sold Sims</span>
-                    <div class="count "><?php echo $soldSimCount ?></div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-                </div>
-                <!--count for total sold routers-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Sold Routers</span>
-                    <div class="count">4,567</div>
-                    <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-                </div>
-                <!--count for total sold Dtv-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Sold Sim</span>
-                    <div class="count">2,315</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-                </div>
-                <!--count for total events-->
-                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                    <span class="count_top"><i class="fa fa-user"></i> Total Events</span>
-                    <div class="count">7,325</div>
-                    <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-                </div>
-            </div>
-            <!--end row titles-->
+    $productCount=new Sale();
+    $soldSimCount=$productCount->get_sum_of_sold_sims();
+    $soldRouterCount=$productCount->get_sum_of_sold_router();
+    $soldDtvCount=$productCount->get_sum_of_sold_dtv();
 
-            <!--start monthly sales chart-->
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="profile_title">
-                        <div class="col-md-6">
-                            <h2>Monthly Sales</h2>
-                        </div>
-                        <div class="col-md-6">
-                            <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                <span>September 29, 2019 - October 28, 2019</span> <b class="caret"></b>
+    $userCount=new User();
+    $getUserCount=$userCount->count_users();
+?>
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-ms-12 col-xs-12">
+                <!--start x_panel-->
+                <div class="x_panel">
+
+                    <!--start page content-->
+                    <div class="x_content">
+                        <!--start data counts titles-->
+                        <div class="row tile_count">
+                            <!--count for total employees-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Total Employees</span>
+                                <div class="count"><?php echo $getUserCount ?></div>
+                            </div>
+                            <!--count for total branches-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-clock-o"></i> Total Branches</span>
+                                <div class="count"><?php echo $newBranchCount ?></div>
+                            </div>
+                            <!--count for total sold sims-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Total Sold Sims</span>
+                                <div class="count "><?php echo $soldSimCount ?></div>
+                            </div>
+                            <!--count for total sold routers-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Total Sold Routers</span>
+                                <div class="count"><?php echo $soldRouterCount?></div>
+                            </div>
+                            <!--count for total sold Dtv-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Total Sold Dtv</span>
+                                <div class="count"><?php echo $soldDtvCount?></div>
+                            </div>
+                            <!--count for total events-->
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> Total Events</span>
+                                <div class="count">7,325</div>
                             </div>
                         </div>
-                    </div>
-                    <!-- start of user-activity-graph -->
-                    <div id="graph_bar" style="width: 100%; height: 280px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="280" version="1.1" width="486" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; top: -0.2px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël @@VERSION</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="42.53125" y="213.600820665125" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">0</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,213.600820665125H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="166.45061549884377" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.395927998843774">750</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,166.45061549884377H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="119.3004103325625" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.401972832562507">1,500</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,119.3004103325625H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="72.15020516628124" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.400205166281239">2,250</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,72.15020516628124H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.3984375">3,000</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,25H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="440.7015625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-62.5407,308.3107)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">Other</tspan></text><text x="400.1046875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-91.0759,299.725)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6S Plus</tspan></text><text x="359.5078125" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-87.3569,268.5547)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6S</tspan></text><text x="318.9109375" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-102.4769,250.8545)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6 Plus</tspan></text><text x="278.3140625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-98.7629,219.6931)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6</tspan></text><text x="237.7171875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-109.3837,198.6949)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 5S</tspan></text><text x="197.1203125" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-113.4484,173.1169)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 5</tspan></text><text x="156.5234375" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-127.8932,154.8073)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 3GS</tspan></text><text x="115.9265625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-131.4076,128.844)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 4S</tspan></text><text x="75.3296875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-135.4722,103.2661)">
-                                <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 4</tspan></text><rect x="60.105859375" y="189.71138338087584" width="30.447656249999998" height="23.88943728424917" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="100.70273437499999" y="172.42297481990605" width="30.447656249999998" height="41.17784584521897" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="141.299609375" y="196.31241210415521" width="30.447656249999998" height="17.2884085609698" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="181.89648437499997" y="114.8368575768212" width="30.447656249999998" height="98.76396308830381" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="222.49335937499998" y="172.42297481990605" width="30.447656249999998" height="41.17784584521897" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="263.090234375" y="78.18543142756525" width="30.447656249999998" height="135.41538923755976" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="303.687109375" y="141.68104105149067" width="30.447656249999998" height="71.91977961363435" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="344.283984375" y="64.54330539945454" width="30.447656249999998" height="149.05751526567047" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="384.880859375" y="121.12355159899204" width="30.447656249999998" height="92.47726906613298" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="425.477734375" y="127.41024562116287" width="30.447656249999998" height="86.19057504396214" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect></svg><div class="morris-hover morris-default-style" style="left: 372px; top: 111px; display: none;"><div class="morris-hover-row-label">Other</div><div class="morris-hover-point" style="color: #26B99A">
-                                Geekbench:
-                                1,371
-                            </div></div></div>
-                    <!-- end of user-activity-graph -->
-            </div>
-            <!--end monthly sales chart-->
+                        <!--end data counts titles-->
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <!--start monthly sales chart-->
+                            <div class="dashboard_graph">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>Monthly Sales</h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                            <span>December 12, 2019 - January 10, 2020</span> <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="demo-container" style="height:250px">
+                                        <div id="chart_plot_03" class="demo-placeholder" style="padding: 0px; position: relative;">
+                                            <canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 910px; height: 280px;" width="1137" height="350"></canvas>
+                                            <div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+                                                <div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 15px; text-align: center;">0</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 126px; text-align: center;">2</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 236px; text-align: center;">4</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 347px; text-align: center;">6</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 457px; text-align: center;">8</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 565px; text-align: center;">10</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 675px; text-align: center;">12</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 786px; text-align: center;">14</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; max-width: 126px; top: 264px; left: 896px; text-align: center;">16</div>
+                                                </div>
+                                                <div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 252px; left: 7px; text-align: right;">0</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 220px; left: 7px; text-align: right;">5</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 189px; left: 1px; text-align: right;">10</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 157px; left: 1px; text-align: right;">15</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 126px; left: 1px; text-align: right;">20</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 95px; left: 1px; text-align: right;">25</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 63px; left: 1px; text-align: right;">30</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 32px; left: 1px; text-align: right;">35</div>
+                                                    <div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 1px; text-align: right;">40</div>
+                                                </div>
+                                            </div>
+                                            <canvas class="flot-overlay" width="1137" height="350" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 910px; height: 280px;"></canvas>
+                                            <div class="legend">
+                                                <div style="position: absolute; width: 78px; height: 15px; top: 13px; right: 13px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div>
+                                                <table style="position:absolute;top:13px;right:13px;;font-size:smaller;color:#545454">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="legendColorBox">
+                                                            <div style="border:1px solid #ccc;padding:1px">
+                                                                <div style="width:4px;height:0;border:5px solid rgb(38,185,154);overflow:hidden"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="legendLabel">Sim Cards</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-            <!--start last week sales chart-->
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="profile_title">
-                    <div class="col-md-6">
-                        <h2>Last Week Sales</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>September 29, 2019 - October 28, 2019</span> <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end of user-activity-graph -->
                         </div>
+
                     </div>
+
                 </div>
-                <!-- start of user-activity-graph -->
-                <div id="graph_bar" style="width: 100%; height: 280px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="280" version="1.1" width="486" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; top: -0.2px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël @@VERSION</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="42.53125" y="213.600820665125" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">0</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,213.600820665125H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="166.45061549884377" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.395927998843774">750</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,166.45061549884377H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="119.3004103325625" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.401972832562507">1,500</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,119.3004103325625H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="72.15020516628124" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.400205166281239">2,250</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,72.15020516628124H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="42.53125" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.3984375">3,000</tspan></text><path fill="none" stroke="#aaaaaa" d="M55.03125,25H461" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="440.7015625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-62.5407,308.3107)"><tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">Other</tspan></text><text x="400.1046875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-91.0759,299.725)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6S Plus</tspan></text><text x="359.5078125" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-87.3569,268.5547)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6S</tspan></text><text x="318.9109375" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-102.4769,250.8545)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6 Plus</tspan></text><text x="278.3140625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-98.7629,219.6931)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 6</tspan></text><text x="237.7171875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-109.3837,198.6949)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 5S</tspan></text><text x="197.1203125" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-113.4484,173.1169)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 5</tspan></text><text x="156.5234375" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-127.8932,154.8073)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 3GS</tspan></text><text x="115.9265625" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-131.4076,128.844)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 4S</tspan></text><text x="75.3296875" y="226.100820665125" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(0.8192,-0.5736,0.5736,0.8192,-135.4722,103.2661)">
-                            <tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" dy="4.397695665125013">iPhone 4</tspan></text><rect x="60.105859375" y="189.71138338087584" width="30.447656249999998" height="23.88943728424917" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="100.70273437499999" y="172.42297481990605" width="30.447656249999998" height="41.17784584521897" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="141.299609375" y="196.31241210415521" width="30.447656249999998" height="17.2884085609698" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="181.89648437499997" y="114.8368575768212" width="30.447656249999998" height="98.76396308830381" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="222.49335937499998" y="172.42297481990605" width="30.447656249999998" height="41.17784584521897" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="263.090234375" y="78.18543142756525" width="30.447656249999998" height="135.41538923755976" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="303.687109375" y="141.68104105149067" width="30.447656249999998" height="71.91977961363435" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="344.283984375" y="64.54330539945454" width="30.447656249999998" height="149.05751526567047" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="384.880859375" y="121.12355159899204" width="30.447656249999998" height="92.47726906613298" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect><rect x="425.477734375" y="127.41024562116287" width="30.447656249999998" height="86.19057504396214" rx="0" ry="0" fill="#26b99a" stroke="none" fill-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"></rect></svg><div class="morris-hover morris-default-style" style="left: 372px; top: 111px; display: none;"><div class="morris-hover-row-label">Other</div><div class="morris-hover-point" style="color: #26B99A">
-                            Geekbench:
-                            1,371
-                        </div></div></div>
-                <!-- end of user-activity-graph -->
+                <!--end page content-->
             </div>
-            <!--end last week sales chart-->
+
         </div>
-        <!--end page content-->
     </div>
-    <!--end x_panel-->
 </div>
+<!-- /page content -->
+<!-- footer content -->
 <?php
     include_once('footer.php');
 ?>

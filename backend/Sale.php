@@ -61,7 +61,10 @@ class Sale
         }
 
         if($addSale){
+
             return true;
+
+
         }else{
             return false;
         }
@@ -109,7 +112,7 @@ class Sale
         return $saleListArray;
     }
 
-    public function get_sum_of_sold_sim(){
+    public function get_sum_of_sold_sims(){
         $conn=(new Connection())->get_db();
         $sql="SELECT COUNT('product_id') AS sSim FROM sale_items WHERE product_c_id=2";
 
@@ -118,6 +121,28 @@ class Sale
         $row=$getSoldSim->fetch_array();
 
         return $row['sSim'];
+    }
+
+    public function get_sum_of_sold_router(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT COUNT('product_id') AS sr FROM sale_items WHERE product_c_id=3";
+
+        $getSoldRouter=$conn->query($sql);
+
+        $row=$getSoldRouter->fetch_array();
+
+        return $row['sr'];
+    }
+
+    public function get_sum_of_sold_dtv(){
+        $conn=(new Connection())->get_db();
+        $sql="SELECT COUNT('product_id') AS sdtv FROM sale_items WHERE product_c_id=4";
+
+        $getSoldDtv=$conn->query($sql);
+
+        $row=$getSoldDtv->fetch_array();
+
+        return $row['sdtv'];
     }
 }
 ?>

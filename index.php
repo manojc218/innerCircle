@@ -83,8 +83,8 @@
 
                         <!--login button-->
                         <button class="btn btn-primary btn-lg" >Login</button>
-                        <a class="reset_pass" href="#">Lost your password?</a>
-                    </div>
+<!--                        <a class="reset_pass" href="#">Lost your password?</a>
+-->                    </div>
 
                     <div class="clearfix"></div>
 
@@ -103,49 +103,6 @@
             </section>
         </div>
     </div>
-        <div class="login_wrapper">
-                <div class="animate form login_form">
-                    <section class="login_content">
-                        <!--start login form-->
-                        <form method="post" action="index.php">
-                            <h1>INNER CIRCLE (PVT) Ltd.</h1>
-                            <div class="alert alert-info" role="alert" id="lgAlert">
-                                <h3>Please Login Here</h3>
-                                <?=$msg?>
-                            </div>
 
-                            <!--User name-->
-                            <div>
-                                <input type="text" class="form-control" placeholder="Username" required=""  name="username"/>
-                            </div>
-
-                            <!--Password-->
-                            <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" name="password" />
-                            </div>
-                            <div>
-
-                                <!--login button-->
-                                <button class="btn btn-primary btn-lg" >Login</button>
-                                <a class="reset_pass" href="#">Lost your password?</a>
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="separator">
-
-
-                                <div class="clearfix"></div>
-                                <br />
-                                        <!--Inner Circle Logo-->
-                                <div>
-                                    <img src="docs/images/inner%20circle%20logo%20transparent_white_croped.png" style="width: 300px;height: 170px;">
-                                </div>
-                            </div>
-                        </form>
-                            <!--End login form-->
-                    </section>
-                </div>
-        </div>
     </body>
 </html>

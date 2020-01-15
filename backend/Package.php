@@ -23,7 +23,7 @@ class Package
     }
 
     /*Display packages*/
-    public function get_all_packages(){
+    /*public function get_all_packages(){
         $conn=(new Connection())->get_db();
         $sql="SELECT * FROM package";
 
@@ -38,7 +38,7 @@ class Package
             $packageDetailArray[]=$package_details;
         }
         return $packageDetailArray;
-    }
+    }*/
 
     public function get_package_by_id($packageId){
         $conn=(new Connection())->get_db();

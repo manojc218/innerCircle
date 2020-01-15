@@ -1,5 +1,5 @@
 <?php
-    include_once ('header.php');
+    include_once ('header3.php');
     include_once ('../backend/PurchaseOrder.php');
     include_once ('../backend/GRN.php');
 
@@ -30,81 +30,89 @@
 
 
 ?>
-<!--start content-->
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Add GRN</h2>
-            </div>
-            <div class="x_content">
-                <form action="#" method="POST" class="form-horizontal form-label-left">
-                    <div class="row">
-                        <!--left col-->
-                        <div class="col-md-6">
-                            <!--ref number-->
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReferenceNo">Reference No</label>
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <input type="text" class="form-control" value="<?php echo $grnDetails[0]->orderRef ?>" name="grnRefNo" id="grnRefNo" readonly>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
 
-                                </div>
-                            </div>
+        </div>
+        <div class="clearfix"></div>
 
-
-                            <!---->
-                        </div>
-                        <!--right col-->
-                        <div class="col-md-6">
-                            <!--order date-->
-                            <div class="form-group">
-                                <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="orderDate">Order Date </label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control has-feedback-left" name="orderDate" value="<?php echo $grnDetails[0]->orderDate?>" readonly="">
-                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="receivedDate">Received Date </label>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <input type="text" class="form-control has-feedback-left" name="receivedDate" value="<?php echo date("Y/m/d")?>" readonly>
-                                    <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                </div>
-                            </div>
-
-                            <!--Received data-->
-                            <!--<div class="form-group">
-                                <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="receivedDate">Received Date </label>
-                                <div class="col-md-8 col-sm-8 col-xs-8">
-                                    <input type="text" class="form-control" name="receivedDate" id="receivedDate" readonly>
-                                </div>
-                            </div>-->
-                        </div>
+        <div class="row">
+            <!--start content-->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Add GRN</h2>
                     </div>
+                    <div class="x_content">
+                        <form action="#" method="POST" class="form-horizontal form-label-left">
+                            <div class="row">
+                                <!--left col-->
+                                <div class="col-md-6">
+                                    <!--ref number-->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReferenceNo">Reference No</label>
+                                        <div class="col-md-8 col-sm-8 col-xs-8">
+                                            <input type="text" class="form-control" value="<?php echo $grnDetails[0]->orderRef ?>" name="grnRefNo" id="grnRefNo" readonly>
 
-                    <div class="row">
-                        <div class="table-responsive" style="margin-top: 75px;">
+                                        </div>
+                                    </div>
 
-                            <!--data input table-->
-                            <table class="table table-striped jambo_table bulk_action" id="tblOrder">
 
-                                <thead>
-                                <tr class="headings">
-                                    <th hidden class="column-title">Purchase Order Id</th>
-                                    <th hidden class="column-title">CategoryId</th>
-                                    <th class="column-title">Category</th>
-                                    <th class="column-title">Description</th>
-                                    <th class="column-title">Ordered Qty </th>
-                                    <th class="column-title">Received Qty </th>
-                                    <th class="column-title">Unit Price (Rs) </th>
-                                    <th class="column-title">Sell Price (Rs) </th>
-                                    <th class="column-title">Subtotal (Rs)</th>
-                                </tr>
-                                </thead>
+                                    <!---->
+                                </div>
+                                <!--right col-->
+                                <div class="col-md-6">
+                                    <!--order date-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="orderDate">Order Date </label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control has-feedback-left" name="orderDate" value="<?php echo $grnDetails[0]->orderDate?>" readonly="">
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="receivedDate">Received Date </label>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <input type="text" class="form-control has-feedback-left" name="receivedDate" value="<?php echo date("Y/m/d")?>" readonly>
+                                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
 
-                                <tbody id="">
-                                <?php
-                                foreach ($grnDetails as $item){
-                                    echo "<tr>
+                                    <!--Received data-->
+                                    <!--<div class="form-group">
+                                        <label class="col-md-3 col-sm-3 col-xs-12 control-label" for="receivedDate">Received Date </label>
+                                        <div class="col-md-8 col-sm-8 col-xs-8">
+                                            <input type="text" class="form-control" name="receivedDate" id="receivedDate" readonly>
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="table-responsive" style="margin-top: 75px;">
+
+                                    <!--data input table-->
+                                    <table class="table table-striped jambo_table bulk_action" id="tblOrder">
+
+                                        <thead>
+                                        <tr class="headings">
+                                            <th hidden class="column-title">Purchase Order Id</th>
+                                            <th hidden class="column-title">CategoryId</th>
+                                            <th class="column-title">Category</th>
+                                            <th class="column-title">Description</th>
+                                            <th class="column-title">Ordered Qty </th>
+                                            <th class="column-title">Received Qty </th>
+                                            <th class="column-title">Unit Price (Rs) </th>
+                                            <th class="column-title">Sell Price (Rs) </th>
+                                            <th class="column-title">Subtotal (Rs)</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="">
+                                        <?php
+                                        foreach ($grnDetails as $item){
+                                            echo "<tr>
                                     <td hidden><input type='text' value='$item->orderId' name='pOrderId' class='form-control col-md-1 col-sm-1 col-xs-12' </td>
                                     <td hidden><input type='text' value='$item->orderCategory' name='grnCId[]' class='form-control col-md-1 col-sm-1 col-xs-12' </td>
                                     <td><input type='text' value='$item->orderCategoryName' class='col-md-2 col-sm-2 col-xs-12 form-control' name='grnCatName[]' id='grnCatName' readonly></td>
@@ -116,30 +124,36 @@
                                     <td class=\"col-md-2 col-sm-2 col-xs-6 \" readonly><input type=\"text\" value='0' name=\"subTotal[]\" id=\"subTotal\" class=\"form-control subTotal\" readonly ></td>
 
                                 </tr>";
-                                    }
-                                ?>
-                                <tr>
-                                    <td colspan="6" class="col-md-2 col-sm-2 col-xs-2 " style="background-color: #2A3F54;color:#fff;font-size: 25px;text-align: center;">Total</td>
-                                    <td class="col-md-2 col-sm-2 col-xs-2"  style="background-color: #2A3F54"><input type="text" class="form-control total" name="grnTotal" id="grnTotal" readonly></td>
-                                </tr>
+                                        }
+                                        ?>
+                                        <tr>
+                                            <td colspan="6" class="col-md-2 col-sm-2 col-xs-2 " style="background-color: #2A3F54;color:#fff;font-size: 25px;text-align: center;">Total</td>
+                                            <td class="col-md-2 col-sm-2 col-xs-2"  style="background-color: #2A3F54"><input type="text" class="form-control total" name="grnTotal" id="grnTotal" readonly></td>
+                                        </tr>
 
-                            </table>
+                                    </table>
 
-                            <hr class="separator">
-                            <div class="form-group" style="text-align: right">
-                                <a href="add_grn.php"><input type="button" value="Back" class="btn btn-warning btn-lg"></a>
-                                <input type="submit" value="Received" class="btn btn-success btn-lg" >
-                                <input type="button" value="Reset" class="btn btn-danger btn-lg" onclick="window.location.reload()">
+                                    <hr class="separator">
+                                    <div class="form-group" style="text-align: right">
+                                        <a href="add_grn.php"><input type="button" value="Back" class="btn btn-warning btn-lg"></a>
+                                        <input type="submit" value="Received" class="btn btn-success btn-lg" >
+                                        <input type="button" value="Reset" class="btn btn-danger btn-lg" onclick="window.location.reload()">
+                                    </div>
+
+                                </div>
                             </div>
 
-                        </div>
+                        </form>
                     </div>
-
-                </form>
+                </div>
             </div>
+            <!--end content-->
         </div>
     </div>
-    <!--end content-->
+</div>
+<!-- /page content -->
+<!-- footer content -->
+
 <?php
     include_once ('footer.php');
 ?>

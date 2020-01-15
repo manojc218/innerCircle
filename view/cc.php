@@ -1,19 +1,4 @@
-<?php
 
-if(!isset($_SESSION)){
-    session_start();
-}
-    if(!isset($_SESSION['userId'])){
-        header('location:../index.php');
-    }
-    $uid=$_SESSION["userId"];
-    $userName=$_SESSION["userName"];
-
-    include_once ('../backend/User.php');
-
-    $user=new User();
-    $getUserId=$user->get_user_by_id($uid);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +7,7 @@ if(!isset($_SESSION)){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>InnerCircle</title>
 
@@ -81,15 +67,12 @@ if(!isset($_SESSION)){
 
                     <div class="profile_info"  style="text-align: center">
                         <span>Welcome,<br></span>
-                        <?php
-                            echo "<a href='up_view.php?uId=$uid' style='color: #fff;font-size: 14px'>$userName</a>";
-                        ?>
-                    </div>
+                        <a href='up_view.php?uId=201' style='color: #fff;font-size: 14px'>duminda</a>                    </div>
                 </div>
                 <!-- /menu profile quick info -->
 
 
-                <br/>
+
 
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu fixed">
@@ -124,11 +107,11 @@ if(!isset($_SESSION)){
                             </li>
                             <!--products-->
                             <li>
-                            <a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
+                                <a><i class="fa fa-database"></i> Products <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
                                     <li><a href="product_category.php">Product Categories<span class="fa fa-chevron-right"></span></a></li>
-<!--                                    <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
--->                                    <li><a href="add_product.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
+                                    <!--                                    <li><a href="packages.php">Packages<span class="fa fa-chevron-right"></span></a></li>
+                                    -->                                    <li><a href="add_product.php">Add Products<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="view_products.php">View Products<span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </li>
@@ -178,9 +161,9 @@ if(!isset($_SESSION)){
         <div class="top_nav">
             <div class="nav_menu" >
                 <nav>
-                   <div class="nav toggle">
+                    <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                   </div>
+                    </div>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
@@ -228,8 +211,8 @@ if(!isset($_SESSION)){
                         </span>
                                     </a>
                                 </li>-->
-                            </ul>
-                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </nav>
             </div>
@@ -240,11 +223,198 @@ if(!isset($_SESSION)){
         <div class= "right_col" role="main">
 
             <div class="">
-                <div class="page-title">
+                <div class="row">
+                    <div style="min-height: 3768px;">
+                        <div class="">
+                            <div class="page-title">
+                                <div class="title_left">
 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="row">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h4>Sales</h4>
+                                    </div>
+                                    <div class="x_content">
+                                        <!--date filter-->
+
+                                        <form class="form-horizontal">
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label class="col-md-1 col-sm-1 col-xs-12 control-label" for="startDate">From </label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <input type="date" class="form-control has-feedback-left" name="startDate" id="startDate">
+                                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-1 col-sm-1 col-xs-12 control-label" for="endDate">To </label>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <input type="date" class="form-control has-feedback-left" name="endDate" id="endDate">
+                                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-lg" id="btnSearch" style="position: relative;left: 300px;">Search</button>
+                                            </div>
+                                        </form>
+                                        <br>
+                                        <!--start table-->
+                                        <table class="table table-striped jambo_table" id="saleTable">
+                                            <thead>
+                                            <tr class="headings">
+                                                <th class="column-title" style="display: table-cell;">Guy Name </th>
+                                                <th class="column-title" style="display: table-cell;">Sale Date </th>
+                                                <th class="column-title" style="display: table-cell;">Sim Cards </th>
+                                                <th class="column-title" style="display: table-cell;">4G Routers </th>
+                                                <th class="column-title" style="display: table-cell;">Dialog Tv </th>
+                                                <th class="column-title" style="display: table-cell;">Total Points</th>
+                                                <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Action</span>
+                                                </th>
+                                                <th class="bulk-actions" colspan="7" style="display: none;">
+                                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt">1 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
+                                                </th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr>
+
+                                                <td class=''>Rasika Kumara</td>
+                                                <td class=''>2020-01-12</td>
+                                                <td class=''>1 </i></td>
+                                                <td class=''>0</td>
+                                                <td class=''>1</td>
+                                                <td class=''>10</td>
+                                                <td class=''><a href=''>View</a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--end table-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              <div class="row">
-                  <div>
+            </div>
+        </div>
 
-                      <div class="row">
+
+
+        <!-- footer content -->
+        <footer class="">
+            <div class="pull-left">
+                Inner Circle (PVT) Ltd
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+</body>
+</html>
+
+<!-- jQuery -->
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../vendors/moment/min/moment.min.js"></script>
+<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Ion.RangeSlider -->
+<script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
+<!-- Bootstrap Colorpicker -->
+<script src="../vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- jquery.inputmask -->
+<script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+<!-- jQuery Knob -->
+<script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- Cropper -->
+<script src="../vendors/cropper/dist/cropper.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+<!--validation-->
+
+<script>
+    $('.numonly').bind('input paste', function(){
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    $('.deconly').keydown(function(e){
+        var key = e.charCode || e.keyCode || 0;
+        // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+        // home, end, period, and numpad decimal
+        return (
+            key == 8 ||
+            key == 9 ||
+            key == 13 ||
+            key == 46 ||
+            key == 110 ||
+            key == 190 ||
+            (key >= 35 && key <= 40) ||
+            (key >= 48 && key <= 57) ||
+            (key >= 96 && key <= 105));
+    });
+
+    $('.deconly').change(function(){
+        if( !this.value.match(/((^[0-9]*[.])?[0-9]+$)/g, '')){
+            this.value="";
+        }
+    });
+
+</script>
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="../vendors/datatables/buttons.jqueryui.js"></script>
+
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../vendors/datatables/buttons.bootstrap4.js"></script>
+<script src="../vendors/datatables/buttons.bootstrap.js"></script>
+<script src="../vendors/datatables/buttons.html5.js"></script>
+<script src="../vendors/datatables/datatables.js"></script>
+<script src="../vendors/datatables/buttons.print.js"></script>
+<script src="../vendors/datatables/buttons.colVis.js"></script>
+<!-- Datatables -->
+
+<script>
+    $(document).ready(function(){
+        $('#saleTable').DataTable({
+            dom:'Bfrtip',"pageLength":20,
+            buttons:[
+                'copy',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5',
+                {
+                    extend:'print',
+                    exportOptions:{
+                        column:':visible'
+                    }
+                },
+                'colvis'
+            ],
+            "scrollY":"450px",
+            "scrollCollapse": true,
+            "paging":         false
+        });
+    });
+</script>
 
