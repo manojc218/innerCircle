@@ -12,6 +12,7 @@ class Sale
     public $productCId;
     public $productCName;
     public $saleSNum;
+    public $sPoints;
 
     public function add_sale(){
         $conn=(new Connection())->get_db();
@@ -34,22 +35,35 @@ class Sale
         foreach ($_POST['saleSNum'] as $item){
 
             /*get product id for relevant serial number*/
-            $productSNum="SELECT * FROM product WHERE serial_number='".$this->saleSNum[$count]."'";
+            $productSNum="SELECT * FROM product WHERE serial_number=".$this->saleSNum[$count];
+
+            /*echo $productSNum;*/
+
             $getPrId=$conn->query($productSNum);
             $prId=$getPrId->fetch_array();
+
+
+            /*print_r($prId);
+            exit();*/
             $prId=$prId['product_id'];
 
+
+
             /*get product category id for relevant serial number*/
-            $productCName="SELECT * FROM product_category 
+            $sql4="SELECT * FROM product_category
                            JOIN product on product_category.product_c_id = product.product_c_id 
-                           WHERE serial_number='".$this->saleSNum[$count]."'";
-            $getPrCId=$conn->query($productCName);
+                           WHERE serial_number=".$this->saleSNum[$count];
+
+            $getPrCId=$conn->query($sql4);
             $prCId=$getPrCId->fetch_array();
             $prCId=$prCId['product_c_id'];
 
 
             /*Send data to the sales item table*/
-            $sql2="INSERT INTO sale_items (product_c_id,product_id,sale_id) VALUES ('$prCId','$prId','$sId')";
+            $sql2="INSERT INTO sale_items (sale_id,product_id,product_c_id) VALUES ('$sId','$prId','$prCId')";
+            echo $sql2;
+            echo $prId;
+            echo $prCId;
 
             /*update status of the product table for relevant product, after sale.*/
             $sql3="UPDATE product SET status='sold' WHERE product_id=$prId";
@@ -59,17 +73,14 @@ class Sale
             $updatePStatus=$conn->query($sql3);
 
         }
-
-        if($addSale){
-
+        if($sql){
             return true;
-
-
         }else{
             return false;
         }
+
     }
-/*functions for getting sales*/
+    /*functions for getting sales*/
     public function get_all_sales_details(){
         $conn=(new Connection())->get_db();
 
@@ -92,9 +103,10 @@ class Sale
                             THEN sale_items.product_id
                             ELSE null
                       END
-                ) AS 'dtv' 
+                ) AS 'dtv', SUM(product_category.points) AS 'points'
               FROM sale JOIN user_profile on sale.user_id = user_profile.user_id
               JOIN sale_items on sale.sale_id = sale_items.sale_id
+              JOIN product_category on sale_items.product_c_id = product_category.product_c_id
               GROUP BY sale.sale_id ORDER BY sale.sale_id DESC";
 
         $saleList=$conn->query($sql);
@@ -105,6 +117,7 @@ class Sale
             $newSaleList->simCard=$row['simCard'];
             $newSaleList->router=$row['4gRouter'];
             $newSaleList->dtv=$row['dtv'];
+            $newSaleList->sPoints=$row['points'];
             $newSaleList->saleDate=$row['sale_date'];
 
             $saleListArray[]=$newSaleList;

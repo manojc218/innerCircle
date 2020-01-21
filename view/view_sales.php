@@ -71,7 +71,7 @@
                     <td class=''>$item->simCard </i></td>
                     <td class=''>$item->router</td>
                     <td class=''>$item->dtv</td>
-                    <td class=''>10</td>
+                    <td class=''>$item->sPoints</td>
                     <td class=''><a href=''>View</a>
                     </td>
                 </tr>";}

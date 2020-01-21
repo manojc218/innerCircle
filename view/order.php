@@ -132,7 +132,7 @@ if (isset($_POST['catName'])){
                                     </div>
                                     <!--submit button-->
                                     <div class="form-group" style="text-align: right">
-                                        <input type="button" value="Add" class="btn btn-primary btn-lg" onclick="addTo()" required>
+                                        <input type="button" value="Add" class="btn btn-primary btn-lg" onclick="addTo()">
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@ include_once ('footer.php');
             "<tr>" +
             "<td hidden><input type='text' class='form-control' name='cNameIdArr[]' value='"+cNameId+"' readonly></td>"+
             "<td><input type='text' class='form-control' name='cNameArr[]' value='"+c_Name+"' readonly></td>" +
-            "<td><input type='text' class='form-control' name='qtyArr[]' value='"+qty+"' readonly></td>" +
+            "<td><input type='text' class='form-control' name='qtyArr[]' value='"+qty+"' readonly required></td>" +
             "<td><input type='text' class='form-control' name='desArr[]' value='"+des+"' readonly></td>" +
             "<td><input type='button' class='btn btn-danger btn-xs' id='btnRemove' value='Remove' onclick='remove(this)'></td>" +
             "</tr>");

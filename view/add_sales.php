@@ -1,17 +1,17 @@
 <?php
-    include_once ('header3.php');
-    include_once ('../backend/Sale.php');
+include_once ('header3.php');
+include_once ('../backend/Sale.php');
 
-    if(isset($_POST['guyCode'])){
-        $sale=new Sale();
+if(isset($_POST['guyCode'])){
+    $sale=new Sale();
 
-        $sale->workingId=$_POST['guyCode'];
-        $sale->productCName=$_POST['cName'];
-        $sale->saleSNum=$_POST['saleSNum'];
-        $sale->saleDate=$_POST['saleDate'];
+    $sale->workingId=$_POST['guyCode'];
+    $sale->productCName=$_POST['cName'];
+    $sale->saleSNum=$_POST['saleSNum'];
+    $sale->saleDate=$_POST['saleDate'];
 
-        $addSale=$sale->add_sale();
-    }
+    $addSale=$sale->add_sale();
+}
 ?>
 <div class="right_col" role="main">
     <div class="">
@@ -100,7 +100,7 @@
 
 
 <?php
-    include_once('footer.php');
+include_once('footer.php');
 ?>
 <script>
     function checkSerial() {
@@ -113,7 +113,7 @@
         });
     }
 
-        function addTo(){
+    function addTo(){
         saleSNum=$('#salesSNum').val();//get sold serial numbers
         guyCode=$('#guyCode').val();//get guy code
 
