@@ -34,8 +34,12 @@
                 <script src="../vendors/jquery-knob/dist/jquery.knob.min.js"></script>
                 <!-- Cropper -->
                 <script src="../vendors/cropper/dist/cropper.min.js"></script>
+                <!-- FullCalendar -->
+                <script src="../vendors/moment/min/moment.min.js"></script>
+                <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
                 <!-- Custom Theme Scripts -->
                 <script src="../build/js/custom.min.js"></script>
+
                 <!--validation-->
 
 <!--                <script>

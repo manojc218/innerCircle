@@ -24,8 +24,16 @@ if(isset($_POST['guyCode'])){
             <div class="col-md-12 col-ms-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h4>Add Sales</h4>
+                        <div class="row">
+                            <h1>Add Sales</h1>
+                            <h4>Sales by HUB</h4>
+                            <!--Manual Sales button-->
+                            <div class="pull-right">
+                                <a href="mannual_sales.php"><button class="btn btn-primary btn-lg">Manual Sales</button></a>
+                            </div>
+                        </div>
                     </div>
+
 
                     <form class="form-horizontal form_label-left" method="post">
                         <div class="row">

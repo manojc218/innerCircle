@@ -35,6 +35,9 @@ if (isset($_POST['fname']))
     $newUser->manager=$_POST['manager'];
     $newUser->userName=$_POST['username'];
     $newUser->workingId=$_POST['workingId'];
+    $newUser->relativeName=$_POST['relativeName'];
+    $newUser->relativeCNumber=$_POST['relativeCNum'];
+
 
 
 
@@ -176,6 +179,22 @@ include_once('header3.php');
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" required>
 
+                                    </div>
+                                </div>
+
+                                <!--relative name-->
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="relativeName">Relative Name<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="relativeName" id="relativeName" class="form-control col-md-7 col-xs-12" required>
+                                    </div>
+                                </div>
+
+                                <!--relative contact number-->
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="relativeContactNumber">Relative Contact Number<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <input type="text" name="relativeCNum" id="relativeCNum" class="form-control" pattern="[0][0-9]{9}" required>
                                     </div>
                                 </div>
 

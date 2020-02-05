@@ -26,6 +26,8 @@ class User
     public $regDate;
     public $workingId;
     public $password;
+    public $relativeName;
+    public $relativeCNumber;
 
     /*generate password randomly*/
     public function get_password($char)
@@ -48,11 +50,11 @@ class User
 
         /*send data to the relevant table*/
         $sql = "INSERT INTO user_profile (first_name,last_name,nic,gender,dateOfBirth,addressLine1,addressLine2,city,
-                postalCode,mobile_number,land_number,email,branch_id,role_id,manager,working_id,user_name,
+                postalCode,mobile_number,land_number,email,relative_name,relative_contact_number,branch_id,role_id,manager,working_id,user_name,
                 password)
                 values ('$this->firstName','$this->lastName','$this->nic','$this->gender','$this->dob',
                 '$this->addLine1','$this->addLine2','$this->city','$this->postalCode','$this->mobileNumber',
-                '$this->landNumber','$this->email','$this->branchName','$this->roleName','$this->manager',
+                '$this->landNumber','$this->email','$this->relativeName','$this->relativeCNumber','$this->branchName','$this->roleName','$this->manager',
                 '$this->workingId','$this->userName','$password')";
 
         $addUser = $conn->query($sql);
@@ -71,7 +73,6 @@ class User
         $mailBody="Dear ".$this->firstName." ".$this->lastName."<br>".
                   "You have been successfully registered to the INNER CIRCLE (PVT) LTD.".
                   "Now you can log into the system through ".$link.'<br/>'.
-                  "Your Username : $this->userName".'<br/>'.
                   "Your Password : ".$pass;
 
         /*sending mail*/

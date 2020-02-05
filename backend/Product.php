@@ -22,7 +22,7 @@ class Product
 
         foreach ($_POST['sNum'] as $item){
             $sql = "INSERT INTO product(serial_number,product_c_id,user_id,status) 
-                    VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','210','available')";
+                    VALUES ('".$this->serialNumber[$count]."','".$this->productCategory[$count]."','217','available')";
             $count++;
             $addProduct = $conn->query($sql);
         }
@@ -124,7 +124,7 @@ class Product
         }
         return $routerArray;
     }
-    /*get dtv only*/
+    /*get dtv pre paid only*/
     public function get_dtv()
     {
         $conn = (new Connection())->get_db();
@@ -147,6 +147,31 @@ class Product
             $dtvArray[] = $newDtvList;
         }
         return $dtvArray;
+    }
+
+    /*get dtv pre paid only*/
+    public function get_dtv_post()
+    {
+        $conn = (new Connection())->get_db();
+        $sql = "SELECT product.*,user_profile.first_name,user_profile.last_name 
+                FROM product 
+                LEFT JOIN user_profile ON product.user_id = user_profile.user_id 
+                WHERE product_c_id='5'";
+        $dtvPostList = $conn->query($sql);
+        while ($row = $dtvPostList->fetch_array()) {
+            $newDtvPostList = new Product();
+            $newDtvPostList->productId = $row['product_id'];
+            $newDtvPostList->serialNumber = $row['serial_number'];
+            $newDtvPostList->productCategory = $row['product_c_id'];
+            $newDtvPostList->addedDate = $row['added_date'];
+            $newDtvPostList->userId=$row['user_id'];
+            $newDtvPostList->userName=$row['first_name']." ".$row['last_name'];
+            $newDtvPostList->status=$row['status'];
+
+
+            $dtvPostArray[] = $newDtvPostList;
+        }
+        return $dtvPostArray;
     }
 
     /*get category name for related serial number*/

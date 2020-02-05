@@ -17,6 +17,10 @@ include_once ('../backend/User.php');
 /*get branch name*/
 $getStock= new Stock();
 $getAllStock=$getStock->get_stock();
+$getMainSimStock=$getStock->get_main_sim_stock();
+$getMainRouterCount=$getStock->get_main_router_stock();
+$getMainDtvPreCount=$getStock->get_main_dtv_pre_count();
+$getMainDtvPostCount=$getStock->get_main_dtv_post_count();
 
 ?>
 <!-- page content -->
@@ -31,7 +35,37 @@ $getAllStock=$getStock->get_stock();
             <div class="col-md-12 col-ms-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Stocks</h2>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h1>Stocks</h1>
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div style="background-color:#f7f7f7 ">
+
+                                <div class="row tile_count" style="margin: 15px">
+                                    <h4 style="text-decoration: underline ">Main Stock</h4>
+                                    <!--count for HO sims-->
+                                    <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+                                        <span class="count_top" style="color: #122b40;font-style: italic"><i class="fa fa-info-circle"></i> SIM CARDS</span>
+                                        <div class="count"><?php echo $getMainSimStock ?></div>
+                                    </div>
+                                    <!--count for HO sims-->
+                                    <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+                                        <span class="count_top" style="color: #122b40;font-style: italic"><i class="fa fa-info-circle"></i> ROUTERS</span>
+                                        <div class="count"><?php echo $getMainRouterCount ?></div>
+                                    </div>
+                                    <!--count for HO sims-->
+                                    <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+                                        <span class="count_top" style="color: #122b40;font-style: italic"><i class="fa fa-info-circle"></i> DTv (Pre Paid)</span>
+                                        <div class="count"><?php echo $getMainDtvPreCount ?></div>
+                                    </div>
+                                    <!--count for HO sims-->
+                                    <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+                                        <span class="count_top" style="color: #122b40;font-style: italic"><i class="fa fa-info-circle"></i> DTv (Post Paid)</span>
+                                        <div class="count"><?php echo $getMainDtvPostCount ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="clearfix"></div>
                     </div>

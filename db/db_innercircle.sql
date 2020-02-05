@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2020 at 02:13 AM
+-- Generation Time: Jan 28, 2020 at 01:42 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -101,7 +101,8 @@ CREATE TABLE `distribute` (
 --
 
 INSERT INTO `distribute` (`distribute_id`, `distribute_date`, `user_id`) VALUES
-(1, '2020-01-12', 204);
+(1, '2020-01-12', 204),
+(2, '2020-01-09', 216);
 
 -- --------------------------------------------------------
 
@@ -141,6 +142,13 @@ CREATE TABLE `event` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`event_id`, `venue`, `created_date`, `event_time`, `conduct_date`, `description`, `user_id`) VALUES
+(1, 'KCC', '2020-01-14 00:00:00', '23:01', '2020-01-01 00:00:00', NULL, 201);
+
 -- --------------------------------------------------------
 
 --
@@ -159,7 +167,10 @@ CREATE TABLE `grn` (
 --
 
 INSERT INTO `grn` (`grn_id`, `received_date`, `tot_cost`, `p_order_id`) VALUES
-(1, '2020-01-12', 2775000.00, 22);
+(1, '2020-01-12', 2775000.00, 22),
+(2, '2020-01-12', 5000.00, 23),
+(3, '2020-01-14', 225000.00, 24),
+(4, '2020-01-14', 40000.00, 26);
 
 -- --------------------------------------------------------
 
@@ -184,7 +195,12 @@ CREATE TABLE `grn_item` (
 INSERT INTO `grn_item` (`grn_detail_id`, `received_qty`, `unit_price`, `sell_price`, `sub_total`, `product_c_id`, `grn_id`) VALUES
 (1, 500, 50.00, 100.00, 25000.00, 2, 1),
 (2, 500, 2500.00, 3500.00, 1250000.00, 3, 1),
-(3, 500, 3000.00, 4000.00, 1500000.00, 4, 1);
+(3, 500, 3000.00, 4000.00, 1500000.00, 4, 1),
+(4, 100, 50.00, 100.00, 5000.00, 2, 2),
+(5, 500, 50.00, 100.00, 25000.00, 2, 3),
+(6, 400, 100.00, 250.00, 40000.00, 3, 3),
+(7, 800, 200.00, 500.00, 160000.00, 4, 3),
+(8, 800, 50.00, 100.00, 40000.00, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -206,7 +222,19 @@ CREATE TABLE `notification` (
 
 INSERT INTO `notification` (`notification_id`, `notification_text`, `receiver`, `status`, `date`) VALUES
 (1, 'New order has been placed', '201', 'new', '2020-01-12 05:28:02'),
-(2, 'New order has been placed', '203', 'new', '2020-01-12 05:28:02');
+(2, 'New order has been placed', '203', 'new', '2020-01-12 05:28:02'),
+(3, 'New order has been placed', '201', 'new', '2020-01-12 10:10:08'),
+(4, 'New order has been placed', '203', 'new', '2020-01-12 10:10:08'),
+(5, 'New order has been placed', '201', 'new', '2020-01-14 07:06:32'),
+(6, 'New order has been placed', '203', 'new', '2020-01-14 07:06:32'),
+(7, 'New order has been placed', '201', 'new', '2020-01-14 10:32:48'),
+(8, 'New order has been placed', '203', 'new', '2020-01-14 10:32:48'),
+(9, 'New order has been placed', '201', 'new', '2020-01-14 10:35:35'),
+(10, 'New order has been placed', '203', 'new', '2020-01-14 10:35:35'),
+(11, 'New order has been placed', '201', 'new', '2020-01-15 19:25:36'),
+(12, 'New order has been placed', '203', 'new', '2020-01-15 19:25:36'),
+(13, 'New order has been placed', '201', 'new', '2020-01-16 02:32:03'),
+(14, 'New order has been placed', '203', 'new', '2020-01-16 02:32:04');
 
 -- --------------------------------------------------------
 
@@ -248,13 +276,16 @@ INSERT INTO `product` (`product_id`, `serial_number`, `added_date`, `product_c_i
 (6, '20001', '2020-01-12 00:44:01', 3, 204, 'available'),
 (7, ' 20002', '2020-01-12 00:40:54', 3, 210, 'available'),
 (8, ' 20003', '2020-01-12 00:40:54', 3, 210, 'available'),
-(9, ' 20004', '2020-01-12 00:40:54', 3, 210, 'available'),
-(10, ' 20005', '2020-01-12 00:40:54', 3, 210, 'available'),
+(9, ' 20004', '2020-01-20 12:36:58', 3, 210, 'sold'),
+(10, ' 20005', '2020-01-20 12:35:15', 3, 210, 'sold'),
 (11, '30001', '2020-01-12 00:49:21', 4, 204, 'sold'),
 (12, ' 30002', '2020-01-12 00:40:54', 4, 210, 'available'),
 (13, ' 30003', '2020-01-12 00:40:54', 4, 210, 'available'),
-(14, ' 30004', '2020-01-12 00:40:54', 4, 210, 'available'),
-(15, ' 30005', '2020-01-12 00:40:54', 4, 210, 'available');
+(14, ' 30004', '2020-01-20 12:36:58', 4, 210, 'sold'),
+(15, ' 30005', '2020-01-20 12:35:15', 4, 210, 'sold'),
+(16, '10010', '2020-01-12 04:57:00', 2, 210, 'available'),
+(17, ' 10011', '2020-01-12 04:57:00', 2, 210, 'available'),
+(18, ' 10012', '2020-01-12 04:57:00', 2, 210, 'available');
 
 -- --------------------------------------------------------
 
@@ -266,6 +297,8 @@ CREATE TABLE `product_category` (
   `product_c_id` int(11) NOT NULL,
   `category_name` varchar(100) NOT NULL,
   `category_description` varchar(255) DEFAULT NULL,
+  `points` int(11) NOT NULL,
+  `status` varchar(45) NOT NULL,
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -273,10 +306,11 @@ CREATE TABLE `product_category` (
 -- Dumping data for table `product_category`
 --
 
-INSERT INTO `product_category` (`product_c_id`, `category_name`, `category_description`, `added_date`) VALUES
-(2, 'SIM CARD', NULL, '2019-08-26 06:19:50'),
-(3, '4G ROUTER', NULL, '2019-08-26 06:19:50'),
-(4, 'DIALOG TV', NULL, '2019-08-26 06:19:50');
+INSERT INTO `product_category` (`product_c_id`, `category_name`, `category_description`, `points`, `status`, `added_date`) VALUES
+(2, 'SIM CARD', NULL, 5, 'Available', '2020-01-15 20:56:24'),
+(3, '4G ROUTER', NULL, 8, 'Available', '2020-01-15 20:56:24'),
+(4, 'DIALOG TV', NULL, 12, 'Available', '2020-01-15 20:56:24'),
+(7, 'CDMA Phone', '', 25, 'Available', '2020-01-22 01:38:57');
 
 -- --------------------------------------------------------
 
@@ -289,6 +323,13 @@ CREATE TABLE `promotion_item` (
   `promotion_item` varchar(45) NOT NULL,
   `event_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `promotion_item`
+--
+
+INSERT INTO `promotion_item` (`promotion_item_id`, `promotion_item`, `event_id`) VALUES
+(1, 'SimCard', 1);
 
 -- --------------------------------------------------------
 
@@ -308,16 +349,20 @@ CREATE TABLE `purchase_order` (
 --
 
 INSERT INTO `purchase_order` (`p_order_id`, `order_date`, `status`, `reference_no`) VALUES
-(13, '2019-12-23', 'approved', '318470'),
 (14, '2019-12-23', 'canceled', '082619'),
-(15, '2019-12-24', 'approved', '761594'),
 (16, '2019-12-31', 'Completed', '376485'),
 (17, '2019-12-31', 'canceled', '539417'),
 (18, '2019-12-31', 'canceled', '476328'),
 (19, '2019-12-31', 'Accepted', '845236'),
 (20, '2020-01-09', 'canceled', '267891'),
 (21, '2020-01-11', 'Canceled', '384205'),
-(22, '2020-01-12', 'Completed', '826317');
+(22, '2020-01-12', 'Completed', '826317'),
+(23, '2020-01-12', 'Completed', '865471'),
+(24, '2020-01-14', 'Completed', '095463'),
+(25, '2020-01-14', 'Canceled', '186947'),
+(26, '2020-01-14', 'Completed', '613078'),
+(27, '2020-01-15', 'Approved', '312967'),
+(28, '2020-01-15', 'Canceled', '590741');
 
 -- --------------------------------------------------------
 
@@ -340,7 +385,18 @@ CREATE TABLE `purchase_order_details` (
 INSERT INTO `purchase_order_details` (`p_order_detail_id`, `order_qty`, `description`, `p_order_id`, `product_c_id`) VALUES
 (1, 500, 'non', 22, 2),
 (2, 500, 'non', 22, 3),
-(3, 500, 'non', 22, 4);
+(3, 500, 'non', 22, 4),
+(4, 100, '', 23, 2),
+(5, 1000, '', 24, 2),
+(6, 450, '', 24, 3),
+(7, 899, '', 24, 4),
+(8, 450, '', 25, 2),
+(9, 899, '', 25, 4),
+(10, 1000, '', 25, 3),
+(11, 250, 'nn', 25, 3),
+(12, 1000, 'gh', 26, 2),
+(13, 650, '', 27, 2),
+(14, 0, '', 28, 2);
 
 -- --------------------------------------------------------
 
@@ -367,7 +423,8 @@ INSERT INTO `role` (`role_id`, `role_name`, `role_description`, `added_date`) VA
 (6, 'HR Manager', 'nothing', '2019-09-14 17:39:46'),
 (7, 'Editor', 'Responsibility for digital marketting\r\n', '2019-09-19 08:21:29'),
 (9, 'Executive Secretary', 'Head Office secretary', '2019-12-31 12:25:54'),
-(10, 'Accountant', 'Head office accountant', '2019-12-31 12:26:39');
+(10, 'Accountant', 'Head office accountant', '2019-12-31 12:26:39'),
+(11, 'mmm', 'khkgj', '2020-01-12 10:08:45');
 
 -- --------------------------------------------------------
 
@@ -386,7 +443,45 @@ CREATE TABLE `sale` (
 --
 
 INSERT INTO `sale` (`sale_id`, `sale_date`, `user_id`) VALUES
-(1, '2020-01-12', 211);
+(1, '2020-01-12', 211),
+(10, '2020-01-17', 204),
+(11, '2020-01-17', 204),
+(12, '2020-01-17', 204),
+(13, '2020-01-18', 204),
+(14, '2020-01-18', 204),
+(15, '2020-01-18', 204),
+(16, '2020-01-18', 204),
+(17, '2020-01-18', 204),
+(18, '2020-01-18', 204),
+(19, '2020-01-18', 204),
+(20, '2020-01-18', 204),
+(21, '2020-01-18', 204),
+(22, '2020-01-18', 204),
+(23, '2020-01-18', 204),
+(24, '2020-01-18', 204),
+(25, '2020-01-18', 204),
+(26, '2020-01-18', 204),
+(27, '2020-01-18', 204),
+(29, '2020-01-18', 204),
+(30, '2020-01-18', 204),
+(31, '2020-01-18', 204),
+(32, '2020-01-18', 204),
+(33, '2020-01-18', 204),
+(34, '2020-01-18', 204),
+(35, '2020-01-20', 204),
+(36, '2020-01-20', 204),
+(37, '2020-01-20', 204),
+(38, '2020-01-20', 204),
+(39, '2020-01-20', 204),
+(40, '2020-01-20', 204),
+(41, '2020-01-20', 204),
+(42, '2020-01-20', 204),
+(43, '2020-01-20', 204),
+(44, '2020-01-20', 204),
+(45, '2020-01-20', 204),
+(46, '2020-01-20', 204),
+(49, '2020-01-20', 204),
+(50, '2020-01-20', 204);
 
 -- --------------------------------------------------------
 
@@ -407,7 +502,11 @@ CREATE TABLE `sale_items` (
 
 INSERT INTO `sale_items` (`sale_item_id`, `sale_id`, `product_id`, `product_c_id`) VALUES
 (1, 1, 1, 2),
-(2, 1, 11, 4);
+(2, 1, 11, 4),
+(31, 49, 9, 3),
+(32, 49, 14, 4),
+(33, 50, 9, 3),
+(34, 50, 14, 4);
 
 -- --------------------------------------------------------
 
@@ -446,8 +545,12 @@ INSERT INTO `user_profile` (`user_id`, `first_name`, `last_name`, `nic`, `gender
 (201, 'Duminda', 'Bandara', '821529140V', 'Male', '1982-04-06', 'No 15', 'Main Street', 'Kandy', '20000', '0770000001', '0710000001', 'm.chathperera@gmail.com', 1, 4, 124, 'HO001', 'duminda', '6dfef59079e18d754a0f8545e7cd3237', '2020-01-12 04:34:01'),
 (203, 'Mohammad', 'Manzeen', '832413512V', 'Male', '1983-07-13', 'No 16', '2nd Lane, Peradeniya', 'Kandy', '20000', '0770000002', '710000002', 'm.chathperera@gmail.com', 1, 10, 124, 'HO002', 'manzeen', '4096ff3f09644ea61be493abb0abb9e3', '2020-01-12 04:38:11'),
 (204, 'Roshan', 'Wijesinghe', '931526489V', 'Male', '1993-08-11', '4th Lane', 'Bakmeedeniya', 'Mawanella', '71500', '0710000003', '0770000003', 'm.chathperera@gmail.com', 2, 1, 128, 'HO003', 'manager1', '2bf1968add789b927ac431dba7dd18dc', '2020-01-12 04:51:20'),
-(210, 'Janaka', 'Perera', '879849949V', 'Male', '2020-01-11', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 1, 1, 201, 'HO004', 'janaka', '3013e88d875942ec24d22ec3318e100b', '2020-01-12 06:08:06'),
-(211, 'Rasika', 'Kumara', '940034140C', 'Male', '2020-01-09', '4th lane', 'bakmeedeniya', 'Mawanella', '71500', '0719999999', '', 'm.chathperera@gmail.com', 1, 5, 210, 'HO100', 'rasika', 'c3b3c74964eae178888577a2faf6e6c7', '2020-01-12 06:17:40');
+(210, 'Janaka', 'Perera', '879849949V', 'Male', '2020-01-11', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 1, 1, 201, 'HO004', 'janaka', '3013e88d875942ec24d22ec3318e100b', '2019-12-10 06:08:06'),
+(211, 'Rasika', 'Kumara', '940034140C', 'Male', '2020-01-09', '4th lane', 'bakmeedeniya', 'Mawanella', '71500', '0719999999', '', 'm.chathperera@gmail.com', 1, 5, 210, 'HO100', 'rasika', 'c3b3c74964eae178888577a2faf6e6c7', '2020-01-12 06:17:40'),
+(213, 'Roy', 'Anderson', '78879898', 'Male', '2020-01-09', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 1, 1, 201, '8896', 'roy', 'ee45a22d8afecb8f2db4ca9c9fa8d515', '2020-01-12 10:05:41'),
+(214, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '', '', '8395b4ba047979fba05664788d2abb1b', '2019-12-26 11:15:44'),
+(215, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '46', '', '9dc031150d5b51f22925b11a378b6a14', '2020-01-12 11:15:44'),
+(216, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '465', 'xyz', '0c1a4252d732847a79e8105c0002ca86', '2020-01-12 11:15:49');
 
 -- --------------------------------------------------------
 
@@ -635,7 +738,7 @@ ALTER TABLE `deposit`
 -- AUTO_INCREMENT for table `distribute`
 --
 ALTER TABLE `distribute`
-  MODIFY `distribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `distribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `distribute_item`
@@ -647,79 +750,79 @@ ALTER TABLE `distribute_item`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `grn`
 --
 ALTER TABLE `grn`
-  MODIFY `grn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `grn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `grn_item`
 --
 ALTER TABLE `grn_item`
-  MODIFY `grn_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `grn_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `product_c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `promotion_item`
 --
 ALTER TABLE `promotion_item`
-  MODIFY `promotion_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `promotion_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `p_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `p_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `purchase_order_details`
 --
 ALTER TABLE `purchase_order_details`
-  MODIFY `p_order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `p_order_detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `sale_items`
 --
 ALTER TABLE `sale_items`
-  MODIFY `sale_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `sale_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 
 --
 -- Constraints for dumped tables

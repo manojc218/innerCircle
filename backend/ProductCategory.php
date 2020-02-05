@@ -8,7 +8,7 @@ class ProductCategory
     public $product_c_id;
     public $categoryName;
     public $categoryDescription;
-    public $points;
+    public $categoryPoints;
     public $status;
     public $addedDate;
 
@@ -18,7 +18,7 @@ class ProductCategory
     {
         $conn=(new Connection())->get_db();
 
-        $sql= "INSERT INTO product_category(category_name,category_description,points,status) VALUES ('$this->categoryName','$this->categoryDescription','$this->points','Available')";
+        $sql= "INSERT INTO product_category(category_name,category_description,points,status) VALUES ('$this->categoryName','$this->categoryDescription','$this->categoryPoints','Available')";
 
 
         $result2=$conn->query($sql);
@@ -44,7 +44,7 @@ class ProductCategory
             $product_c_details->product_c_id=$row["product_c_id"];
             $product_c_details->categoryName=$row["category_name"];
             $product_c_details->categoryDescription=$row["category_description"];
-            $product_c_details->points=$row["points"];
+            $product_c_details->categoryPoints=$row["points"];
             $product_c_details->status=$row["status"];
             $product_c_details->addedDate=$row["added_date"];
 
@@ -67,7 +67,7 @@ class ProductCategory
         $categoryName->product_c_id = $row["product_c_id"];
         $categoryName->categoryName = $row["category_name"];
         $categoryName->categoryDescription = $row["category_description"];
-        $categoryName->points=$row["points"];
+        $categoryName->categoryPoints=$row["points"];
         $categoryName->status=$row["status"];
         $categoryName->addedDate = $row["added_date"];
 

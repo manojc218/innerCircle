@@ -19,6 +19,9 @@ $newRouterList=$routerList->get_router();
 $dtvList=new Product();
 $newDtvList=$dtvList->get_dtv();
 
+$dtvPostList=new Product();
+$newDtvPostList=$dtvPostList->get_dtv_post();
+
 /*get username*/
 /*$nameList=new Product();
 $userId=$nameList->get_username_by_id($uId);*/
@@ -114,8 +117,11 @@ include_once ('header3.php');
                                     <!--4gRouter Tab-->
                                     <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false"><strong>4G Routers</strong></a>
                                     </li>
-                                    <!--Dtv Tab-->
-                                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><strong>Dtv</strong></a>
+                                    <!--Dtv Pre Paid Tab-->
+                                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><strong>Dtv Pre Paid</strong></a>
+                                    </li>
+                                    <!--Dtv Post Paid Tab-->
+                                    <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false"><strong>Dtv Post Paid</strong></a>
                                     </li>
                                 </ul>
 
@@ -196,7 +202,8 @@ include_once ('header3.php');
 
                                     </div>
 
-                                    <!--View Dtv table-->
+
+                                    <!--View Dtv pre paid table-->
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                                         <!--Start Dtv view table-->
                                         <table class="table table-striped projects" id="productDtv">
@@ -228,12 +235,50 @@ include_once ('header3.php');
                                             ?>
                                             </tbody>
                                         </table>
+                                    </div>
 
+                                    <!--View Dtv Post Paid-->
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="home-tab">
+                                        <!--Start Sim Card view table-->
+                                        <table class="table table-striped projects" id="productTable">
+                                            <!--Start Table Head-->
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 20%;">Serial Number</th>
+                                                <th style="width: 20%;">Description</th>
+                                                <th style="width: 20%;">Added Date</th>
+                                                <th style=""></th>
+                                            </tr>
+                                            </thead>
+                                            <!--End Table head-->
+
+
+                                            <!--Start table body-->
+                                            <tbody>
+
+                                            <?php
+
+                                            foreach ($newDtvPostList as $item)
+                                            {
+                                                echo"<tr role=\"row\" class=\"odd\">
+                                                                <td class=\"sorting_1\">$item->serialNumber</td> 
+                                                                <td>$item->userName</td>
+                                                                <td>$item->addedDate</td>
+                                                                <td>
+                                                                    <a href=\"#\" class=\"btn btn-info btn-xs\"><i class=\"fa fa-pencil\"></i> Edit </a>
+                                                                    <a href=\"#\" class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o\"></i> Delete </a>
+                                                                  </td>
+                                                              </tr>";
+                                            }
+                                            ?>
+                                            </tbody>
+                                            <!--end table body-->
+                                        </table>
+                                        <!--End Dtv post paid view table-->
                                     </div>
                                 </div>
-                                <!--End Dtv view-->
+                                <!--End Dtv pre paid view-->
                             </div>
-                        </div>
                     </div>
                 </div>
                 <!--End product tables-->

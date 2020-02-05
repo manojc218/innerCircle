@@ -27,12 +27,15 @@ $getUserId=$user->get_user_by_id($uid);
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="../vendors/datatables/datatables.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- FullCalendar -->
+    <link href="../vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="../vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
@@ -42,6 +45,8 @@ $getUserId=$user->get_user_by_id($uid);
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+
 
 
     <!-- Custom Theme Style -->
@@ -97,6 +102,8 @@ $getUserId=$user->get_user_by_id($uid);
                                     <li><a href="add_new_user.php">Add User<span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="user_view.php">View User <span class="fa fa-chevron-right"></span></a></li>
                                     <li><a href="role.php">Job Titles <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="hrFileManagement.php">HR File Management<span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="welfare.php">Welfare<span class="fa fa-chevron-right"></span></a></li>
 
                                 </ul>
                             </li>
@@ -155,6 +162,12 @@ $getUserId=$user->get_user_by_id($uid);
                                     <li><a href="event.php">Create Events<span class="fa fa-chevron-right"></span> </a></li>
                                     <li><a href="view_events.php">View Events<span class="fa fa-chevron-right"></span> </a></li>
                                 </ul>
+                            </li>
+
+                            <!--ceo schedule-->
+                            <li>
+                                <a href="ceo-schedule.php"><i class="fa fa-calendar"></i>CEO's Schedule<span class="fa fa-chevron-right"></span></a>
+
                             </li>
                         </ul>
                     </div>

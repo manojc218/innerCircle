@@ -53,11 +53,8 @@
                                 <th class="column-title" style="display: table-cell;">4G Routers </th>
                                 <th class="column-title" style="display: table-cell;">Dialog Tv </th>
                                 <th class="column-title" style="display: table-cell;">Total Points</th>
-                                <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Action</span>
-                                </th>
-                                <th class="bulk-actions" colspan="7" style="display: none;">
-                                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt">1 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
-                                </th>
+                                <th class="column-title no-link last" style="display: table-cell;"><span class="nobr">Action</span></th>
+
                             </tr>
                             </thead>
 
@@ -66,13 +63,13 @@
                             foreach ($saleList as $item){
                                 echo "<tr>
 
-                    <td class=''>$item->guyName</td>
-                    <td class=''>$item->saleDate</td>
-                    <td class=''>$item->simCard </i></td>
-                    <td class=''>$item->router</td>
-                    <td class=''>$item->dtv</td>
-                    <td class=''>$item->sPoints</td>
-                    <td class=''><a href=''>View</a>
+                    <td class='' >$item->guyName</td>
+                    <td class='' >$item->saleDate</td>
+                    <td class='' >$item->simCard </i></td>
+                    <td class='' >$item->router</td>
+                    <td class='' >$item->dtv</td>
+                    <td class='' >$item->sPoints</td>
+                    <td class='' ><a href=''>View</a>
                     </td>
                 </tr>";}
                             ?>

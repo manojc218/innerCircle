@@ -5,6 +5,7 @@ include_once('../backend/ProductCategory.php');/*link to ProductCategory class*/
 if(isset($_POST['category_name'])){
     $newCategory=new ProductCategory();
     $newCategory->categoryName=$_POST['category_name'];
+    $newCategory->categoryPoints=$_POST['points'];
 
     $result2=$newCategory->add_category();
 
@@ -69,7 +70,7 @@ include_once('header3.php');/*link to header*/
                                         
                                         <td>$item->categoryDescription</td><!--Description-->
                                         
-                                        <td>$item->points</td><!--points-->
+                                        <td>$item->categoryPoints</td><!--points-->
             
                                         <td>
                                             <a href=\"view_products.php\" class=\"btn btn-primary btn-xs\"><i class=\"fa fa-folder\"></i> View </a>
