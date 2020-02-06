@@ -1,6 +1,18 @@
 <?php
     include_once ('header3.php');
+    include_once ('../backend/PersonalFile.php');
 
+    if(isset($_POST['nicNum'])){
+        $newFile=new PersonalFile();
+        $newFile->nicNumber=$_POST['nicNum'];
+        $newFile->certificate=$_POST['chkCert'];
+        $newFile->hdCount=$_POST['hEduCount'];
+        $newFile->otherCount=$_POST['otherCertCount'];
+        $newFile->sLetterCount=$_POST['sLetterCount'];
+        $newFile->totCount=$_POST['certTot'];
+
+        $result=$newFile->add_file();
+    }
 
 ?>
 <!--page content-->
@@ -41,7 +53,7 @@
                                             <td><input class="" type="checkbox" name="chkCert[]" value="ol"> O/L </td>
                                             <td><input class="" type="checkbox" name="chkCert[]" value="higherEdu."> Higher Edu. </td>
                                             <div class="col-md-5 col-sm-5 col-xs-4">
-                                                <td><input type="text" class="col-md-5 col-sm-5 col-xs-3 form-control"></td>
+                                                <td><input type="text" name="hEduCount" class="col-md-5 col-sm-5 col-xs-3 form-control"></td>
                                             </div>
                                         </tr>
                                         <tr>
@@ -77,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nicNumber">Total Certificate Count <span class="required">*</span></label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="totCert">Total Certificate Count <span class="required">*</span></label>
                                 <div class="col-md-1 col-sm-1 col-xs-12">
                                     <input type="text" name="certTot" id="certTot" class="form-control col-md-7 col-sm-7 col-xs-12" required>
                                 </div>

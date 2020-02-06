@@ -29,7 +29,7 @@ if(isset($_POST['guyCode'])){
                             <h4>Sales by HUB</h4>
                             <!--Manual Sales button-->
                             <div class="pull-right">
-                                <a href="mannual_sales.php"><button class="btn btn-primary btn-lg">Manual Sales</button></a>
+                                <a href="add_sales_manual.php"><button class="btn btn-primary btn-lg">Manual Sales</button></a>
                             </div>
                         </div>
                     </div>
