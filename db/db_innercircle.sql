@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2020 at 01:42 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Feb 06, 2020 at 10:53 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,6 +73,20 @@ CREATE TABLE `branch_product` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `certificate`
+--
+
+CREATE TABLE `certificate` (
+  `cert_id` int(11) NOT NULL,
+  `cert_name` varchar(45) DEFAULT NULL,
+  `cert_count` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `added_date` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `deposit`
 --
 
@@ -129,13 +143,24 @@ INSERT INTO `distribute_item` (`distribute_item_id`, `distribute_id`, `product_i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doc_type`
+--
+
+CREATE TABLE `doc_type` (
+  `type_id` int(11) NOT NULL,
+  `type` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
   `event_id` int(11) NOT NULL,
   `venue` varchar(100) NOT NULL,
-  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
   `event_time` varchar(45) NOT NULL,
   `conduct_date` datetime NOT NULL,
   `description` varchar(100) DEFAULT NULL,
@@ -205,6 +230,16 @@ INSERT INTO `grn_item` (`grn_detail_id`, `received_qty`, `unit_price`, `sell_pri
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hr_file`
+--
+
+CREATE TABLE `hr_file` (
+  `file_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notification`
 --
 
@@ -213,7 +248,7 @@ CREATE TABLE `notification` (
   `notification_text` varchar(45) NOT NULL,
   `receiver` varchar(45) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `date` datetime DEFAULT CURRENT_TIMESTAMP
+  `date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -257,7 +292,7 @@ CREATE TABLE `point` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `serial_number` varchar(100) DEFAULT NULL,
-  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `added_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `product_c_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `status` varchar(45) NOT NULL
@@ -269,23 +304,28 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`product_id`, `serial_number`, `added_date`, `product_c_id`, `user_id`, `status`) VALUES
 (1, '10001', '2020-01-12 00:49:21', 2, 204, 'sold'),
-(2, ' 10002', '2020-01-12 00:40:54', 2, 210, 'available'),
-(3, ' 10003', '2020-01-12 00:40:54', 2, 210, 'available'),
-(4, ' 10004', '2020-01-12 00:40:54', 2, 210, 'available'),
-(5, ' 10005', '2020-01-12 00:40:54', 2, 210, 'available'),
+(2, ' 10002', '2020-02-04 01:13:03', 2, 217, 'available'),
+(3, ' 10003', '2020-02-04 01:13:03', 2, 217, 'available'),
+(4, ' 10004', '2020-02-04 01:13:03', 2, 217, 'available'),
+(5, ' 10005', '2020-02-04 01:13:03', 2, 217, 'available'),
 (6, '20001', '2020-01-12 00:44:01', 3, 204, 'available'),
-(7, ' 20002', '2020-01-12 00:40:54', 3, 210, 'available'),
-(8, ' 20003', '2020-01-12 00:40:54', 3, 210, 'available'),
-(9, ' 20004', '2020-01-20 12:36:58', 3, 210, 'sold'),
-(10, ' 20005', '2020-01-20 12:35:15', 3, 210, 'sold'),
+(7, ' 20002', '2020-02-04 01:13:03', 3, 217, 'available'),
+(8, ' 20003', '2020-02-04 01:13:03', 3, 217, 'available'),
+(9, ' 20004', '2020-02-04 01:13:03', 3, 217, 'sold'),
+(10, ' 20005', '2020-02-04 01:13:03', 3, 217, 'sold'),
 (11, '30001', '2020-01-12 00:49:21', 4, 204, 'sold'),
-(12, ' 30002', '2020-01-12 00:40:54', 4, 210, 'available'),
-(13, ' 30003', '2020-01-12 00:40:54', 4, 210, 'available'),
-(14, ' 30004', '2020-01-20 12:36:58', 4, 210, 'sold'),
-(15, ' 30005', '2020-01-20 12:35:15', 4, 210, 'sold'),
-(16, '10010', '2020-01-12 04:57:00', 2, 210, 'available'),
-(17, ' 10011', '2020-01-12 04:57:00', 2, 210, 'available'),
-(18, ' 10012', '2020-01-12 04:57:00', 2, 210, 'available');
+(12, ' 30002', '2020-02-04 01:13:03', 4, 217, 'available'),
+(13, ' 30003', '2020-02-04 01:13:03', 4, 217, 'available'),
+(14, ' 30004', '2020-02-04 01:13:03', 4, 217, 'sold'),
+(15, ' 30005', '2020-02-04 01:13:03', 4, 217, 'sold'),
+(16, '10010', '2020-02-04 01:13:03', 2, 217, 'available'),
+(17, ' 10011', '2020-02-04 01:13:03', 2, 217, 'available'),
+(18, ' 10012', '2020-02-04 01:13:03', 2, 217, 'available'),
+(19, '40001', '2020-02-04 10:40:44', 5, 217, 'available'),
+(20, ' 40002', '2020-02-04 10:40:44', 5, 217, 'available'),
+(21, '40003', '2020-02-04 10:40:19', 5, 217, 'available'),
+(22, ' 40004', '2020-02-04 10:40:19', 5, 217, 'available'),
+(23, ' 40005', '2020-02-04 10:40:19', 5, 217, 'available');
 
 -- --------------------------------------------------------
 
@@ -299,7 +339,7 @@ CREATE TABLE `product_category` (
   `category_description` varchar(255) DEFAULT NULL,
   `points` int(11) NOT NULL,
   `status` varchar(45) NOT NULL,
-  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `added_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -309,8 +349,8 @@ CREATE TABLE `product_category` (
 INSERT INTO `product_category` (`product_c_id`, `category_name`, `category_description`, `points`, `status`, `added_date`) VALUES
 (2, 'SIM CARD', NULL, 5, 'Available', '2020-01-15 20:56:24'),
 (3, '4G ROUTER', NULL, 8, 'Available', '2020-01-15 20:56:24'),
-(4, 'DIALOG TV', NULL, 12, 'Available', '2020-01-15 20:56:24'),
-(7, 'CDMA Phone', '', 25, 'Available', '2020-01-22 01:38:57');
+(4, 'DIALOG TV(PRE PAID)', NULL, 12, 'Available', '2020-02-04 10:38:04'),
+(5, 'DIALOG TV(POST PAID)', '', 25, 'Available', '2020-02-04 10:38:04');
 
 -- --------------------------------------------------------
 
@@ -408,7 +448,7 @@ CREATE TABLE `role` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(100) NOT NULL,
   `role_description` varchar(255) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `added_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -534,7 +574,7 @@ CREATE TABLE `user_profile` (
   `working_id` varchar(100) NOT NULL,
   `user_name` varchar(100) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
-  `registeredDate` datetime DEFAULT CURRENT_TIMESTAMP
+  `registeredDate` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -550,7 +590,8 @@ INSERT INTO `user_profile` (`user_id`, `first_name`, `last_name`, `nic`, `gender
 (213, 'Roy', 'Anderson', '78879898', 'Male', '2020-01-09', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'm.chathperera@gmail.com', 1, 1, 201, '8896', 'roy', 'ee45a22d8afecb8f2db4ca9c9fa8d515', '2020-01-12 10:05:41'),
 (214, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '', '', '8395b4ba047979fba05664788d2abb1b', '2019-12-26 11:15:44'),
 (215, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '46', '', '9dc031150d5b51f22925b11a378b6a14', '2020-01-12 11:15:44'),
-(216, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '465', 'xyz', '0c1a4252d732847a79e8105c0002ca86', '2020-01-12 11:15:49');
+(216, 'xyz', 'peter', '788798987V', 'Male', '2020-01-08', 'No A', 'Lane AA', 'Mawanella', '0000', '0719999999', '', 'test8@ymail.com', 1, 1, 201, '465', 'xyz', '0c1a4252d732847a79e8105c0002ca86', '2020-01-12 11:15:49'),
+(217, 'Head', 'Office', '', NULL, NULL, '', NULL, '', '', '', NULL, '', 1, 0, NULL, '', NULL, NULL, '2020-02-04 06:41:19');
 
 -- --------------------------------------------------------
 
@@ -588,6 +629,13 @@ ALTER TABLE `branch_product`
   ADD KEY `fk_branch_product_product1_idx` (`product_id`);
 
 --
+-- Indexes for table `certificate`
+--
+ALTER TABLE `certificate`
+  ADD PRIMARY KEY (`cert_id`),
+  ADD KEY `fk_certificate_user_profile1_idx` (`user_id`);
+
+--
 -- Indexes for table `deposit`
 --
 ALTER TABLE `deposit`
@@ -612,6 +660,12 @@ ALTER TABLE `distribute_item`
   ADD KEY `fk_distribute_item_product_category1_idx` (`product_c_id`);
 
 --
+-- Indexes for table `doc_type`
+--
+ALTER TABLE `doc_type`
+  ADD PRIMARY KEY (`type_id`);
+
+--
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
@@ -632,6 +686,12 @@ ALTER TABLE `grn_item`
   ADD PRIMARY KEY (`grn_detail_id`),
   ADD KEY `fk_grn_item_grn1_idx1` (`grn_id`),
   ADD KEY `fk_grn_item_product_category1_idx` (`product_c_id`);
+
+--
+-- Indexes for table `hr_file`
+--
+ALTER TABLE `hr_file`
+  ADD PRIMARY KEY (`file_id`);
 
 --
 -- Indexes for table `notification`
@@ -729,6 +789,12 @@ ALTER TABLE `branch`
   MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `certificate`
+--
+ALTER TABLE `certificate`
+  MODIFY `cert_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
@@ -745,6 +811,12 @@ ALTER TABLE `distribute`
 --
 ALTER TABLE `distribute_item`
   MODIFY `distribute_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `doc_type`
+--
+ALTER TABLE `doc_type`
+  MODIFY `type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -774,7 +846,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -822,7 +894,7 @@ ALTER TABLE `sale_items`
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- Constraints for dumped tables
@@ -840,6 +912,12 @@ ALTER TABLE `account`
 ALTER TABLE `branch_product`
   ADD CONSTRAINT `fk_branch_product_branch1` FOREIGN KEY (`branch_id`) REFERENCES `branch` (`branch_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_branch_product_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `certificate`
+--
+ALTER TABLE `certificate`
+  ADD CONSTRAINT `fk_certificate_user_profile1` FOREIGN KEY (`user_id`) REFERENCES `user_profile` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `deposit`

@@ -51,7 +51,7 @@
                                         </tr>
                                         <tr>
                                             <td><input class="" type="checkbox" name="chkCert[]" value="ol"> O/L </td>
-                                            <td><input class="" type="checkbox" name="chkCert[]" value="higherEdu."> Higher Edu. </td>
+                                            <td><input class="" type="checkbox" name="chkCert[]" value="higherEdu"> Higher Edu. </td>
                                             <div class="col-md-5 col-sm-5 col-xs-4">
                                                 <td><input type="text" name="hEduCount" class="col-md-5 col-sm-5 col-xs-3 form-control"></td>
                                             </div>

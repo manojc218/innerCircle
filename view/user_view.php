@@ -64,6 +64,7 @@ if(!empty($_POST['startDate']) && !empty($_POST['endDate'])){
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 200px;">Name</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">NIC Number</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Position</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="WorkingId: activate to sort column ascending" style="width: 100px;">Working ID</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Branch: activate to sort column ascending" style="width: 100px;">Branch</th>
@@ -80,6 +81,7 @@ if(!empty($_POST['startDate']) && !empty($_POST['endDate'])){
 
                                             echo"<tr role=\"row\" class=\"odd\">
                                                             <td class=\"sorting_1\"><a href='user_profile.php'>$item->firstName $item->lastName</a></td>
+                                                            <td>$item->nic</td>
                                                             <td>$item->roleName</td>
                                                             <td>$item->workingId</td>
                                                             <td>$item->branchName</td>                                                    

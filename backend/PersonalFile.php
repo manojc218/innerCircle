@@ -28,23 +28,32 @@ class PersonalFile
             /*get value of check box*/
             $he=$_POST['chkCert'];
 
-            /*echo $count;
-            print_r($he)`;*/
 
-            if($he='higherEdu.')//check the value of array is higherEdu.
+            print_r($he);
+
+
+            if($he='higherEdu')//check the value of array is higherEdu.
                 {
-                $sql="INSERT INTO certificate(cert_name,cert_count,user_id) VALUES ('$he',$this->hdCount,$usrId)";
+                    /*$hd=$he;
+                    echo $hd;*/
+                $sql="INSERT INTO certificate(cert_name,cert_count,user_id) VALUES ('$hd',$this->hdCount,$usrId)";
 
                 echo $sql;
 
-                /*$addHeEduCert=$conn->query($sql);*/
+                $addHeEduCert=$conn->query($sql);
 
             }else if ($he='otherCert'){
+                /*$oc=$he;
+                echo $oc;*/
                 $sql2="INSERT INTO certificate(cert_name,cert_count,user_id) VALUES ('$he',$this->otherCount,$usrId)";
 
                 echo $sql2;
-                exit();
                 $addOtherCert=$conn->query($sql2);
+
+            }else if($he='sLetterCert'){
+                $sql3="INSERT INTO certificate(cert_name, cert_count, user_id, added_date) VALUES ('$he',$this->otherCount,$usrId)";
+                $addsLetter=$conn->query($sql3);
+            }else{
 
             }
 
